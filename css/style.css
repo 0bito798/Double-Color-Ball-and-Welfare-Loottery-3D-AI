@@ -1,0 +1,590 @@
+/* ==================== CSS Variables ==================== */
+:root {
+    /* Light Theme Colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+
+    /* Custom Colors */
+    --red-ball: 0 84% 60%;
+    --blue-ball: 217 91% 60%;
+    --yellow-highlight: 45 93% 47%;
+}
+
+.dark-theme {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+}
+
+/* ==================== Global Styles ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-app {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right,
+        hsl(var(--background)),
+        hsl(var(--background)),
+        hsl(var(--muted) / 0.2));
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ==================== Loading Screen ==================== */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: hsl(var(--background));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid hsl(var(--muted));
+    border-top-color: hsl(var(--primary));
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: 1rem;
+    color: hsl(var(--muted-foreground));
+}
+
+/* ==================== Header ==================== */
+.header {
+    border-bottom: 1px solid hsl(var(--border));
+    background: hsl(var(--background) / 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.app-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, hsl(var(--red-ball)), hsl(var(--blue-ball)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-subtitle {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ==================== Buttons ==================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-outline {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+}
+
+.btn-outline:hover {
+    background: hsl(var(--accent));
+}
+
+.btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 2;
+}
+
+/* Theme Toggle Icons */
+.light-theme .sun-icon { display: none; }
+.light-theme .moon-icon { display: block; }
+.dark-theme .sun-icon { display: block; }
+.dark-theme .moon-icon { display: none; }
+
+/* ==================== Main Content ==================== */
+.main-content {
+    padding: 2rem 0;
+}
+
+/* ==================== Tabs ==================== */
+.tabs {
+    margin-bottom: 1.5rem;
+}
+
+.tabs-list {
+    display: inline-flex;
+    background: hsl(var(--muted));
+    border-radius: var(--radius);
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-trigger {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: hsl(var(--foreground));
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: calc(var(--radius) - 0.125rem);
+    transition: all 0.2s ease;
+}
+
+.tab-trigger:hover {
+    background: hsl(var(--background) / 0.5);
+}
+
+.tab-trigger.active {
+    background: hsl(var(--background));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== Cards ==================== */
+.card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.card-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: hsl(var(--card-foreground));
+}
+
+.card-description {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.latest-result-card {
+    border: 2px solid hsl(var(--primary) / 0.2);
+}
+
+.disclaimer-card {
+    border-color: hsl(var(--yellow-highlight) / 0.5);
+    background: hsl(var(--yellow-highlight) / 0.05);
+}
+
+.disclaimer-text {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ==================== Badges ==================== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-secondary {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+.badge-outline {
+    background: transparent;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+}
+
+.badge-hit {
+    background: hsl(var(--yellow-highlight));
+    color: white;
+}
+
+/* ==================== Balls ==================== */
+.balls-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.ball {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.ball:hover {
+    transform: scale(1.1);
+}
+
+.ball.red {
+    background: hsl(var(--red-ball));
+}
+
+.ball.blue {
+    background: hsl(var(--blue-ball));
+}
+
+.ball.hit {
+    box-shadow: 0 0 0 4px hsl(var(--yellow-highlight)), 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.ball-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: hsl(var(--border));
+    margin: 0 0.5rem;
+}
+
+/* ==================== Model Selector ==================== */
+.model-selector {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.model-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.model-btn:hover {
+    background: hsl(var(--accent));
+}
+
+.model-btn.active {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+}
+
+/* ==================== Predictions ==================== */
+.predictions-section {
+    margin-top: 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.predictions-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.prediction-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+
+.prediction-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.prediction-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.strategy-name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.strategy-desc {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1rem;
+}
+
+.prediction-balls {
+    margin-bottom: 1rem;
+}
+
+.hit-info {
+    padding: 0.5rem;
+    background: hsl(var(--yellow-highlight) / 0.1);
+    border-left: 3px solid hsl(var(--yellow-highlight));
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    color: hsl(var(--foreground));
+}
+
+/* ==================== History List ==================== */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease;
+}
+
+.history-item:hover {
+    background: hsl(var(--muted) / 0.5);
+}
+
+.history-info {
+    min-width: 120px;
+}
+
+.history-period {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.history-date {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.history-balls {
+    flex: 1;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .app-title {
+        font-size: 1.25rem;
+    }
+
+    .tabs-list {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .predictions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ball {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.75rem;
+    }
+
+    .ball-divider {
+        height: 2rem;
+    }
+
+    .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .history-info {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .card-header,
+    .card-content {
+        padding: 1rem;
+    }
+
+    .btn {
+        font-size: 0.8125rem;
+        padding: 0.375rem 0.75rem;
+    }
+}
