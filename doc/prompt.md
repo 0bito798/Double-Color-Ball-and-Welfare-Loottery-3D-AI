@@ -50,8 +50,8 @@
 {
   "prediction_date": "YYYY-MM-DD",
   "target_period": "预测的期号",
-  "model_id": "你的模型标识",
-  "model_name": "你的模型名称",
+  "model_id": "你的模型标识，,比如你是 GPT5 就写 GPT5，如果是 Claude4.5 就是Claude4.5，Gemini2.5 就是 Gemini2.5，DeepseekR1 就是DeepseekR1",
+  "model_name": "你的模型名称,比如你是 GPT5 就写 GPT5，如果是 Claude4.5 就是Claude4.5，Gemini2.5 就是 Gemini2.5，DeepseekR1 就是DeepseekR1",
   "predictions": [
     {
       "group_id": 1,

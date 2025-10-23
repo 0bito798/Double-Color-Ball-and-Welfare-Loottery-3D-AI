@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(python3 fetch_lottery_history.py)",
-      "Bash(git add data/lottery_history.json)"
+      "Bash(git add data/lottery_history.json)",
+      "Bash(git rebase --continue)"
     ],
     "deny": [],
     "ask": []
