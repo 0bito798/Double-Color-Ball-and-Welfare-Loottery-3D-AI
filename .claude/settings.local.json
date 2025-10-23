@@ -4,7 +4,9 @@
       "Bash(python3 fetch_lottery_history.py)",
       "Bash(git add data/lottery_history.json)",
       "Bash(git rebase --continue)",
-      "Bash(python3 add_gpt5_prediction.py)"
+      "Bash(python3 add_gpt5_prediction.py)",
+      "Bash(git add data/ai_predictions.json)",
+      "Bash(git commit -m \"feat: update predictions for period 25122 with new models (Gemini2.5, DeepseekR1) and add GPT5 to period 25121 history\")"
     ],
     "deny": [],
     "ask": []
