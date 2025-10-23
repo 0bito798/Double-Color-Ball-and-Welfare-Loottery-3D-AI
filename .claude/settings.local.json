@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python3 fetch_lottery_history.py)",
       "Bash(git add data/lottery_history.json)",
-      "Bash(git rebase --continue)"
+      "Bash(git rebase --continue)",
+      "Bash(python3 add_gpt5_prediction.py)"
     ],
     "deny": [],
     "ask": []
