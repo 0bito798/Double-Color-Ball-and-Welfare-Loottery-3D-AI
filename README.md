@@ -59,22 +59,27 @@ php -S localhost:8000
 
 ```
 Double-Color-Ball-AI/
-├── index.html                  # 主页面
+├── index.html                     # 主页面
 ├── css/
-│   └── style.css              # 样式文件
+│   └── style.css                  # 样式文件
 ├── js/
-│   ├── app.js                 # 主应用逻辑
-│   ├── data-loader.js         # 数据加载模块
-│   └── components.js          # UI 组件
+│   ├── app.js                     # 主应用逻辑
+│   ├── data-loader.js             # 数据加载模块
+│   └── components.js              # UI 组件
 ├── data/
-│   ├── lottery_history.json   # 历史开奖数据
-│   └── ai_predictions.json    # AI 预测数据
+│   ├── lottery_history.json       # 历史开奖数据
+│   └── ai_predictions.json        # AI 预测数据
 ├── fetch_history/
-│   ├── fetch_lottery_history.py  # 数据爬取脚本
-│   └── lottery_data.json         # 原始爬取数据
-├── start_server.sh            # 启动脚本 (macOS/Linux)
-├── start_server.bat           # 启动脚本 (Windows)
-└── README.md                  # 项目说明
+│   ├── fetch_lottery_history.py   # 数据爬取脚本
+│   └── lottery_data.json          # 原始爬取数据
+├── doc/
+│   └── prompt.md                  # AI 预测 Prompt 模板
+├── generate_ai_prediction.py      # 🆕 AI 预测自动生成脚本
+├── add_gpt5_prediction.py         # 辅助脚本：添加历史预测
+├── start_server.sh                # 启动脚本 (macOS/Linux)
+├── start_server.bat               # 启动脚本 (Windows)
+├── AI_PREDICTION_GUIDE.md         # 🆕 AI 预测自动化指南
+└── README.md                      # 项目说明
 ```
 
 ## 🔄 更新数据
@@ -90,13 +95,42 @@ python3 fetch_lottery_history.py
 - 自动从 500 彩票网爬取最新数据
 - 与现有数据合并（去重）
 - 创建带时间戳的备份文件
-- 保存到 `lottery_data.json`
+- **自动同步到 `data/lottery_history.json`**
+- **自动计算下期开奖信息**
 
-然后手动将数据复制到 `data/lottery_history.json` 并调整格式（添加 `last_updated` 字段）。
+### 自动生成 AI 预测数据（新功能！）
 
-### 更新 AI 预测数据
+**一键生成多模型预测**：
 
-手动编辑 `data/ai_predictions.json` 文件，按照以下格式添加预测：
+```bash
+python3 generate_ai_prediction.py
+```
+
+脚本功能：
+- 🤖 自动调用 4 个 AI 模型（GPT-5, Claude 4.5, Gemini 2.5, DeepSeek R1）
+- 📊 基于历史数据生成 5 种策略预测
+- ✅ 自动验证预测数据格式
+- 💾 自动备份现有预测
+- 🎯 自动获取下期期号和日期
+
+**首次使用需配置 API**：
+
+1. 安装依赖：
+```bash
+pip install openai
+```
+
+2. 编辑脚本配置（修改 `generate_ai_prediction.py` 中的 API 配置）：
+```python
+BASE_URL = "https://your-api-endpoint.com/v1"
+API_KEY = "sk-your-api-key"
+```
+
+详细说明：[AI_PREDICTION_GUIDE.md](./AI_PREDICTION_GUIDE.md)
+
+### 手动更新 AI 预测数据
+
+如果需要手动编辑，可以直接修改 `data/ai_predictions.json` 文件，格式如下：
 
 ```json
 {
