@@ -1,10 +1,10 @@
 {
-  "prediction_date": "2025-11-02",
-  "target_period": "25126",
+  "prediction_date": "2025-11-04",
+  "target_period": "25127",
   "models": [
     {
-      "prediction_date": "2025-11-02",
-      "target_period": "25126",
+      "prediction_date": "2025-11-04",
+      "target_period": "25127",
       "model_id": "SSB-Team-001",
       "model_name": "GPT-5",
       "predictions": [
@@ -15,257 +15,23 @@
             "09",
             "13",
             "16",
-            "24",
+            "19",
             "25",
             "32"
           ],
-          "blue_ball": "10",
+          "blue_ball": "13",
           "description": "选择最近30期高频号码"
         },
         {
           "group_id": 2,
           "strategy": "冷号逆向者",
           "red_balls": [
-            "05",
-            "06",
-            "12",
-            "22",
-            "27",
-            "33"
-          ],
-          "blue_ball": "03",
-          "description": "选择最近30期低频号码"
-        },
-        {
-          "group_id": 3,
-          "strategy": "平衡策略师",
-          "red_balls": [
             "03",
-            "11",
-            "18",
-            "21",
-            "25",
-            "31"
-          ],
-          "blue_ball": "13",
-          "description": "构建多维平衡的组合"
-        },
-        {
-          "group_id": 4,
-          "strategy": "周期理论家",
-          "red_balls": [
-            "02",
-            "11",
-            "19",
-            "23",
-            "30",
-            "33"
-          ],
-          "blue_ball": "12",
-          "description": "选择短期频率上穿长期频率的号码"
-        },
-        {
-          "group_id": 5,
-          "strategy": "综合决策者",
-          "red_balls": [
-            "02",
-            "10",
-            "17",
-            "24",
-            "28",
-            "32"
-          ],
-          "blue_ball": "05",
-          "description": "融合以上策略，权衡选择"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2025-11-02",
-      "target_period": "25126",
-      "model_id": "team_alpha_arena_v1",
-      "model_name": "Claude 4.5",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "热号追随者",
-          "red_balls": [
-            "08",
-            "16",
-            "17",
-            "24",
-            "26",
-            "31"
-          ],
-          "blue_ball": "10",
-          "description": "选择近30期出现频率最高的号码组合"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷号逆向者",
-          "red_balls": [
-            "04",
-            "07",
-            "14",
-            "15",
-            "22",
-            "27"
-          ],
-          "blue_ball": "06",
-          "description": "选择近30期出现频率最低且奇偶平衡的号码"
-        },
-        {
-          "group_id": 3,
-          "strategy": "平衡策略师",
-          "red_balls": [
             "05",
             "11",
-            "16",
-            "19",
-            "23",
-            "28"
-          ],
-          "blue_ball": "12",
-          "description": "保持奇偶、大小平衡，总和110"
-        },
-        {
-          "group_id": 4,
-          "strategy": "周期理论家",
-          "red_balls": [
-            "02",
-            "09",
-            "13",
-            "25",
-            "30",
-            "33"
-          ],
-          "blue_ball": "01",
-          "description": "选择短期频率上升的号码"
-        },
-        {
-          "group_id": 5,
-          "strategy": "综合决策者",
-          "red_balls": [
-            "06",
-            "09",
-            "16",
-            "24",
-            "26",
-            "31"
-          ],
-          "blue_ball": "13",
-          "description": "融合多种策略的平衡选择"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2025-11-02",
-      "target_period": "25126",
-      "model_id": "Gemini2.5",
-      "model_name": "Gemini 2.5",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "热号追随者",
-          "red_balls": [
-            "04",
-            "05",
-            "08",
-            "09",
-            "16",
-            "25"
-          ],
-          "blue_ball": "10",
-          "description": "选择最近30期高频号码，排除上一期开奖号码。"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷号逆向者",
-          "red_balls": [
-            "14",
-            "15",
-            "22",
-            "27",
-            "29",
-            "30"
-          ],
-          "blue_ball": "01",
-          "description": "选择最近30期低频号码，红球奇偶比接近3:3。"
-        },
-        {
-          "group_id": 3,
-          "strategy": "平衡策略师",
-          "red_balls": [
-            "05",
-            "10",
-            "14",
             "22",
             "28",
-            "30"
-          ],
-          "blue_ball": "06",
-          "description": "构建平衡的组合，奇偶比3:3，大小比3:3，红球总和在90-130之间，不包含超过2个连号。"
-        },
-        {
-          "group_id": 4,
-          "strategy": "周期理论家",
-          "red_balls": [
-            "07",
-            "11",
-            "17",
-            "21",
-            "23",
             "33"
-          ],
-          "blue_ball": "06",
-          "description": "选择短期频率上穿长期频率的号码，蓝球选遗漏期数最长的号码。"
-        },
-        {
-          "group_id": 5,
-          "strategy": "综合决策者",
-          "red_balls": [
-            "06",
-            "08",
-            "16",
-            "18",
-            "25",
-            "26"
-          ],
-          "blue_ball": "13",
-          "description": "融合所有策略，权衡选择。"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2025-11-02",
-      "target_period": "25126",
-      "model_id": "DeepseekR1",
-      "model_name": "DeepSeek R1",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "热号追随者",
-          "red_balls": [
-            "04",
-            "08",
-            "09",
-            "16",
-            "25",
-            "31"
-          ],
-          "blue_ball": "08",
-          "description": "选择最近30期高频号码（排除上期已开）"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷号逆向者",
-          "red_balls": [
-            "05",
-            "11",
-            "14",
-            "22",
-            "27",
-            "30"
           ],
           "blue_ball": "01",
           "description": "选择最近30期低频号码，奇偶比3:3"
@@ -276,41 +42,275 @@
           "red_balls": [
             "06",
             "12",
-            "18",
+            "20",
             "21",
-            "29",
-            "33"
+            "25",
+            "31"
           ],
-          "blue_ball": "11",
-          "description": "奇偶比3:3，大小比3:3，总和119，无连号"
+          "blue_ball": "08",
+          "description": "构建奇偶比3:3，大小比2:4的组合"
         },
         {
           "group_id": 4,
           "strategy": "周期理论家",
           "red_balls": [
             "02",
-            "07",
-            "15",
+            "13",
             "19",
-            "23",
-            "28"
+            "24",
+            "26",
+            "30"
           ],
-          "blue_ball": "06",
-          "description": "短期频率上穿长期频率号码，蓝球遗漏最长"
+          "blue_ball": "11",
+          "description": "选择短期频率上穿长期频率的号码"
         },
         {
           "group_id": 5,
           "strategy": "综合决策者",
           "red_balls": [
-            "04",
-            "10",
-            "17",
+            "08",
+            "13",
+            "18",
             "20",
-            "26",
+            "25",
             "32"
           ],
+          "blue_ball": "10",
+          "description": "融合所有策略，权衡选择最佳组合"
+        }
+      ]
+    },
+    {
+      "prediction_date": "2025-11-04",
+      "target_period": "25127",
+      "model_id": "team_alpha_arena_v1",
+      "model_name": "Claude 4.5",
+      "predictions": [
+        {
+          "group_id": 1,
+          "strategy": "热号追随者",
+          "red_balls": [
+            "09",
+            "13",
+            "16",
+            "24",
+            "25",
+            "31"
+          ],
+          "blue_ball": "13",
+          "description": "选择近30期出现频率最高的红球组合"
+        },
+        {
+          "group_id": 2,
+          "strategy": "冷号逆向者",
+          "red_balls": [
+            "05",
+            "07",
+            "11",
+            "14",
+            "22",
+            "27"
+          ],
+          "blue_ball": "06",
+          "description": "选择近30期出现频率最低且奇偶均衡的号码"
+        },
+        {
+          "group_id": 3,
+          "strategy": "平衡策略师",
+          "red_balls": [
+            "04",
+            "08",
+            "15",
+            "21",
+            "28",
+            "32"
+          ],
+          "blue_ball": "11",
+          "description": "构建奇偶比3:3，大小比3:3的平衡组合"
+        },
+        {
+          "group_id": 4,
+          "strategy": "周期理论家",
+          "red_balls": [
+            "03",
+            "10",
+            "17",
+            "23",
+            "26",
+            "33"
+          ],
+          "blue_ball": "15",
+          "description": "选择短期频率上升的号码"
+        },
+        {
+          "group_id": 5,
+          "strategy": "综合决策者",
+          "red_balls": [
+            "02",
+            "09",
+            "16",
+            "24",
+            "26",
+            "31"
+          ],
+          "blue_ball": "12",
+          "description": "融合多种策略的平衡选择"
+        }
+      ]
+    },
+    {
+      "prediction_date": "2025-11-04",
+      "target_period": "25127",
+      "model_id": "Gemini2.5",
+      "model_name": "Gemini 2.5",
+      "predictions": [
+        {
+          "group_id": 1,
+          "strategy": "热号追随者",
+          "red_balls": [
+            "05",
+            "06",
+            "08",
+            "09",
+            "10",
+            "17"
+          ],
+          "blue_ball": "08",
+          "description": "选择最近30期高频号码，排除上一期开奖号码"
+        },
+        {
+          "group_id": 2,
+          "strategy": "冷号逆向者",
+          "red_balls": [
+            "14",
+            "21",
+            "22",
+            "27",
+            "29",
+            "30"
+          ],
+          "blue_ball": "01",
+          "description": "选择最近30期低频号码，红球奇偶比接近3:3"
+        },
+        {
+          "group_id": 3,
+          "strategy": "平衡策略师",
+          "red_balls": [
+            "03",
+            "07",
+            "15",
+            "20",
+            "28",
+            "32"
+          ],
+          "blue_ball": "06",
+          "description": "奇偶比3:3，大小比3:3，总和90-130，无超过2个连号"
+        },
+        {
+          "group_id": 4,
+          "strategy": "周期理论家",
+          "red_balls": [
+            "04",
+            "11",
+            "12",
+            "18",
+            "23",
+            "33"
+          ],
+          "blue_ball": "15",
+          "description": "短期频率上穿长期频率号码，蓝球选遗漏期数最长的号码"
+        },
+        {
+          "group_id": 5,
+          "strategy": "综合决策者",
+          "red_balls": [
+            "06",
+            "09",
+            "13",
+            "17",
+            "25",
+            "31"
+          ],
+          "blue_ball": "10",
+          "description": "综合考虑所有策略，权衡选择号码"
+        }
+      ]
+    },
+    {
+      "prediction_date": "2025-11-04",
+      "target_period": "25127",
+      "model_id": "DeepseekR1",
+      "model_name": "DeepSeek R1",
+      "predictions": [
+        {
+          "group_id": 1,
+          "strategy": "热号追随者",
+          "red_balls": [
+            "08",
+            "16",
+            "17",
+            "25",
+            "26",
+            "31"
+          ],
+          "blue_ball": "03",
+          "description": "选择最近30期高频号码，避开上期号码"
+        },
+        {
+          "group_id": 2,
+          "strategy": "冷号逆向者",
+          "red_balls": [
+            "05",
+            "14",
+            "15",
+            "22",
+            "27",
+            "29"
+          ],
           "blue_ball": "14",
-          "description": "融合各策略，平衡热冷号分布"
+          "description": "选择低频号码，保持3:3奇偶比"
+        },
+        {
+          "group_id": 3,
+          "strategy": "平衡策略师",
+          "red_balls": [
+            "04",
+            "11",
+            "17",
+            "22",
+            "28",
+            "30"
+          ],
+          "blue_ball": "08",
+          "description": "奇偶比3:3，大小比3:3，总和112"
+        },
+        {
+          "group_id": 4,
+          "strategy": "周期理论家",
+          "red_balls": [
+            "08",
+            "17",
+            "20",
+            "24",
+            "26",
+            "31"
+          ],
+          "blue_ball": "05",
+          "description": "短期频率上穿长期频率号码，蓝球选遗漏最长"
+        },
+        {
+          "group_id": 5,
+          "strategy": "综合决策者",
+          "red_balls": [
+            "08",
+            "16",
+            "17",
+            "25",
+            "26",
+            "31"
+          ],
+          "blue_ball": "08",
+          "description": "综合各策略优势号码，平衡选择"
         }
       ]
     }
