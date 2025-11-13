@@ -19,7 +19,7 @@ API_KEY = "REDACTED_API_KEY"
 MODELS = [
     {"id": "gpt-4o", "name": "GPT-5", "model_id": "SSB-Team-001"},
     {"id": "claude-3-5-sonnet-20241022", "name": "Claude 4.5", "model_id": "team_alpha_arena_v1"},
-    {"id": "gemini-2.0-flash-exp", "name": "Gemini 2.5", "model_id": "Gemini2.5"},
+    {"id": "gemini-2.5-flash", "name": "Gemini 2.5", "model_id": "Gemini2.5"},
     {"id": "deepseek-chat", "name": "DeepSeek R1", "model_id": "DeepseekR1"}
 ]
 
