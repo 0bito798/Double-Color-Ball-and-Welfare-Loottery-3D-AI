@@ -28,91 +28,18 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOTTERY_HISTORY_FILE = os.path.join(SCRIPT_DIR, "data", "lottery_history.json")
 AI_PREDICTIONS_FILE = os.path.join(SCRIPT_DIR, "data", "ai_predictions.json")
 PREDICTIONS_HISTORY_FILE = os.path.join(SCRIPT_DIR, "data", "predictions_history.json")
-
-# Prompt 模板
-PROMPT_TEMPLATE = """你将扮演一个由多个自主AI分析师组成的团队，每个分析师都是一个独立的"策略模型"，你们的共同目标是根据历史数据，为下一期双色球彩票选择号码。
-
-**核心身份**: 你是一个自主的彩票号码分析团队。你的决策完全基于提供的历史数据和各自的策略。
-
-**任务目标**: 分析历史开奖数据，为 **{target_period}** 期（{target_date}）预测5组号码。
-
-**历史开奖数据**:
-{lottery_history}
-
-**双色球规则**:
-- 红球：从 01-33 中选择 6 个号码（按从小到大排序）
-- 蓝球：从 01-16 中选择 1 个号码
-- 开奖时间：每周二、四、日 21:15
-
-**5个分析策略**:
-
-1. **热号追随者**: 选择最近30期高频号码，但不能选择上一期刚开出的号码
-2. **冷号逆向者**: 选择最近30期低频号码，红球奇偶比尽量接近3:3
-3. **平衡策略师**: 构建多维平衡的组合
-   - 奇偶比为 3:3 或 4:2
-   - 大小比（1-16为小，17-33为大）为 3:3 或 2:4
-   - 红球总和在 90-130 之间
-   - 不包含超过2个连号
-4. **周期理论家**: 选择短期频率（最近10期）上穿长期频率（最近30期）的号码，蓝球选遗漏期数最长的号码
-5. **综合决策者**: 融合以上所有策略，权衡选择
-
-**重要：你必须只返回 JSON 格式，不要有任何额外的文字说明或分析过程**
-
-返回格式：
-```json
-{{
-  "prediction_date": "{prediction_date}",
-  "target_period": "{target_period}",
-  "model_id": "{model_id}",
-  "model_name": "{model_name}",
-  "predictions": [
-    {{
-      "group_id": 1,
-      "strategy": "热号追随者",
-      "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
-      "blue_ball": "XX",
-      "description": "简短的策略描述"
-    }},
-    {{
-      "group_id": 2,
-      "strategy": "冷号逆向者",
-      "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
-      "blue_ball": "XX",
-      "description": "简短的策略描述"
-    }},
-    {{
-      "group_id": 3,
-      "strategy": "平衡策略师",
-      "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
-      "blue_ball": "XX",
-      "description": "简短的策略描述"
-    }},
-    {{
-      "group_id": 4,
-      "strategy": "周期理论家",
-      "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
-      "blue_ball": "XX",
-      "description": "简短的策略描述"
-    }},
-    {{
-      "group_id": 5,
-      "strategy": "综合决策者",
-      "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
-      "blue_ball": "XX",
-      "description": "简短的策略描述"
-    }}
-  ]
-}}
-```
-
-**注意**:
-- 只返回 JSON，不要有任何其他内容
-- 所有号码必须是两位数字字符串格式（如 "01", "09", "16"）
-- 红球必须按从小到大排序
-- 如果返回的内容包含 ```json，请去掉这些标记，只保留纯 JSON
-"""
+PROMPT_FILE = os.path.join(SCRIPT_DIR, "doc", "prompt2.0.md")
 
 # ==================== 工具函数 ====================
+
+def load_prompt_template() -> str:
+    """加载 Prompt 模板文件"""
+    try:
+        with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
+            return f.read()
+    except Exception as e:
+        print(f"❌ 加载 Prompt 文件失败: {str(e)}")
+        raise
 
 def load_lottery_history() -> Dict[str, Any]:
     """加载历史开奖数据"""
@@ -254,6 +181,15 @@ def generate_predictions() -> Dict[str, Any]:
     print("🤖 双色球 AI 预测自动生成")
     print("="*50 + "\n")
 
+    # 加载 Prompt 模板
+    print("📄 加载 Prompt 模板...")
+    try:
+        prompt_template = load_prompt_template()
+        print(f"  ✓ Prompt 模板加载成功 ({len(prompt_template)} 字符)\n")
+    except Exception as e:
+        print(f"  ✗ Prompt 模板加载失败: {str(e)}\n")
+        return None
+
     # 加载历史数据
     print("📊 加载历史开奖数据...")
     lottery_data = load_lottery_history()
@@ -293,7 +229,7 @@ def generate_predictions() -> Dict[str, Any]:
     for model_config in MODELS:
         try:
             # 构建 prompt
-            prompt = PROMPT_TEMPLATE.format(
+            prompt = prompt_template.format(
                 target_period=target_period,
                 target_date=target_date,
                 lottery_history=history_json,
