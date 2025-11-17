@@ -27,8 +27,6 @@ jobs:
 
       - name: Run AI prediction generator
         run: python3 generate_ai_prediction.py
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Check for changes
         id: check_changes
@@ -40,7 +38,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/ai_predictions.json
+          git add data/ai_predictions.json data/predictions_history.json
           git commit -m "chore: generate AI predictions $(date +'%Y-%m-%d %H:%M:%S')"
           git push
 

@@ -254,7 +254,12 @@ const Components = {
         }
 
         badge.classList.add(level);
-        badge.innerHTML = `<span class="accuracy-icon">${icon}</span> 命中 ${totalHits} 个`;
+
+        // 获取中奖等级
+        const prizeInfo = this.getPrizeLevel(hitResult.red_hit_count, hitResult.blue_hit);
+        const prizeText = prizeInfo.level !== '未中奖' ? ` (${prizeInfo.icon} ${prizeInfo.name})` : '';
+
+        badge.innerHTML = `<span class="accuracy-icon">${icon}</span> 命中 ${totalHits} 个${prizeText}`;
 
         return badge;
     },
