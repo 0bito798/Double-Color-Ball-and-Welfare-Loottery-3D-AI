@@ -1,6 +1,19 @@
 {
-  "last_updated": "2025-11-17T14:14:42Z",
+  "last_updated": "2025-11-18T14:14:31Z",
   "data": [
+    {
+      "period": "25133",
+      "red_balls": [
+        "05",
+        "14",
+        "17",
+        "19",
+        "20",
+        "33"
+      ],
+      "blue_ball": "07",
+      "date": "2025-11-18"
+    },
     {
       "period": "25132",
       "red_balls": [
@@ -549,10 +562,10 @@
     }
   ],
   "next_draw": {
-    "next_period": "25133",
-    "next_date": "2025-11-18",
-    "next_date_display": "2025年11月18日",
-    "weekday": "周二",
+    "next_period": "25134",
+    "next_date": "2025-11-20",
+    "next_date_display": "2025年11月20日",
+    "weekday": "周四",
     "draw_time": "21:15"
   }
 }
