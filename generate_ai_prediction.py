@@ -130,10 +130,14 @@ def call_ai_model(client: OpenAI, model_config: Dict[str, str], prompt: str) -> 
 
     except json.JSONDecodeError as e:
         print(f"  ❌ {model_config['name']} JSON 解析失败: {str(e)}")
-        print(f"  原始响应: {response_text[:200]}...")
+        print(f"  原始响应前500字符:\n{response_text[:500]}")
         raise
     except Exception as e:
-        print(f"  ❌ {model_config['name']} API 调用失败: {str(e)}")
+        print(f"  ❌ {model_config['name']} 调用失败")
+        print(f"  错误类型: {type(e).__name__}")
+        print(f"  错误信息: {str(e)}")
+        import traceback
+        print(f"  详细堆栈:\n{traceback.format_exc()}")
         raise
 
 def validate_prediction(prediction: Dict[str, Any]) -> bool:
@@ -249,7 +253,9 @@ def generate_predictions() -> Dict[str, Any]:
                 print(f"  ✗ 验证失败，跳过该模型\n")
 
         except Exception as e:
-            print(f"  ✗ 处理失败，跳过该模型\n")
+            print(f"  ✗ 处理 {model_config['name']} 时失败")
+            print(f"  错误类型: {type(e).__name__}")
+            print(f"  错误信息: {str(e)}\n")
             continue
 
     # 构建最终输出

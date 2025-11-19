@@ -293,49 +293,49 @@
 你必须**只返回纯 JSON 格式**，不要有任何额外的分析说明或文字。
 
 ```json
-{
+{{
   "prediction_date": "{prediction_date}",
   "target_period": "{target_period}",
   "model_id": "{model_id}",
   "model_name": "{model_name}",
   "predictions": [
-    {
+    {{
       "group_id": 1,
       "strategy": "增强型热号追随者",
       "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
       "blue_ball": "XX",
       "description": "基于5期加权频率，选择09(5期3次)、16(5期2次)等高频号；区间分布2-2-2；蓝球07(20期内4次)；总和115"
-    },
-    {
+    }},
+    {{
       "group_id": 2,
       "strategy": "增强型冷号逆向者",
       "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
       "blue_ball": "XX",
       "description": "选择12(遗漏14期)、29(遗漏11期)等长遗漏号；奇偶3:3，大小3:3；蓝球02(遗漏12期)；总和108"
-    },
-    {
+    }},
+    {{
       "group_id": 3,
       "strategy": "增强型平衡策略师",
       "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
       "blue_ball": "XX",
       "description": "中频号为主，奇偶3:3，大小3:3；总和112；无连号；区间分布2-2-2；蓝球10(中频)"
-    },
-    {
+    }},
+    {{
       "group_id": 4,
       "strategy": "增强型周期理论家",
       "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
       "blue_ball": "XX",
       "description": "选择09(趋势分+45)、16(趋势分+38)等上升趋势号；蓝球04(当前遗漏8期，平均遗漏7.5期)"
-    },
-    {
+    }},
+    {{
       "group_id": 5,
       "strategy": "增强型综合决策者",
       "red_balls": ["XX", "XX", "XX", "XX", "XX", "XX"],
       "blue_ball": "XX",
       "description": "09(综合分82，热号+周期双高)、12(综合分76，冷号+平衡)；奇偶3:3；总和110；来自热号2个、冷号1个、周期2个、平衡1个"
-    }
+    }}
   ]
-}
+}}
 ```
 
 ## 格式规范
