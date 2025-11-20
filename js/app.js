@@ -1,569 +1,376 @@
 /**
- * 主应用逻辑
- * 负责页面初始化、事件处理和数据展示协调
+ * 主应用逻辑 - 新UI版本
  */
 
-class LotteryApp {
-    constructor() {
-        this.lotteryData = null;
-        this.predictionData = null;
-        this.predictionsHistoryData = null;
-        this.selectedModel = null;
-        this.currentTheme = 'light';
-        this.chartInstance = null;
+// 全局状态
+let appData = {
+    lotteryHistory: null,
+    aiPredictions: null,
+    predictionsHistory: null
+};
 
-        // DOM 元素引用
-        this.elements = {
-            loadingScreen: document.getElementById('loadingScreen'),
-            mainApp: document.getElementById('mainApp'),
-            btnRefresh: document.getElementById('btnRefresh'),
-            btnTheme: document.getElementById('btnTheme'),
-            tabTriggers: document.querySelectorAll('.tab-trigger'),
-            tabContents: document.querySelectorAll('.tab-content'),
-            nextDrawCard: document.getElementById('nextDrawCard'),
-            nextPeriod: document.getElementById('nextPeriod'),
-            nextDate: document.getElementById('nextDate'),
-            predictionAvailability: document.getElementById('predictionAvailability'),
-            latestPeriod: document.getElementById('latestPeriod'),
-            latestDate: document.getElementById('latestDate'),
-            latestBalls: document.getElementById('latestBalls'),
-            predictionStatusCard: document.getElementById('predictionStatusCard'),
-            predictionStatus: document.getElementById('predictionStatus'),
-            statusIcon: document.getElementById('statusIcon'),
-            statusText: document.getElementById('statusText'),
-            statusDescription: document.getElementById('statusDescription'),
-            modelSelector: document.getElementById('modelSelector'),
-            currentModelName: document.getElementById('currentModelName'),
-            targetPeriod: document.getElementById('targetPeriod'),
-            predictionsGrid: document.getElementById('predictionsGrid'),
-            predictionsHistoryContainer: document.getElementById('predictionsHistoryContainer'),
-            historyLastUpdate: document.getElementById('historyLastUpdate'),
-            historyList: document.getElementById('historyList'),
-            accuracyChart: document.getElementById('accuracyChart')
-        };
-
-        this.init();
-    }
-
-    /**
-     * 初始化应用
-     */
-    async init() {
-        console.log('初始化双色球数据展示应用...');
-
-        // 绑定事件
-        this.bindEvents();
-
+// 初始化应用
+async function initApp() {
+    try {
         // 加载数据
-        await this.loadAllData();
-
-        // 隐藏加载屏幕，显示主应用
-        this.hideLoading();
-    }
-
-    /**
-     * 绑定事件处理器
-     */
-    bindEvents() {
-        // 刷新按钮
-        this.elements.btnRefresh.addEventListener('click', () => {
-            this.showLoading();
-            this.loadAllData();
-        });
-
-        // 主题切换按钮
-        this.elements.btnTheme.addEventListener('click', () => this.toggleTheme());
-
-        // Tab 切换
-        this.elements.tabTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                const tabName = e.target.dataset.tab;
-                this.switchTab(tabName);
-            });
-        });
-    }
-
-    /**
-     * 切换主题
-     */
-    toggleTheme() {
-        this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        document.body.className = `${this.currentTheme}-theme`;
-
-        // 保存到本地存储
-        localStorage.setItem('theme', this.currentTheme);
-    }
-
-    /**
-     * 加载主题设置
-     */
-    loadTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            this.currentTheme = savedTheme;
-            document.body.className = `${this.currentTheme}-theme`;
-        }
-    }
-
-    /**
-     * 切换 Tab
-     */
-    switchTab(tabName) {
-        // 更新 tab triggers
-        this.elements.tabTriggers.forEach(trigger => {
-            if (trigger.dataset.tab === tabName) {
-                trigger.classList.add('active');
-            } else {
-                trigger.classList.remove('active');
-            }
-        });
-
-        // 更新 tab contents
-        this.elements.tabContents.forEach(content => {
-            if (content.dataset.tab === tabName) {
-                content.classList.add('active');
-            } else {
-                content.classList.remove('active');
-            }
-        });
-    }
-
-    /**
-     * 显示加载屏幕
-     */
-    showLoading() {
-        this.elements.loadingScreen.style.display = 'flex';
-        this.elements.mainApp.style.display = 'none';
-    }
-
-    /**
-     * 隐藏加载屏幕
-     */
-    hideLoading() {
-        this.elements.loadingScreen.style.display = 'none';
-        this.elements.mainApp.style.display = 'block';
-    }
-
-    /**
-     * 加载所有数据
-     */
-    async loadAllData() {
-        try {
-            const data = await DataLoader.loadAllData();
-
-            this.lotteryData = data.lottery;
-            this.predictionData = data.predictions;
-            this.predictionsHistoryData = data.predictionsHistory;
-
-            // 渲染最新开奖结果
-            this.renderLatestResult();
-
-            // 渲染下一期开奖信息
-            this.renderNextDrawInfo();
-
-            // 渲染预测状态
-            this.renderPredictionStatus();
-
-            // 渲染模型选择器
-            this.renderModelSelector();
-
-            // 渲染历史预测对比
-            this.renderPredictionsHistory();
-
-            // 渲染准确率图表
-            this.renderAccuracyChart();
-
-            // 渲染历史记录
-            this.renderHistory();
-
-            console.log('数据加载完成');
-        } catch (error) {
-            console.error('加载数据失败:', error);
-            alert('加载数据失败，请刷新页面重试');
-        }
-    }
-
-    /**
-     * 渲染最新开奖结果
-     */
-    renderLatestResult() {
-        if (!this.lotteryData || !this.lotteryData.data || this.lotteryData.data.length === 0) {
-            return;
-        }
-
-        const latest = this.lotteryData.data[0];
-
-        this.elements.latestPeriod.textContent = `第 ${latest.period} 期`;
-        this.elements.latestDate.textContent = latest.date;
-
-        // 清空并渲染号码球
-        this.elements.latestBalls.innerHTML = '';
-        this.elements.latestBalls.appendChild(
-            Components.createBallsContainer(latest.red_balls, latest.blue_ball)
-        );
-    }
-
-    /**
-     * 渲染下一期开奖信息
-     */
-    renderNextDrawInfo() {
-        if (!this.lotteryData || !this.lotteryData.next_draw) {
-            this.elements.nextDrawCard.style.display = 'none';
-            return;
-        }
-
-        const nextDraw = this.lotteryData.next_draw;
-
-        // 显示卡片
-        this.elements.nextDrawCard.style.display = 'block';
-
-        // 设置期号和日期
-        this.elements.nextPeriod.textContent = `第 ${nextDraw.next_period} 期`;
-        this.elements.nextDate.textContent = `${nextDraw.next_date_display} ${nextDraw.weekday} ${nextDraw.draw_time}`;
-
-        // 检查是否有对应的AI预测
-        const hasPrediction = this.predictionData &&
-                             this.predictionData.target_period === nextDraw.next_period;
-
-        // 更新预测可用性状态
-        const availabilityEl = this.elements.predictionAvailability;
-        availabilityEl.classList.remove('has-prediction', 'no-prediction');
-
-        if (hasPrediction) {
-            availabilityEl.classList.add('has-prediction');
-            availabilityEl.querySelector('.availability-icon').textContent = '✓';
-            availabilityEl.querySelector('.availability-text').textContent = '已有AI预测';
-        } else {
-            availabilityEl.classList.add('no-prediction');
-            availabilityEl.querySelector('.availability-icon').textContent = '⚠';
-            availabilityEl.querySelector('.availability-text').textContent = '暂无AI预测';
-        }
-    }
-
-    /**
-     * 渲染预测状态
-     */
-    renderPredictionStatus() {
-        if (!this.lotteryData || !this.lotteryData.data || this.lotteryData.data.length === 0) {
-            this.elements.predictionStatusCard.style.display = 'none';
-            return;
-        }
-
-        if (!this.predictionData || !this.predictionData.target_period) {
-            this.elements.predictionStatusCard.style.display = 'none';
-            return;
-        }
-
-        this.elements.predictionStatusCard.style.display = 'block';
-
-        const latestPeriod = parseInt(this.lotteryData.data[0].period);
-        const targetPeriod = parseInt(this.predictionData.target_period);
-
-        // 清除之前的状态类
-        this.elements.predictionStatus.classList.remove('status-未开奖', 'status-已开奖');
-
-        if (targetPeriod > latestPeriod) {
-            // 预测的是未来期号 - 等待开奖
-            this.elements.predictionStatus.classList.add('status-未开奖');
-            this.elements.statusIcon.textContent = '🔮';
-            this.elements.statusText.textContent = '等待开奖';
-            this.elements.statusDescription.textContent =
-                `预测期号 ${targetPeriod} 尚未开奖，当前最新期号为 ${latestPeriod}。请等待开奖后查看预测结果。`;
-        } else {
-            // 预测期号已开奖
-            this.elements.predictionStatus.classList.add('status-已开奖');
-            this.elements.statusIcon.textContent = '✅';
-            this.elements.statusText.textContent = '已开奖';
-            this.elements.statusDescription.textContent =
-                `预测期号 ${targetPeriod} 已开奖，可以查看预测准确度。下方显示各策略的预测结果与实际开奖号码的对比。`;
-        }
-    }
-
-    /**
-     * 渲染模型选择器
-     */
-    renderModelSelector() {
-        if (!this.predictionData || !this.predictionData.models || this.predictionData.models.length === 0) {
-            this.elements.modelSelector.innerHTML = '<p>暂无预测数据</p>';
-            return;
-        }
-
-        this.elements.modelSelector.innerHTML = '';
-
-        this.predictionData.models.forEach((model, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'model-btn';
-            btn.textContent = model.model_name;
-
-            // 默认选中第一个模型
-            if (index === 0) {
-                btn.classList.add('active');
-                this.selectedModel = model.model_id;
-            }
-
-            btn.addEventListener('click', () => {
-                this.selectModel(model.model_id);
-            });
-
-            this.elements.modelSelector.appendChild(btn);
-        });
-
-        // 渲染第一个模型的预测
-        this.renderPredictions();
-    }
-
-    /**
-     * 选择模型
-     */
-    selectModel(modelId) {
-        this.selectedModel = modelId;
-
-        // 更新按钮状态
-        const buttons = this.elements.modelSelector.querySelectorAll('.model-btn');
-        buttons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-
-        const selectedBtn = Array.from(buttons).find(btn => {
-            const model = this.predictionData.models.find(m => m.model_name === btn.textContent);
-            return model && model.model_id === modelId;
-        });
-
-        if (selectedBtn) {
-            selectedBtn.classList.add('active');
-        }
-
-        // 重新渲染预测
-        this.renderPredictions();
-    }
-
-    /**
-     * 渲染预测
-     */
-    renderPredictions() {
-        const model = this.predictionData.models.find(m => m.model_id === this.selectedModel);
-
-        if (!model) {
-            this.elements.predictionsGrid.innerHTML = '<p>未找到该模型的预测数据</p>';
-            return;
-        }
-
-        // 更新标题和期号
-        this.elements.currentModelName.textContent = `${model.model_name} 的预测`;
-        this.elements.targetPeriod.textContent = `预测期号: ${this.predictionData.target_period}`;
-
-        // 只有当预测期号已开奖时，才获取对应的开奖结果用于对比
-        let actualResult = null;
-        if (this.lotteryData.data && this.lotteryData.data.length > 0) {
-            const targetPeriod = this.predictionData.target_period;
-            const latestPeriod = this.lotteryData.data[0].period;
-
-            // 只有当预测期号 <= 最新期号时，才查找对应的开奖结果
-            if (parseInt(targetPeriod) <= parseInt(latestPeriod)) {
-                actualResult = this.lotteryData.data.find(
-                    item => item.period === targetPeriod
-                );
-            }
-        }
-
-        // 清空并渲染预测卡片
-        this.elements.predictionsGrid.innerHTML = '';
-
-        model.predictions.forEach(prediction => {
-            const card = Components.createPredictionCard(prediction, actualResult);
-            this.elements.predictionsGrid.appendChild(card);
-        });
-    }
-
-    /**
-     * 渲染历史记录
-     */
-    renderHistory() {
-        if (!this.lotteryData || !this.lotteryData.data || this.lotteryData.data.length === 0) {
-            this.elements.historyList.innerHTML = '<p>暂无历史数据</p>';
-            return;
-        }
-
-        // 更新最后更新时间
-        if (this.lotteryData.last_updated) {
-            this.elements.historyLastUpdate.textContent =
-                `最后更新: ${Components.formatDateTime(this.lotteryData.last_updated)}`;
-        }
-
-        // 清空并渲染历史记录
-        this.elements.historyList.innerHTML = '';
-
-        this.lotteryData.data.forEach(record => {
-            const item = Components.createHistoryItem(record);
-            this.elements.historyList.appendChild(item);
-        });
-    }
-
-    /**
-     * 渲染历史预测对比
-     */
-    renderPredictionsHistory() {
-        if (!this.predictionsHistoryData ||
-            !this.predictionsHistoryData.predictions_history ||
-            this.predictionsHistoryData.predictions_history.length === 0) {
-            this.elements.predictionsHistoryContainer.innerHTML = '<p>暂无历史预测对比数据</p>';
-            return;
-        }
-
-        // 清空容器
-        this.elements.predictionsHistoryContainer.innerHTML = '';
-
-        // 渲染每个历史预测记录
-        this.predictionsHistoryData.predictions_history.forEach(historyRecord => {
-            const card = Components.createHistoricalPredictionCard(historyRecord);
-            this.elements.predictionsHistoryContainer.appendChild(card);
-        });
-    }
-
-    /**
-     * 渲染准确率图表
-     */
-    renderAccuracyChart() {
-        if (!this.predictionsHistoryData ||
-            !this.predictionsHistoryData.predictions_history ||
-            this.predictionsHistoryData.predictions_history.length === 0) {
-            this.elements.accuracyChart.parentElement.innerHTML = '<p>暂无历史数据</p>';
-            return;
-        }
-
-        // 销毁之前的图表实例
-        if (this.chartInstance) {
-            this.chartInstance.destroy();
-        }
-
-        const history = this.predictionsHistoryData.predictions_history;
-
-        // 提取期号（X轴标签）- 按时间顺序（从旧到新）
-        const periods = history.map(item => item.target_period).reverse();
-
-        // 获取所有模型名称
-        const modelNames = history.length > 0 ? history[0].models.map(m => m.model_name) : [];
-
-        // 为每个模型创建数据集
-        const datasets = [];
-
-        // 定义模型颜色
-        const modelColors = {
-            'GPT-5': { border: 'rgb(255, 99, 132)', background: 'rgba(255, 99, 132, 0.1)' },
-            'Claude 4.5': { border: 'rgb(54, 162, 235)', background: 'rgba(54, 162, 235, 0.1)' },
-            'Gemini 2.5': { border: 'rgb(255, 205, 86)', background: 'rgba(255, 205, 86, 0.1)' },
-            'Gemini 2.5 Pro': { border: 'rgb(255, 205, 86)', background: 'rgba(255, 205, 86, 0.1)' },
-            'DeepSeek R1': { border: 'rgb(75, 192, 192)', background: 'rgba(75, 192, 192, 0.1)' },
-            'GPT5': { border: 'rgb(153, 102, 255)', background: 'rgba(153, 102, 255, 0.1)' }
-        };
-
-        modelNames.forEach(modelName => {
-            // 为每个模型提取其在每期的最佳命中数
-            const data = history.slice().reverse().map(periodData => {
-                const model = periodData.models.find(m => m.model_name === modelName);
-                return model ? model.best_hit_count : 0;
-            });
-
-            const colors = modelColors[modelName] || {
-                border: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`,
-                background: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`
-            };
-
-            datasets.push({
-                label: modelName,
-                data: data,
-                borderColor: colors.border,
-                backgroundColor: colors.background,
-                borderWidth: 2,
-                tension: 0.3, // 曲线平滑度
-                fill: false,
-                pointRadius: 4,
-                pointHoverRadius: 6
-            });
-        });
-
-        // 创建图表
-        const ctx = this.elements.accuracyChart.getContext('2d');
-        this.chartInstance = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: periods,
-                datasets: datasets
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2.5,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            padding: 15,
-                            font: {
-                                size: 12
-                            }
-                        }
-                    },
-                    title: {
-                        display: false
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: 命中 ${context.parsed.y} 个`;
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: '期号',
-                            font: {
-                                size: 14
-                            }
-                        },
-                        grid: {
-                            display: false
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '命中号码数',
-                            font: {
-                                size: 14
-                            }
-                        },
-                        beginAtZero: true,
-                        max: 7,
-                        ticks: {
-                            stepSize: 1,
-                            callback: function(value) {
-                                return value + ' 个';
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        }
-                    }
-                },
-                interaction: {
-                    mode: 'nearest',
-                    axis: 'x',
-                    intersect: false
-                }
-            }
-        });
+        await loadAllData();
+
+        // 渲染UI
+        renderHeroBanner();
+        renderModelsGrid();
+        renderHistoryTab();
+
+        // 设置事件监听
+        setupEventListeners();
+
+        // 隐藏加载屏幕
+        hideLoadingScreen();
+    } catch (error) {
+        console.error('初始化失败:', error);
+        alert('数据加载失败，请刷新页面重试');
     }
 }
 
-// 页面加载完成后初始化应用
-document.addEventListener('DOMContentLoaded', () => {
-    window.app = new LotteryApp();
-});
+// 加载所有数据
+async function loadAllData() {
+    try {
+        const [lotteryHistory, aiPredictions, predictionsHistory] = await Promise.all([
+            DataLoader.loadLotteryHistory(),
+            DataLoader.loadPredictions(),
+            DataLoader.loadPredictionsHistory()
+        ]);
+
+        appData.lotteryHistory = lotteryHistory;
+        appData.aiPredictions = aiPredictions;
+        appData.predictionsHistory = predictionsHistory;
+    } catch (error) {
+        console.error('数据加载失败:', error);
+        throw error;
+    }
+}
+
+// 渲染Hero Banner
+function renderHeroBanner() {
+    if (!appData.lotteryHistory || !appData.aiPredictions) return;
+
+    const nextDraw = appData.lotteryHistory.next_draw;
+
+    // 更新期号
+    const heroPeriodEl = document.getElementById('heroPeriod');
+    if (heroPeriodEl) heroPeriodEl.textContent = nextDraw.next_period;
+
+    // 更新日期显示
+    const heroDateDisplayEl = document.getElementById('heroDateDisplay');
+    if (heroDateDisplayEl) heroDateDisplayEl.textContent = nextDraw.next_date_display;
+
+    // 更新开奖时间
+    const heroDrawTimeEl = document.getElementById('heroDrawTime');
+    if (heroDrawTimeEl) heroDrawTimeEl.textContent = `${nextDraw.draw_time} 开奖`;
+
+    // 更新预测日期
+    const heroPredictionDateEl = document.getElementById('heroPredictionDate');
+    if (heroPredictionDateEl) heroPredictionDateEl.textContent = appData.aiPredictions.prediction_date;
+
+    // 倒计时 (可选功能)
+    const heroCountdownEl = document.getElementById('heroCountdown');
+    if (heroCountdownEl) {
+        const daysUntil = calculateDaysUntil(nextDraw.next_date);
+        heroCountdownEl.textContent = daysUntil > 0 ? `距离开奖仅剩 ${daysUntil} 天` : '即将开奖';
+    }
+}
+
+// 渲染模型网格
+function renderModelsGrid() {
+    if (!appData.aiPredictions) return;
+
+    const modelsGridEl = document.getElementById('modelsGrid');
+    if (!modelsGridEl) return;
+
+    // 清空现有内容
+    modelsGridEl.innerHTML = '';
+
+    // 渲染每个模型
+    appData.aiPredictions.models.forEach(model => {
+        const modelCard = Components.createModelCard(model);
+        modelsGridEl.appendChild(modelCard);
+    });
+}
+
+// 渲染历史标签页
+function renderHistoryTab() {
+    // 渲染准确度图表
+    renderAccuracyChart();
+
+    // 渲染准确度卡片
+    renderAccuracyCards();
+
+    // 渲染历史表格
+    renderHistoryTable();
+}
+
+// 渲染准确度图表
+function renderAccuracyChart() {
+    if (!appData.predictionsHistory) return;
+
+    const chartEl = document.getElementById('accuracyChart');
+    if (!chartEl) return;
+
+    // 准备图表数据
+    const chartData = prepareChartData();
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: chartData.datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 7,
+                    ticks: {
+                        stepSize: 1
+                    },
+                    title: {
+                        display: true,
+                        text: '命中球数'
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 准备图表数据
+function prepareChartData() {
+    const history = appData.predictionsHistory.predictions_history;
+    const labels = [];
+    const modelsData = {};
+
+    // 反转以显示时间顺序
+    const reversedHistory = [...history].reverse();
+
+    reversedHistory.forEach(record => {
+        labels.push(record.target_period);
+
+        record.models.forEach(model => {
+            if (!modelsData[model.model_name]) {
+                modelsData[model.model_name] = [];
+            }
+
+            // 找到最佳命中数
+            const bestHit = Math.max(...model.predictions.map(p => p.hit_result?.total_hits || 0));
+            modelsData[model.model_name].push(bestHit);
+        });
+    });
+
+    // 转换为Chart.js数据集格式
+    const colors = {
+        'GPT-5': '#10b981',
+        'Claude 4.5': '#8b5cf6',
+        'Gemini 2.5': '#3b82f6',
+        'DeepSeek R1': '#f59e0b'
+    };
+
+    const datasets = Object.keys(modelsData).map(modelName => ({
+        label: modelName,
+        data: modelsData[modelName],
+        borderColor: colors[modelName] || '#6b7280',
+        backgroundColor: colors[modelName] || '#6b7280',
+        borderWidth: 3,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+        tension: 0.1
+    }));
+
+    return { labels, datasets };
+}
+
+// 渲染准确度卡片
+function renderAccuracyCards() {
+    if (!appData.predictionsHistory) return;
+
+    const containerEl = document.getElementById('accuracyCardsContainer');
+    if (!containerEl) return;
+
+    // 清空现有内容
+    containerEl.innerHTML = '';
+
+    // 渲染每个记录
+    appData.predictionsHistory.predictions_history.forEach(record => {
+        const card = Components.createAccuracyCard(record);
+        containerEl.appendChild(card);
+    });
+}
+
+// 渲染历史表格
+function renderHistoryTable() {
+    if (!appData.lotteryHistory) return;
+
+    const tableBodyEl = document.getElementById('historyTableBody');
+    if (!tableBodyEl) return;
+
+    // 清空现有内容
+    tableBodyEl.innerHTML = '';
+
+    // 渲染每一行
+    appData.lotteryHistory.data.forEach(draw => {
+        const row = Components.createHistoryTableRow(draw);
+        tableBodyEl.appendChild(row);
+    });
+}
+
+// 渲染频率图表 (分析标签页)
+function renderFrequencyChart() {
+    if (!appData.lotteryHistory) return;
+
+    const chartEl = document.getElementById('frequencyChart');
+    if (!chartEl) return;
+
+    // 计算红球频率
+    const frequency = {};
+    for (let i = 1; i <= 33; i++) {
+        frequency[i.toString().padStart(2, '0')] = 0;
+    }
+
+    appData.lotteryHistory.data.forEach(draw => {
+        draw.red_balls.forEach(ball => {
+            frequency[ball] = (frequency[ball] || 0) + 1;
+        });
+    });
+
+    const labels = Object.keys(frequency).sort();
+    const data = labels.map(label => frequency[label]);
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '出现次数',
+                data: data,
+                backgroundColor: '#fca5a5',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 设置事件监听
+function setupEventListeners() {
+    // Tab切换 - 桌面端
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => handleTabSwitch(item.dataset.tab, navItems));
+    });
+
+    // Tab切换 - 移动端
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    mobileNavItems.forEach(item => {
+        item.addEventListener('click', () => handleTabSwitch(item.dataset.tab, mobileNavItems));
+    });
+}
+
+// 处理Tab切换
+function handleTabSwitch(tabName, navItems) {
+    // 更新导航项状态
+    navItems.forEach(item => {
+        if (item.dataset.tab === tabName) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // 同步桌面端和移动端状态
+    const allNavItems = document.querySelectorAll('.nav-item, .mobile-nav-item');
+    allNavItems.forEach(item => {
+        if (item.dataset.tab === tabName) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // 切换Tab内容
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+        if (content.dataset.tab === tabName) {
+            content.classList.add('active');
+        } else {
+            content.classList.remove('active');
+        }
+    });
+
+    // 如果切换到分析Tab，渲染频率图表
+    if (tabName === 'analysis') {
+        // 延迟渲染以确保canvas可见
+        setTimeout(() => renderFrequencyChart(), 100);
+    }
+}
+
+// 隐藏加载屏幕
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const mainApp = document.getElementById('mainApp');
+
+    if (loadingScreen) {
+        loadingScreen.style.display = 'none';
+    }
+
+    if (mainApp) {
+        mainApp.style.display = 'block';
+    }
+}
+
+// 计算距离目标日期的天数
+function calculateDaysUntil(targetDateStr) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const targetDate = new Date(targetDateStr);
+    targetDate.setHours(0, 0, 0, 0);
+
+    const diffTime = targetDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays;
+}
+
+// 页面加载完成后初始化
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}

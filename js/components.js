@@ -1,5 +1,5 @@
 /**
- * UI 组件模块
+ * UI 组件模块 - 新UI版本
  * 负责生成和渲染各种 UI 组件
  */
 
@@ -7,14 +7,15 @@ const Components = {
     /**
      * 创建号码球元素
      * @param {string} number - 号码
-     * @param {string} type - 类型 ('red' 或 'blue')
+     * @param {string} color - 颜色 ('red' 或 'blue')
+     * @param {string} size - 大小 ('sm', 'md', 'lg')
      * @param {boolean} isHit - 是否命中
      * @returns {HTMLElement} 号码球元素
      */
-    createBall(number, type, isHit = false) {
+    createLotteryBall(number, color, size = 'md', isHit = false) {
         const ball = document.createElement('div');
-        ball.className = `ball ${type}${isHit ? ' hit' : ''}`;
-        ball.textContent = number;
+        ball.className = `lottery-ball ${color} size-${size}${isHit ? ' hit' : ''}`;
+        ball.innerHTML = `<span>${number}</span>`;
         return ball;
     },
 
@@ -29,30 +30,328 @@ const Components = {
     },
 
     /**
-     * 创建号码球容器
-     * @param {Array<string>} redBalls - 红球数组
-     * @param {string} blueBall - 蓝球
-     * @param {Object} hitInfo - 命中信息 (可选)
-     * @returns {HTMLElement} 号码球容器
+     * 获取模型头部样式类名
+     * @param {string} modelName - 模型名称
+     * @returns {string} CSS 类名
      */
-    createBallsContainer(redBalls, blueBall, hitInfo = null) {
-        const container = document.createElement('div');
-        container.className = 'balls-container';
+    getModelHeaderClass(modelName) {
+        if (modelName.includes('GPT')) return 'model-header-gpt';
+        if (modelName.includes('Claude')) return 'model-header-claude';
+        if (modelName.includes('DeepSeek')) return 'model-header-deepseek';
+        if (modelName.includes('Gemini')) return 'model-header-gemini';
+        return 'model-header-gpt';
+    },
 
-        // 添加红球
-        redBalls.forEach(ball => {
-            const isHit = hitInfo && hitInfo.redHits && hitInfo.redHits.includes(ball);
-            container.appendChild(this.createBall(ball, 'red', isHit));
+    /**
+     * 创建模型预测卡片
+     * @param {Object} model - 模型数据
+     * @returns {HTMLElement} 模型卡片元素
+     */
+    createModelCard(model) {
+        const card = document.createElement('div');
+        card.className = 'model-card';
+
+        const headerClass = this.getModelHeaderClass(model.model_name);
+
+        // 清理 model_id 以生成有效的 DOM ID（移除特殊字符）
+        const safeModelId = model.model_id.replace(/[^a-zA-Z0-9-_]/g, '-');
+
+        card.innerHTML = `
+            <div class="model-card-header ${headerClass}">
+                <div class="model-card-header-left">
+                    <div class="model-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+                        </svg>
+                    </div>
+                    <div class="model-name-wrapper">
+                        <h3>${model.model_name}</h3>
+                        <div class="model-id">
+                            <span>ID: ${model.model_id}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card-ticket-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="model-card-content">
+                <div class="strategy-group" id="strategies-${safeModelId}"></div>
+            </div>
+        `;
+
+        // 添加策略行
+        const strategiesContainer = card.querySelector(`#strategies-${safeModelId}`);
+        model.predictions.forEach((prediction, index) => {
+            strategiesContainer.appendChild(this.createStrategyRow(prediction, index === model.predictions.length - 1));
         });
 
-        // 添加分隔符
-        container.appendChild(this.createBallDivider());
+        return card;
+    },
 
-        // 添加蓝球
-        const blueHit = hitInfo && hitInfo.blueHit;
-        container.appendChild(this.createBall(blueBall, 'blue', blueHit));
+    /**
+     * 创建策略行
+     * @param {Object} prediction - 预测数据
+     * @param {boolean} isLast - 是否是最后一个
+     * @returns {HTMLElement} 策略行元素
+     */
+    createStrategyRow(prediction, isLast = false) {
+        const row = document.createElement('div');
+        row.className = 'strategy-row';
 
-        return container;
+        // 创建头部
+        const header = document.createElement('div');
+        header.className = 'strategy-header';
+        header.innerHTML = `
+            <div class="strategy-label-row">
+                <div class="strategy-group-badge">G-${prediction.group_id}</div>
+                <span class="strategy-name">${prediction.strategy}</span>
+            </div>
+        `;
+        row.appendChild(header);
+
+        // 创建球容器
+        const ballsContainer = document.createElement('div');
+        ballsContainer.className = 'strategy-balls';
+
+        prediction.red_balls.forEach(num => {
+            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'md'));
+        });
+
+        ballsContainer.appendChild(this.createBallDivider());
+        ballsContainer.appendChild(this.createLotteryBall(prediction.blue_ball, 'blue', 'md'));
+
+        row.appendChild(ballsContainer);
+
+        // 创建描述
+        const desc = document.createElement('p');
+        desc.className = 'strategy-description';
+        desc.textContent = prediction.description;
+        row.appendChild(desc);
+
+        // 添加分隔符 (最后一个除外)
+        if (!isLast) {
+            const separator = document.createElement('div');
+            separator.className = 'strategy-separator';
+            row.appendChild(separator);
+        }
+
+        return row;
+    },
+
+    /**
+     * 创建准确度卡片 (历史预测对比)
+     * @param {Object} record - 历史记录
+     * @returns {HTMLElement} 准确度卡片元素
+     */
+    createAccuracyCard(record) {
+        const card = document.createElement('div');
+        card.className = 'accuracy-card';
+
+        const result = record.actual_result;
+        if (!result) return card;
+
+        // 卡片头部
+        const header = document.createElement('div');
+        header.className = 'accuracy-card-header';
+        header.innerHTML = `
+            <div class="accuracy-header-left">
+                <div class="accuracy-trophy-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="accuracy-header-title">第 ${result.period} 期</h4>
+                    <span class="accuracy-header-subtitle">命中回溯报告</span>
+                </div>
+            </div>
+            <span class="accuracy-header-date">${result.date}</span>
+        `;
+        card.appendChild(header);
+
+        // 实际开奖结果
+        const actualSection = document.createElement('div');
+        actualSection.className = 'actual-result-section';
+        actualSection.innerHTML = `
+            <div class="actual-result-label">
+                <div class="actual-result-bar"></div>
+                <p class="actual-result-text">开奖号码 Official Draw</p>
+            </div>
+        `;
+
+        const actualBalls = document.createElement('div');
+        actualBalls.className = 'actual-result-balls';
+        result.red_balls.forEach(num => {
+            actualBalls.appendChild(this.createLotteryBall(num, 'red', 'md'));
+        });
+        actualBalls.appendChild(this.createBallDivider());
+        actualBalls.appendChild(this.createLotteryBall(result.blue_ball, 'blue', 'md'));
+        actualSection.appendChild(actualBalls);
+
+        card.appendChild(actualSection);
+
+        // 模型命中列表
+        const hitsList = document.createElement('div');
+        hitsList.className = 'model-hits-list';
+
+        record.models.forEach((model, index) => {
+            hitsList.appendChild(this.createModelHitItem(model, index + 1, index === record.models.length - 1));
+        });
+
+        card.appendChild(hitsList);
+
+        return card;
+    },
+
+    /**
+     * 创建模型命中项
+     * @param {Object} model - 模型数据
+     * @param {number} index - 索引
+     * @param {boolean} isLast - 是否最后一个
+     * @returns {HTMLElement} 模型命中项元素
+     */
+    createModelHitItem(model, index, isLast = false) {
+        const item = document.createElement('div');
+        item.className = 'model-hit-item';
+
+        // 计算最佳命中数
+        const bestHit = Math.max(...model.predictions.map(p => p.hit_result?.total_hits || 0));
+
+        // 清理 model_id 以生成有效的 DOM ID
+        const safeModelId = model.model_id.replace(/[^a-zA-Z0-9-_]/g, '-');
+
+        item.innerHTML = `
+            ${!isLast ? '<div class="model-hit-connector"></div>' : ''}
+            <div class="model-hit-row">
+                <div class="model-hit-number">${index}</div>
+                <div class="model-hit-content">
+                    <div class="model-hit-header">
+                        <h4 class="model-hit-name">${model.model_name}</h4>
+                        ${bestHit >= 4 ? `
+                        <span class="high-hit-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            高命中: ${bestHit}
+                        </span>` : ''}
+                    </div>
+                    <div class="prediction-groups" id="groups-${safeModelId}"></div>
+                </div>
+            </div>
+        `;
+
+        // 添加预测组
+        const groupsContainer = item.querySelector(`#groups-${safeModelId}`);
+        model.predictions.forEach(prediction => {
+            groupsContainer.appendChild(this.createPredictionGroupRow(prediction));
+        });
+
+        return item;
+    },
+
+    /**
+     * 创建预测组行
+     * @param {Object} prediction - 预测数据
+     * @returns {HTMLElement} 预测组行元素
+     */
+    createPredictionGroupRow(prediction) {
+        const row = document.createElement('div');
+        const totalHits = prediction.hit_result?.total_hits || 0;
+        const isWinning = totalHits >= 3;
+
+        row.className = `prediction-group-row${isWinning ? ' winning' : ''}`;
+
+        // 球容器
+        const ballsContainer = document.createElement('div');
+        ballsContainer.className = 'prediction-group-balls';
+        ballsContainer.innerHTML = `
+            <span class="prediction-group-strategy">${prediction.strategy.substring(0, 8)}${prediction.strategy.length > 8 ? '..' : ''}</span>
+        `;
+
+        const ballsList = document.createElement('div');
+        ballsList.className = 'prediction-group-balls-list';
+
+        prediction.red_balls.forEach(num => {
+            const isHit = prediction.hit_result?.red_hits?.includes(num);
+            const miniBall = document.createElement('div');
+            miniBall.className = `mini-ball${isHit ? ' hit' : ''}`;
+            miniBall.textContent = num;
+            ballsList.appendChild(miniBall);
+        });
+
+        const blueBall = document.createElement('div');
+        blueBall.className = `mini-ball blue${prediction.hit_result?.blue_hit ? ' hit' : ''}`;
+        blueBall.textContent = prediction.blue_ball;
+        ballsList.appendChild(blueBall);
+
+        ballsContainer.appendChild(ballsList);
+        row.appendChild(ballsContainer);
+
+        // 统计信息
+        const stats = document.createElement('div');
+        stats.className = 'prediction-group-stats';
+
+        const redHitCount = prediction.hit_result?.red_hit_count || 0;
+        const blueHit = prediction.hit_result?.blue_hit || false;
+
+        stats.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-value ${redHitCount > 0 ? 'has-hit' : 'no-hit'}">${redHitCount}</span>
+                <span class="stat-label">红</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value ${blueHit ? 'blue-hit' : 'no-hit'}">${blueHit ? 1 : 0}</span>
+                <span class="stat-label">蓝</span>
+            </div>
+        `;
+        row.appendChild(stats);
+
+        return row;
+    },
+
+    /**
+     * 创建历史表格行
+     * @param {Object} draw - 开奖数据
+     * @returns {HTMLElement} 表格行元素
+     */
+    createHistoryTableRow(draw) {
+        const row = document.createElement('tr');
+
+        // 期号
+        const periodCell = document.createElement('td');
+        periodCell.className = 'period-cell';
+        periodCell.textContent = draw.period;
+        row.appendChild(periodCell);
+
+        // 日期
+        const dateCell = document.createElement('td');
+        dateCell.className = 'date-cell';
+        dateCell.textContent = draw.date;
+        row.appendChild(dateCell);
+
+        // 开奖号码
+        const ballsCell = document.createElement('td');
+        const ballsContainer = document.createElement('div');
+        ballsContainer.className = 'balls-cell';
+
+        draw.red_balls.forEach(num => {
+            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'sm'));
+        });
+
+        const divider = document.createElement('div');
+        divider.style.width = '8px';
+        ballsContainer.appendChild(divider);
+
+        ballsContainer.appendChild(this.createLotteryBall(draw.blue_ball, 'blue', 'sm'));
+
+        ballsCell.appendChild(ballsContainer);
+        row.appendChild(ballsCell);
+
+        return row;
     },
 
     /**
@@ -78,367 +377,5 @@ const Components = {
             blueHit: blueHit,
             totalHits: redHits.length + (blueHit ? 1 : 0)
         };
-    },
-
-    /**
-     * 根据命中情况判断中奖等级
-     * @param {number} redHitCount - 红球命中数量
-     * @param {boolean} blueHit - 蓝球是否命中
-     * @returns {Object} 中奖等级信息 { level: string, name: string, color: string }
-     */
-    getPrizeLevel(redHitCount, blueHit) {
-        if (redHitCount === 6 && blueHit) {
-            return { level: '一等奖', name: '一等奖', color: 'prize-level-1', icon: '🏆' };
-        } else if (redHitCount === 6 && !blueHit) {
-            return { level: '二等奖', name: '二等奖', color: 'prize-level-2', icon: '🥇' };
-        } else if (redHitCount === 5 && blueHit) {
-            return { level: '三等奖', name: '三等奖', color: 'prize-level-3', icon: '🥈' };
-        } else if (redHitCount === 5 || (redHitCount === 4 && blueHit)) {
-            return { level: '四等奖', name: '四等奖', color: 'prize-level-4', icon: '🥉' };
-        } else if (redHitCount === 4 || (redHitCount === 3 && blueHit)) {
-            return { level: '五等奖', name: '五等奖', color: 'prize-level-5', icon: '🎖️' };
-        } else if ((redHitCount >= 1 && blueHit) || (redHitCount === 0 && blueHit)) {
-            return { level: '六等奖', name: '六等奖', color: 'prize-level-6', icon: '🎁' };
-        } else {
-            return { level: '未中奖', name: '未中奖', color: 'prize-level-none', icon: '○' };
-        }
-    },
-
-    /**
-     * 创建预测卡片
-     * @param {Object} prediction - 预测数据
-     * @param {Object} latestResult - 最新开奖结果 (可选)
-     * @returns {HTMLElement} 预测卡片元素
-     */
-    createPredictionCard(prediction, latestResult = null) {
-        const card = document.createElement('div');
-        card.className = 'prediction-card';
-
-        // 卡片头部
-        const header = document.createElement('div');
-        header.className = 'prediction-header';
-
-        const strategyName = document.createElement('span');
-        strategyName.className = 'strategy-name';
-        strategyName.textContent = prediction.strategy;
-
-        const groupBadge = document.createElement('span');
-        groupBadge.className = 'badge badge-secondary';
-        groupBadge.textContent = `组 ${prediction.group_id}`;
-
-        header.appendChild(strategyName);
-        header.appendChild(groupBadge);
-        card.appendChild(header);
-
-        // 策略描述
-        if (prediction.description) {
-            const desc = document.createElement('div');
-            desc.className = 'strategy-desc';
-            desc.textContent = prediction.description;
-            card.appendChild(desc);
-        }
-
-        // 号码展示
-        const ballsDiv = document.createElement('div');
-        ballsDiv.className = 'prediction-balls';
-
-        // 计算命中情况
-        const hitInfo = latestResult ? this.compareNumbers(prediction, latestResult) : null;
-
-        ballsDiv.appendChild(
-            this.createBallsContainer(prediction.red_balls, prediction.blue_ball, hitInfo)
-        );
-
-        card.appendChild(ballsDiv);
-
-        // 显示命中信息和中奖等级
-        if (hitInfo) {
-            const prizeInfo = this.getPrizeLevel(hitInfo.redHitCount, hitInfo.blueHit);
-
-            const hitInfoDiv = document.createElement('div');
-            hitInfoDiv.className = 'hit-info';
-
-            const hitBadge = document.createElement('span');
-            hitBadge.className = 'badge badge-hit';
-            hitBadge.textContent = `命中 ${hitInfo.totalHits} 个号码`;
-
-            const prizeBadge = document.createElement('span');
-            prizeBadge.className = `prize-badge ${prizeInfo.color}`;
-            prizeBadge.innerHTML = `${prizeInfo.icon} ${prizeInfo.name}`;
-
-            hitInfoDiv.appendChild(hitBadge);
-            hitInfoDiv.appendChild(prizeBadge);
-            card.appendChild(hitInfoDiv);
-        }
-
-        return card;
-    },
-
-    /**
-     * 创建历史记录项
-     * @param {Object} record - 历史记录数据
-     * @returns {HTMLElement} 历史记录项元素
-     */
-    createHistoryItem(record) {
-        const item = document.createElement('div');
-        item.className = 'history-item';
-
-        // 期号和日期信息
-        const info = document.createElement('div');
-        info.className = 'history-info';
-
-        const period = document.createElement('div');
-        period.className = 'history-period';
-        period.textContent = `第 ${record.period} 期`;
-
-        const date = document.createElement('div');
-        date.className = 'history-date';
-        date.textContent = record.date;
-
-        info.appendChild(period);
-        info.appendChild(date);
-
-        // 号码展示
-        const balls = document.createElement('div');
-        balls.className = 'history-balls';
-        balls.appendChild(this.createBallsContainer(record.red_balls, record.blue_ball));
-
-        item.appendChild(info);
-        item.appendChild(balls);
-
-        return item;
-    },
-
-    /**
-     * 格式化日期时间
-     * @param {string} isoString - ISO 格式日期字符串
-     * @returns {string} 格式化后的日期时间
-     */
-    formatDateTime(isoString) {
-        const date = new Date(isoString);
-        return date.toLocaleString('zh-CN', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-    },
-
-    /**
-     * 创建准确度徽章
-     * @param {Object} hitResult - 命中结果
-     * @returns {HTMLElement} 准确度徽章元素
-     */
-    createAccuracyBadge(hitResult) {
-        const badge = document.createElement('span');
-        badge.className = 'accuracy-badge';
-
-        const totalHits = hitResult.total_hits;
-        let level = 'poor';
-        let icon = '';
-
-        if (totalHits >= 5) {
-            level = 'excellent';
-            icon = '🎯';
-        } else if (totalHits >= 3) {
-            level = 'good';
-            icon = '⭐';
-        } else if (totalHits >= 1) {
-            level = 'fair';
-            icon = '✓';
-        } else {
-            level = 'poor';
-            icon = '○';
-        }
-
-        badge.classList.add(level);
-
-        // 获取中奖等级
-        const prizeInfo = this.getPrizeLevel(hitResult.red_hit_count, hitResult.blue_hit);
-        const prizeText = prizeInfo.level !== '未中奖' ? ` (${prizeInfo.icon} ${prizeInfo.name})` : '';
-
-        badge.innerHTML = `<span class="accuracy-icon">${icon}</span> 命中 ${totalHits} 个${prizeText}`;
-
-        return badge;
-    },
-
-    /**
-     * 创建历史预测卡片
-     * @param {Object} historyData - 历史预测数据
-     * @returns {HTMLElement} 历史预测卡片元素
-     */
-    createHistoricalPredictionCard(historyData) {
-        const card = document.createElement('div');
-        card.className = 'history-prediction-card';
-
-        // 卡片头部
-        const header = document.createElement('div');
-        header.className = 'history-prediction-header';
-
-        const titleDiv = document.createElement('div');
-        titleDiv.className = 'history-prediction-title';
-
-        const periodSpan = document.createElement('span');
-        periodSpan.className = 'history-prediction-period';
-        periodSpan.textContent = `第 ${historyData.target_period} 期`;
-
-        const dateSpan = document.createElement('span');
-        dateSpan.className = 'history-prediction-date';
-        dateSpan.textContent = historyData.prediction_date;
-
-        titleDiv.appendChild(periodSpan);
-        titleDiv.appendChild(dateSpan);
-        header.appendChild(titleDiv);
-        card.appendChild(header);
-
-        // 实际开奖结果
-        const actualSection = document.createElement('div');
-        actualSection.className = 'actual-result-section';
-
-        const actualLabel = document.createElement('div');
-        actualLabel.className = 'actual-result-label';
-        actualLabel.textContent = '实际开奖结果';
-
-        const actualBalls = this.createBallsContainer(
-            historyData.actual_result.red_balls,
-            historyData.actual_result.blue_ball
-        );
-
-        actualSection.appendChild(actualLabel);
-        actualSection.appendChild(actualBalls);
-        card.appendChild(actualSection);
-
-        // 各模型预测
-        const modelsSection = document.createElement('div');
-        modelsSection.className = 'model-predictions-section';
-
-        historyData.models.forEach(model => {
-            const modelSection = document.createElement('div');
-            modelSection.className = 'model-section';
-
-            // 模型头部
-            const modelHeader = document.createElement('div');
-            modelHeader.className = 'model-header';
-
-            const modelName = document.createElement('div');
-            modelName.className = 'model-name';
-            modelName.textContent = model.model_name;
-
-            const modelBestGroup = document.createElement('div');
-            modelBestGroup.className = 'model-best-group';
-
-            const bestLabel = document.createElement('span');
-            bestLabel.className = 'best-group-label';
-            bestLabel.textContent = '最佳预测:';
-
-            const bestBadge = document.createElement('span');
-            bestBadge.className = 'best-badge';
-            bestBadge.innerHTML = `⭐ 组 ${model.best_group} (${model.best_hit_count} 个)`;
-
-            modelBestGroup.appendChild(bestLabel);
-            modelBestGroup.appendChild(bestBadge);
-
-            modelHeader.appendChild(modelName);
-            modelHeader.appendChild(modelBestGroup);
-
-            modelSection.appendChild(modelHeader);
-
-            // 预测列表
-            const comparisonGrid = document.createElement('div');
-            comparisonGrid.className = 'comparison-grid';
-
-            model.predictions.forEach(prediction => {
-                const row = this.createComparisonRow(
-                    prediction,
-                    historyData.actual_result,
-                    prediction.group_id === model.best_group
-                );
-                comparisonGrid.appendChild(row);
-            });
-
-            modelSection.appendChild(comparisonGrid);
-            modelsSection.appendChild(modelSection);
-        });
-
-        card.appendChild(modelsSection);
-
-        return card;
-    },
-
-    /**
-     * 创建对比行
-     * @param {Object} prediction - 预测数据
-     * @param {Object} actualResult - 实际结果
-     * @param {boolean} isBest - 是否为最佳预测
-     * @returns {HTMLElement} 对比行元素
-     */
-    createComparisonRow(prediction, actualResult, isBest = false) {
-        const row = document.createElement('div');
-        row.className = 'comparison-row';
-
-        if (isBest) {
-            row.classList.add('best-prediction');
-        }
-
-        // 头部
-        const header = document.createElement('div');
-        header.className = 'comparison-header';
-
-        const strategy = document.createElement('div');
-        strategy.className = 'comparison-strategy';
-        strategy.textContent = prediction.strategy;
-
-        const badges = document.createElement('div');
-        badges.className = 'comparison-badges';
-
-        const groupBadge = document.createElement('span');
-        groupBadge.className = 'badge badge-secondary';
-        groupBadge.textContent = `组 ${prediction.group_id}`;
-
-        const accuracyBadge = this.createAccuracyBadge(prediction.hit_result);
-
-        // 添加中奖等级徽章
-        const prizeInfo = this.getPrizeLevel(prediction.hit_result.red_hit_count, prediction.hit_result.blue_hit);
-        const prizeBadge = document.createElement('span');
-        prizeBadge.className = `prize-badge ${prizeInfo.color}`;
-        prizeBadge.innerHTML = `${prizeInfo.icon} ${prizeInfo.name}`;
-
-        badges.appendChild(groupBadge);
-        badges.appendChild(accuracyBadge);
-        badges.appendChild(prizeBadge);
-
-        header.appendChild(strategy);
-        header.appendChild(badges);
-        row.appendChild(header);
-
-        // 描述
-        if (prediction.description) {
-            const desc = document.createElement('div');
-            desc.className = 'comparison-description';
-            desc.textContent = prediction.description;
-            row.appendChild(desc);
-        }
-
-        // 号码展示
-        const ballsDiv = document.createElement('div');
-        ballsDiv.className = 'comparison-balls';
-
-        const hitInfo = {
-            redHits: prediction.hit_result.red_hits,
-            blueHit: prediction.hit_result.blue_hit
-        };
-
-        ballsDiv.appendChild(
-            this.createBallsContainer(prediction.red_balls, prediction.blue_ball, hitInfo)
-        );
-
-        row.appendChild(ballsDiv);
-
-        return row;
     }
 };
-
-// 导出到全局作用域
-window.Components = Components;
