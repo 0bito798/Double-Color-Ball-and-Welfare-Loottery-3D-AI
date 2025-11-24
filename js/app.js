@@ -326,6 +326,300 @@ function renderFrequencyChart() {
     });
 }
 
+// 渲染统计卡片
+function renderStatisticsCards() {
+    if (!appData.lotteryHistory) return;
+
+    // 计算红球频率
+    const redFrequency = {};
+    for (let i = 1; i <= 33; i++) {
+        redFrequency[i.toString().padStart(2, '0')] = 0;
+    }
+
+    // 计算蓝球频率
+    const blueFrequency = {};
+    for (let i = 1; i <= 16; i++) {
+        blueFrequency[i.toString().padStart(2, '0')] = 0;
+    }
+
+    // 计算和值
+    let totalSum = 0;
+
+    appData.lotteryHistory.data.forEach(draw => {
+        // 红球
+        draw.red_balls.forEach(ball => {
+            redFrequency[ball] = (redFrequency[ball] || 0) + 1;
+        });
+        // 蓝球
+        blueFrequency[draw.blue_ball] = (blueFrequency[draw.blue_ball] || 0) + 1;
+        // 和值
+        const sum = draw.red_balls.reduce((acc, ball) => acc + parseInt(ball), 0);
+        totalSum += sum;
+    });
+
+    // 找出最热红球
+    const hottestRed = Object.entries(redFrequency).sort((a, b) => b[1] - a[1])[0];
+
+    // 找出最热蓝球
+    const hottestBlue = Object.entries(blueFrequency).sort((a, b) => b[1] - a[1])[0];
+
+    // 平均和值
+    const avgSum = Math.round(totalSum / appData.lotteryHistory.data.length);
+
+    // 更新UI
+    const totalDrawsEl = document.getElementById('statTotalDraws');
+    if (totalDrawsEl) totalDrawsEl.textContent = `${appData.lotteryHistory.data.length} 期`;
+
+    const hottestRedEl = document.getElementById('statHottestRed');
+    if (hottestRedEl) hottestRedEl.textContent = `${hottestRed[0]} (${hottestRed[1]}次)`;
+
+    const hottestBlueEl = document.getElementById('statHottestBlue');
+    if (hottestBlueEl) hottestBlueEl.textContent = `${hottestBlue[0]} (${hottestBlue[1]}次)`;
+
+    const avgSumEl = document.getElementById('statAvgSum');
+    if (avgSumEl) avgSumEl.textContent = avgSum;
+}
+
+// 渲染蓝球频率图表
+function renderBlueFrequencyChart() {
+    if (!appData.lotteryHistory) return;
+
+    const chartEl = document.getElementById('blueFrequencyChart');
+    if (!chartEl) return;
+
+    // 计算蓝球频率
+    const frequency = {};
+    for (let i = 1; i <= 16; i++) {
+        frequency[i.toString().padStart(2, '0')] = 0;
+    }
+
+    appData.lotteryHistory.data.forEach(draw => {
+        frequency[draw.blue_ball] = (frequency[draw.blue_ball] || 0) + 1;
+    });
+
+    const labels = Object.keys(frequency).sort();
+    const data = labels.map(label => frequency[label]);
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '出现次数',
+                data: data,
+                backgroundColor: '#93c5fd',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 渲染奇偶比图表
+function renderOddEvenChart() {
+    if (!appData.lotteryHistory) return;
+
+    const chartEl = document.getElementById('oddEvenChart');
+    if (!chartEl) return;
+
+    // 计算奇偶比分布
+    const ratioCount = {};
+
+    appData.lotteryHistory.data.forEach(draw => {
+        const oddCount = draw.red_balls.filter(ball => parseInt(ball) % 2 === 1).length;
+        const evenCount = 6 - oddCount;
+        const ratio = `${oddCount}:${evenCount}`;
+        ratioCount[ratio] = (ratioCount[ratio] || 0) + 1;
+    });
+
+    // 按常见比例排序
+    const commonRatios = ['0:6', '1:5', '2:4', '3:3', '4:2', '5:1', '6:0'];
+    const labels = commonRatios.filter(r => ratioCount[r]);
+    const data = labels.map(label => ratioCount[label] || 0);
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'doughnut',
+        data: {
+            labels: labels.map(l => `${l} (奇:偶)`),
+            datasets: [{
+                data: data,
+                backgroundColor: [
+                    '#ef4444', '#f97316', '#f59e0b',
+                    '#10b981', '#3b82f6', '#8b5cf6', '#ec4899'
+                ],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 渲染和值走势图表
+function renderSumTrendChart() {
+    if (!appData.lotteryHistory) return;
+
+    const chartEl = document.getElementById('sumTrendChart');
+    if (!chartEl) return;
+
+    // 取最近30期
+    const recentDraws = appData.lotteryHistory.data.slice(0, 30).reverse();
+
+    const labels = recentDraws.map(draw => draw.period);
+    const sums = recentDraws.map(draw =>
+        draw.red_balls.reduce((acc, ball) => acc + parseInt(ball), 0)
+    );
+
+    // 计算平均线
+    const avgSum = sums.reduce((a, b) => a + b, 0) / sums.length;
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: '红球和值',
+                    data: sums,
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointHoverRadius: 7,
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: '平均值',
+                    data: Array(sums.length).fill(avgSum),
+                    borderColor: '#94a3b8',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    tension: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    min: 60,
+                    max: 180
+                }
+            }
+        }
+    });
+}
+
+// 渲染区间分布图表
+function renderZoneDistributionChart() {
+    if (!appData.lotteryHistory) return;
+
+    const chartEl = document.getElementById('zoneDistributionChart');
+    if (!chartEl) return;
+
+    // 计算区间分布 (01-11, 12-22, 23-33)
+    const zones = {
+        '01-11': 0,
+        '12-22': 0,
+        '23-33': 0
+    };
+
+    appData.lotteryHistory.data.forEach(draw => {
+        draw.red_balls.forEach(ball => {
+            const num = parseInt(ball);
+            if (num >= 1 && num <= 11) zones['01-11']++;
+            else if (num >= 12 && num <= 22) zones['12-22']++;
+            else if (num >= 23 && num <= 33) zones['23-33']++;
+        });
+    });
+
+    const labels = Object.keys(zones);
+    const data = Object.values(zones);
+
+    // 使用Chart.js渲染
+    new Chart(chartEl, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '出现次数',
+                data: data,
+                backgroundColor: ['#fca5a5', '#93c5fd', '#d8b4fe'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 10
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 渲染所有分析图表
+function renderAllAnalysisCharts() {
+    renderStatisticsCards();
+    renderFrequencyChart();
+    renderBlueFrequencyChart();
+    renderOddEvenChart();
+    renderSumTrendChart();
+    renderZoneDistributionChart();
+}
+
 // 设置事件监听
 function setupEventListeners() {
     // Tab切换 - 桌面端
@@ -372,10 +666,10 @@ function handleTabSwitch(tabName, navItems) {
         }
     });
 
-    // 如果切换到分析Tab，渲染频率图表
+    // 如果切换到分析Tab，渲染所有图表
     if (tabName === 'analysis') {
         // 延迟渲染以确保canvas可见
-        setTimeout(() => renderFrequencyChart(), 100);
+        setTimeout(() => renderAllAnalysisCharts(), 100);
     }
 }
 
