@@ -1460,6 +1460,171 @@ body::after {
     height: 14px;
 }
 
+/* ==================== Drawn Status Banner ==================== */
+.drawn-status-banner {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1.5px solid #6ee7b7;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.1);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.drawn-status-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.drawn-status-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.drawn-status-content {
+    flex: 1;
+}
+
+.drawn-status-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 0.25rem;
+}
+
+.drawn-status-subtitle {
+    font-size: 0.875rem;
+    color: #059669;
+}
+
+.drawn-status-balls {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.mini-result-ball {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.mini-result-ball.red {
+    background: linear-gradient(135deg, var(--red-500), var(--red-600));
+}
+
+.mini-result-ball.blue {
+    background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+}
+
+/* ==================== Model Card Enhancements ==================== */
+.model-card-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+.model-best-hit-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 1px solid #fbbf24;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #92400e;
+    box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+    }
+}
+
+.model-best-hit-badge svg {
+    width: 14px;
+    height: 14px;
+    color: #f59e0b;
+}
+
+/* ==================== Strategy Group Enhancements ==================== */
+.strategy-group-badge.best {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-color: #fbbf24;
+    color: #92400e;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.strategy-hit-stats {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.hit-stat {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid;
+}
+
+.hit-stat.red {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.hit-stat.blue {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #2563eb;
+}
+
+.hit-stat.miss {
+    background: var(--slate-100);
+    border-color: var(--slate-300);
+    color: var(--slate-500);
+}
+
 /* ==================== Responsive Design ==================== */
 @media (min-width: 640px) {
     .strategy-header {

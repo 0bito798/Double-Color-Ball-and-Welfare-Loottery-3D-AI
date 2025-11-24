@@ -45,9 +45,10 @@ const Components = {
     /**
      * 创建模型预测卡片
      * @param {Object} model - 模型数据
+     * @param {Object} actualResult - 实际开奖结果（可选）
      * @returns {HTMLElement} 模型卡片元素
      */
-    createModelCard(model) {
+    createModelCard(model, actualResult = null) {
         const card = document.createElement('div');
         card.className = 'model-card';
 
@@ -55,6 +56,19 @@ const Components = {
 
         // 清理 model_id 以生成有效的 DOM ID（移除特殊字符）
         const safeModelId = model.model_id.replace(/[^a-zA-Z0-9-_]/g, '-');
+
+        // 计算最佳命中（如果已开奖）
+        let bestHitCount = 0;
+        let bestGroupId = null;
+        if (actualResult) {
+            model.predictions.forEach(prediction => {
+                const hitResult = this.compareNumbers(prediction, actualResult);
+                if (hitResult && hitResult.totalHits > bestHitCount) {
+                    bestHitCount = hitResult.totalHits;
+                    bestGroupId = prediction.group_id;
+                }
+            });
+        }
 
         card.innerHTML = `
             <div class="model-card-header ${headerClass}">
@@ -71,10 +85,20 @@ const Components = {
                         </div>
                     </div>
                 </div>
-                <div class="model-card-ticket-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
-                    </svg>
+                <div class="model-card-header-right">
+                    ${actualResult && bestHitCount > 0 ? `
+                        <div class="model-best-hit-badge">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            <span>最佳 ${bestHitCount} 中</span>
+                        </div>
+                    ` : ''}
+                    <div class="model-card-ticket-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
             <div class="model-card-content">
@@ -85,7 +109,8 @@ const Components = {
         // 添加策略行
         const strategiesContainer = card.querySelector(`#strategies-${safeModelId}`);
         model.predictions.forEach((prediction, index) => {
-            strategiesContainer.appendChild(this.createStrategyRow(prediction, index === model.predictions.length - 1));
+            const isBest = actualResult && prediction.group_id === bestGroupId;
+            strategiesContainer.appendChild(this.createStrategyRow(prediction, index === model.predictions.length - 1, actualResult, isBest));
         });
 
         return card;
@@ -95,19 +120,33 @@ const Components = {
      * 创建策略行
      * @param {Object} prediction - 预测数据
      * @param {boolean} isLast - 是否是最后一个
+     * @param {Object} actualResult - 实际开奖结果（可选）
+     * @param {boolean} isBest - 是否是最佳预测组
      * @returns {HTMLElement} 策略行元素
      */
-    createStrategyRow(prediction, isLast = false) {
+    createStrategyRow(prediction, isLast = false, actualResult = null, isBest = false) {
         const row = document.createElement('div');
         row.className = 'strategy-row';
+
+        // 计算命中结果（如果已开奖）
+        let hitResult = null;
+        if (actualResult) {
+            hitResult = this.compareNumbers(prediction, actualResult);
+        }
 
         // 创建头部
         const header = document.createElement('div');
         header.className = 'strategy-header';
         header.innerHTML = `
             <div class="strategy-label-row">
-                <div class="strategy-group-badge">G-${prediction.group_id}</div>
+                <div class="strategy-group-badge${isBest ? ' best' : ''}">${isBest ? '★ ' : ''}G-${prediction.group_id}</div>
                 <span class="strategy-name">${prediction.strategy}</span>
+                ${hitResult ? `
+                    <div class="strategy-hit-stats">
+                        <span class="hit-stat red">${hitResult.redHitCount}红</span>
+                        <span class="hit-stat ${hitResult.blueHit ? 'blue' : 'miss'}">${hitResult.blueHit ? '1' : '0'}蓝</span>
+                    </div>
+                ` : ''}
             </div>
         `;
         row.appendChild(header);
@@ -117,11 +156,14 @@ const Components = {
         ballsContainer.className = 'strategy-balls';
 
         prediction.red_balls.forEach(num => {
-            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'md'));
+            const isHit = hitResult?.redHits?.includes(num);
+            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'md', isHit));
         });
 
         ballsContainer.appendChild(this.createBallDivider());
-        ballsContainer.appendChild(this.createLotteryBall(prediction.blue_ball, 'blue', 'md'));
+
+        const blueHit = hitResult?.blueHit || false;
+        ballsContainer.appendChild(this.createLotteryBall(prediction.blue_ball, 'blue', 'md', blueHit));
 
         row.appendChild(ballsContainer);
 

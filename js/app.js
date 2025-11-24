@@ -89,11 +89,50 @@ function renderModelsGrid() {
     // 清空现有内容
     modelsGridEl.innerHTML = '';
 
+    // 检测预测期号是否已开奖
+    const targetPeriod = appData.aiPredictions.target_period;
+    const latestDraw = appData.lotteryHistory?.data?.[0];
+    let actualResult = null;
+
+    if (latestDraw && parseInt(targetPeriod) <= parseInt(latestDraw.period)) {
+        // 预测期号已开奖，查找对应的开奖结果
+        actualResult = appData.lotteryHistory.data.find(draw => draw.period === targetPeriod);
+
+        if (actualResult) {
+            // 在网格前添加状态提示
+            const statusBanner = createDrawnStatusBanner(actualResult);
+            modelsGridEl.appendChild(statusBanner);
+        }
+    }
+
     // 渲染每个模型
     appData.aiPredictions.models.forEach(model => {
-        const modelCard = Components.createModelCard(model);
+        const modelCard = Components.createModelCard(model, actualResult);
         modelsGridEl.appendChild(modelCard);
     });
+}
+
+// 创建已开奖状态横幅
+function createDrawnStatusBanner(actualResult) {
+    const banner = document.createElement('div');
+    banner.className = 'drawn-status-banner';
+    banner.innerHTML = `
+        <div class="drawn-status-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+        <div class="drawn-status-content">
+            <h3 class="drawn-status-title">第 ${actualResult.period} 期已开奖</h3>
+            <p class="drawn-status-subtitle">以下为预测命中情况对比</p>
+        </div>
+        <div class="drawn-status-balls">
+            ${actualResult.red_balls.map(num => `<span class="mini-result-ball red">${num}</span>`).join('')}
+            <span class="mini-result-ball blue">${actualResult.blue_ball}</span>
+        </div>
+    `;
+    return banner;
 }
 
 // 渲染历史标签页
