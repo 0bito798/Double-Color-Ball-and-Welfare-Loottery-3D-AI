@@ -1,7 +1,11 @@
 name: Generate AI Prediction
 
 on:
-  workflow_dispatch: # 仅支持手动触发
+  schedule:
+    # 每周一、三、五 UTC 00:00（北京时间 08:00）自动运行
+    # 对应开奖后一天：周日开奖→周一，周二开奖→周三，周四开奖→周五
+    - cron: '0 0 * * 1,3,5'
+  workflow_dispatch: # 也支持手动触发
 
 jobs:
   generate-prediction:
