@@ -2,7 +2,7 @@
 
 > 在线访问：[https://double-color-ball-ai.vercel.app](https://double-color-ball-ai.vercel.app)
 
-<img src="images/image1.jpg" width="50%">
+<img src="images/image1.jpg" width="70%">
 
 一个现代化的双色球数据展示系统，支持历史开奖数据查看和多模型 AI 预测展示。
 
