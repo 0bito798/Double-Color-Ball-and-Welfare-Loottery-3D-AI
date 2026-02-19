@@ -1,208 +1,72 @@
 {
-  "prediction_date": "2026-02-19",
+  "prediction_date": "2026-02-20",
   "target_period": "2026050",
   "models": [
     {
       "prediction_date": "2026-02-19",
       "target_period": "2026050",
-      "model_id": "SSB-Team-001",
-      "model_name": "GPT-5",
+      "model_id": "AI-3D-v2.5",
+      "model_name": "AI 3D Analysis Model",
       "predictions": [
         {
           "group_id": 1,
           "strategy": "直选热码追随",
+          "play_type": "直选",
           "digits": [
-            "5",
-            "2",
-            "1"
-          ],
-          "number": "521",
-          "description": "热码优先：聚焦近30期高频数字 1,8,2，兼顾定位稳定性。",
-          "play_type": "直选"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷码回补策略",
-          "digits": [
-            "4",
             "0",
-            "7"
-          ],
-          "number": "407",
-          "description": "冷码回补：聚焦近期低频数字 9,6,0，防止遗漏回补。",
-          "play_type": "直选"
-        },
-        {
-          "group_id": 3,
-          "strategy": "和值均衡策略",
-          "digits": [
-            "4",
-            "4",
-            "5"
-          ],
-          "number": "445",
-          "description": "和值控制在 11-17 区间，兼顾奇偶与大小结构。",
-          "play_type": "组三"
-        },
-        {
-          "group_id": 4,
-          "strategy": "跨度周期策略",
-          "digits": [
-            "1",
             "7",
-            "5"
-          ],
-          "number": "175",
-          "description": "优先选择中高跨度组合，捕捉短周期波动。",
-          "play_type": "组六"
-        },
-        {
-          "group_id": 5,
-          "strategy": "组选综合策略",
-          "digits": [
-            "6",
-            "3",
             "2"
           ],
-          "number": "632",
-          "description": "融合热温冷与跨度条件，兼顾组三/组六覆盖。",
-          "play_type": "组六"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2026-02-19",
-      "target_period": "2026050",
-      "model_id": "team_alpha_arena_v1",
-      "model_name": "Claude 4.5",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "直选热码追随",
-          "digits": [
-            "8",
-            "5",
-            "3"
-          ],
-          "number": "853",
-          "description": "热码优先：聚焦近30期高频数字 1,8,2，兼顾定位稳定性。",
-          "play_type": "直选"
+          "number": "072",
+          "description": "百位0(7次)-十位7(6次)-个位2(6次)，各位置最热码直选组合。"
         },
         {
           "group_id": 2,
-          "strategy": "冷码回补策略",
+          "strategy": "冷码回补直选",
+          "play_type": "直选",
           "digits": [
-            "4",
+            "3",
             "0",
-            "7"
-          ],
-          "number": "407",
-          "description": "冷码回补：聚焦近期低频数字 9,6,0，防止遗漏回补。",
-          "play_type": "直选"
-        },
-        {
-          "group_id": 3,
-          "strategy": "和值均衡策略",
-          "digits": [
-            "8",
-            "3",
-            "3"
-          ],
-          "number": "833",
-          "description": "和值控制在 11-17 区间，兼顾奇偶与大小结构。",
-          "play_type": "组三"
-        },
-        {
-          "group_id": 4,
-          "strategy": "跨度周期策略",
-          "digits": [
-            "9",
-            "4",
-            "6"
-          ],
-          "number": "946",
-          "description": "优先选择中高跨度组合，捕捉短周期波动。",
-          "play_type": "组六"
-        },
-        {
-          "group_id": 5,
-          "strategy": "组选综合策略",
-          "digits": [
-            "6",
-            "2",
-            "9"
-          ],
-          "number": "629",
-          "description": "融合热温冷与跨度条件，兼顾组三/组六覆盖。",
-          "play_type": "组六"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2026-02-19",
-      "target_period": "2026050",
-      "model_id": "Gemini2.5",
-      "model_name": "Gemini 2.5",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "直选热码追随",
-          "digits": [
-            "3",
-            "8",
-            "5"
-          ],
-          "number": "385",
-          "description": "热码优先：聚焦近30期高频数字 1,8,2，兼顾定位稳定性。",
-          "play_type": "直选"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷码回补策略",
-          "digits": [
-            "9",
-            "4",
-            "6"
-          ],
-          "number": "946",
-          "description": "冷码回补：聚焦近期低频数字 9,6,0，防止遗漏回补。",
-          "play_type": "直选"
-        },
-        {
-          "group_id": 3,
-          "strategy": "和值均衡策略",
-          "digits": [
-            "7",
-            "3",
-            "6"
-          ],
-          "number": "736",
-          "description": "和值控制在 11-17 区间，兼顾奇偶与大小结构。",
-          "play_type": "组六"
-        },
-        {
-          "group_id": 4,
-          "strategy": "跨度周期策略",
-          "digits": [
-            "0",
-            "8",
-            "2"
-          ],
-          "number": "082",
-          "description": "优先选择中高跨度组合，捕捉短周期波动。",
-          "play_type": "组六"
-        },
-        {
-          "group_id": 5,
-          "strategy": "组选综合策略",
-          "digits": [
-            "5",
-            "2",
             "8"
           ],
-          "number": "528",
-          "description": "融合热温冷与跨度条件，兼顾组三/组六覆盖。",
-          "play_type": "组六"
+          "number": "308",
+          "description": "百位3遗漏30+期，十位0遗漏9期，个位8遗漏28期，冷码回补。"
+        },
+        {
+          "group_id": 3,
+          "strategy": "和值组选策略",
+          "play_type": "组六",
+          "digits": [
+            "2",
+            "4",
+            "7"
+          ],
+          "number": "247",
+          "description": "目标和值13，近期和值偏离均值，向中间区域回归，组六形态。"
+        },
+        {
+          "group_id": 4,
+          "strategy": "跨度组选策略",
+          "play_type": "组六",
+          "digits": [
+            "1",
+            "3",
+            "7"
+          ],
+          "number": "137",
+          "description": "预测跨度6（近30期未出），奇偶比2:1，组六形态覆盖。"
+        },
+        {
+          "group_id": 5,
+          "strategy": "综合组选策略",
+          "play_type": "组六",
+          "digits": [
+            "2",
+            "5",
+            "9"
+          ],
+          "number": "259",
+          "description": "组三近期高发，本期防组六反弹，奇偶比2:1，大小比2:1。"
         }
       ]
     },
@@ -215,62 +79,62 @@
         {
           "group_id": 1,
           "strategy": "直选热码追随",
+          "play_type": "直选",
           "digits": [
-            "2",
-            "8",
-            "5"
+            "0",
+            "7",
+            "2"
           ],
-          "number": "285",
-          "description": "热码优先：聚焦近30期高频数字 1,8,2，兼顾定位稳定性。",
-          "play_type": "直选"
+          "number": "072",
+          "description": "百位0(8次)-十位7(6次)-个位2(5次)，全热直选。"
         },
         {
           "group_id": 2,
-          "strategy": "冷码回补策略",
+          "strategy": "冷码回补直选",
+          "play_type": "直选",
           "digits": [
-            "9",
-            "0",
+            "6",
+            "5",
             "4"
           ],
-          "number": "904",
-          "description": "冷码回补：聚焦近期低频数字 9,6,0，防止遗漏回补。",
-          "play_type": "直选"
+          "number": "654",
+          "description": "百位6遗漏27期，十位5遗漏7期温号，个位4遗漏7期温号。"
         },
         {
           "group_id": 3,
-          "strategy": "和值均衡策略",
+          "strategy": "和值组选策略",
+          "play_type": "组六",
           "digits": [
-            "8",
+            "1",
             "4",
-            "5"
+            "6"
           ],
-          "number": "845",
-          "description": "和值控制在 11-17 区间，兼顾奇偶与大小结构。",
-          "play_type": "组六"
+          "number": "146",
+          "description": "预测和值11，组六遗漏低，三位各不同。"
         },
         {
           "group_id": 4,
-          "strategy": "跨度周期策略",
+          "strategy": "跨度组选策略",
+          "play_type": "组六",
           "digits": [
             "1",
-            "9",
-            "3"
+            "3",
+            "2"
           ],
-          "number": "193",
-          "description": "优先选择中高跨度组合，捕捉短周期波动。",
-          "play_type": "组六"
+          "number": "132",
+          "description": "预测跨度2，近期小跨度，组六形态。"
         },
         {
           "group_id": 5,
-          "strategy": "组选综合策略",
+          "strategy": "综合组选策略",
+          "play_type": "组六",
           "digits": [
             "1",
-            "9",
-            "6"
+            "2",
+            "8"
           ],
-          "number": "196",
-          "description": "融合热温冷与跨度条件，兼顾组三/组六覆盖。",
-          "play_type": "组六"
+          "number": "128",
+          "description": "组六首选，奇偶1:2均衡结构。"
         }
       ]
     }
