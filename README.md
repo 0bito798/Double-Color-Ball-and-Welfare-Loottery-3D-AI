@@ -45,15 +45,14 @@
 
 本项目支持多模型 AI 预测，需配置以下 Secret (Settings -> Secrets and variables -> Actions)：
 
-| 模型 | API Key 变量名 | Base URL 变量名 (可选) |
-|------|---------------|-----------------------|
-| **GPT-5** | `OPENAI_API_KEY` | `OPENAI_BASE_URL` |
-| **Claude 4.5** | `ANTHROPIC_API_KEY` | `ANTHROPIC_BASE_URL` |
-| **Gemini 2.5** | `GEMINI_API_KEY` | `GEMINI_BASE_URL` |
-| **DeepSeek R1** | `DEEPSEEK_API_KEY` | `DEEPSEEK_BASE_URL` |
-| **Custom Model** | `CUSTOM_API_KEY` | `CUSTOM_BASE_URL`<br>`CUSTOM_MODEL_ID`<br>`CUSTOM_MODEL_NAME` |
+| 模型 | API Key | Base URL (可选) | Model ID (可选) | 默认 Model ID |
+|------|---------|--------------|--------------|----------------|
+| **GPT-5** | `OPENAI_API_KEY` | `OPENAI_BASE_URL` | `OPENAI_MODEL_ID` | `gpt-4o` |
+| **Claude 4.5** | `ANTHROPIC_API_KEY` | `ANTHROPIC_BASE_URL` | `ANTHROPIC_MODEL_ID` | `claude-3-5-sonnet-20241022` |
+| **Gemini 2.5** | `GEMINI_API_KEY` | `GEMINI_BASE_URL` | `GEMINI_MODEL_ID` | `gemini-2.5-flash` |
+| **DeepSeek R1** | `DEEPSEEK_API_KEY` | `DEEPSEEK_BASE_URL` | `DEEPSEEK_MODEL_ID` | `deepseek-chat` |
 
-> 以前的 `AI_API_KEY` 和 `AI_BASE_URL` 全局配置已废弃。
+> 以前的 `AI_API_KEY` 和 `AI_BASE_URL` 全局配置已废弃。`Model ID` 变量可以让你切换同平台的不同模型，例如把 `OPENAI_MODEL_ID` 设为 `gpt-4-turbo`。
 
 ---
 

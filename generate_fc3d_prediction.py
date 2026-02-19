@@ -14,45 +14,38 @@ from typing import Dict, Any
 # ==================== 配置区 ====================
 # 每个模型独立的 API Key 和 Base URL（通过环境变量设置）
 # 环境变量名称：
-#   GPT:       OPENAI_API_KEY,    OPENAI_BASE_URL    (默认: https://api.openai.com/v1)
-#   Claude:    ANTHROPIC_API_KEY, ANTHROPIC_BASE_URL (默认: https://api.anthropic.com/v1)
-#   Gemini:    GEMINI_API_KEY,    GEMINI_BASE_URL    (默认: https://generativelanguage.googleapis.com/v1beta/openai)
-#   DeepSeek:  DEEPSEEK_API_KEY,  DEEPSEEK_BASE_URL  (默认: https://api.deepseek.com/v1)
+#   GPT:       OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL_ID       (默认: gpt-4o)
+#   Claude:    ANTHROPIC_API_KEY, ANTHROPIC_BASE_URL, ANTHROPIC_MODEL_ID (默认: claude-3-5-sonnet-20241022)
+#   Gemini:    GEMINI_API_KEY, GEMINI_BASE_URL, GEMINI_MODEL_ID       (默认: gemini-2.5-flash)
+#   DeepSeek:  DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL_ID  (默认: deepseek-chat)
 MODELS = [
     {
-        "id": "gpt-4o",
+        "id": os.environ.get("OPENAI_MODEL_ID") or "gpt-4o",
         "name": "GPT-5",
         "model_id": "SSB-Team-001",
         "api_key": os.environ.get("OPENAI_API_KEY"),
         "base_url": os.environ.get("OPENAI_BASE_URL") or "https://api.openai.com/v1",
     },
     {
-        "id": "claude-3-5-sonnet-20241022",
+        "id": os.environ.get("ANTHROPIC_MODEL_ID") or "claude-3-5-sonnet-20241022",
         "name": "Claude 4.5",
         "model_id": "team_alpha_arena_v1",
         "api_key": os.environ.get("ANTHROPIC_API_KEY"),
         "base_url": os.environ.get("ANTHROPIC_BASE_URL") or "https://api.anthropic.com/v1",
     },
     {
-        "id": "gemini-2.5-flash",
+        "id": os.environ.get("GEMINI_MODEL_ID") or "gemini-2.5-flash",
         "name": "Gemini 2.5",
         "model_id": "Gemini2.5",
         "api_key": os.environ.get("GEMINI_API_KEY"),
         "base_url": os.environ.get("GEMINI_BASE_URL") or "https://generativelanguage.googleapis.com/v1beta/openai",
     },
     {
-        "id": "deepseek-chat",
+        "id": os.environ.get("DEEPSEEK_MODEL_ID") or "deepseek-chat",
         "name": "DeepSeek R1",
         "model_id": "DeepseekR1",
         "api_key": os.environ.get("DEEPSEEK_API_KEY"),
         "base_url": os.environ.get("DEEPSEEK_BASE_URL") or "https://api.deepseek.com/v1",
-    },
-    {
-        "id": os.environ.get("CUSTOM_MODEL_ID") or "custom-model",
-        "name": os.environ.get("CUSTOM_MODEL_NAME") or "Custom AI",
-        "model_id": "CustomModel",
-        "api_key": os.environ.get("CUSTOM_API_KEY"),
-        "base_url": os.environ.get("CUSTOM_BASE_URL"),
     },
 ]
 
