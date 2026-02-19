@@ -7,9 +7,12 @@
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from openai import OpenAI
 from typing import Dict, Any
+
+# 北京时间（UTC+8）
+BEIJING_TZ = timezone(timedelta(hours=8))
 
 # ==================== 配置区 ====================
 # 每个模型独立的 API Key 和 Base URL（通过环境变量设置）
@@ -79,9 +82,10 @@ def load_lottery_history() -> Dict[str, Any]:
 def get_next_draw_date() -> str:
     """
     根据双色球开奖规则（每周二、四、日 21:15）计算下期开奖日期
+    使用北京时间判断
     返回 YYYY-MM-DD 格式
     """
-    today = datetime.now()
+    today = datetime.now(BEIJING_TZ)
     weekday = today.weekday()  # 0=周一, 1=周二, 2=周三, 3=周四, 4=周五, 5=周六, 6=周日
 
     # 开奖日: 周二(1), 周四(3), 周日(6)

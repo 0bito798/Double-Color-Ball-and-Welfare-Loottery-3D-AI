@@ -7,8 +7,11 @@
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from openai import OpenAI
+
+# 北京时间（UTC+8）
+BEIJING_TZ = timezone(timedelta(hours=8))
 from typing import Dict, Any
 
 # ==================== 配置区 ====================
@@ -79,16 +82,17 @@ def load_lottery_history() -> Dict[str, Any]:
 def get_next_draw_date_fc3d() -> str:
     """
     福彩3D 每天开奖（晚上21:15）
-    如果当前时间 < 21:15，预测今天
-    如果当前时间 >= 21:15，预测明天
+    使用北京时间判断：
+    如果当前北京时间 < 21:15，预测今天
+    如果当前北京时间 >= 21:15，预测明天
     """
-    today = datetime.now()
-    draw_time = today.replace(hour=21, minute=15, second=0, microsecond=0)
+    now_bj = datetime.now(BEIJING_TZ)
+    draw_time = now_bj.replace(hour=21, minute=15, second=0, microsecond=0)
 
-    if today < draw_time:
-        return today.strftime("%Y-%m-%d")
+    if now_bj < draw_time:
+        return now_bj.strftime("%Y-%m-%d")
     else:
-        return (today + timedelta(days=1)).strftime("%Y-%m-%d")
+        return (now_bj + timedelta(days=1)).strftime("%Y-%m-%d")
 
 def extract_json_from_response(response_text: str) -> str:
     """从 AI 响应中提取 JSON 内容"""
