@@ -1,6 +1,6 @@
 # 双色球 + 福彩3D 开奖与 AI 预测展示系统
 
-> 在线示例（原项目 UI）：https://double-color-ball-ai.vercel.app
+> 在线示例：https://double-color-ball-and-welfare-loott.vercel.app/
 
 这是一个静态前端项目，保留原演示站 UI 风格，并在同一套框架内支持：
 - 双色球（6红+1蓝）
