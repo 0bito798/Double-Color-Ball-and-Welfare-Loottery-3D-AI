@@ -1,246 +1,143 @@
-# 双色球开奖与 AI 预测数据展示系统
+# 双色球 + 福彩3D 开奖与 AI 预测展示系统
 
-> 在线访问：[https://double-color-ball-ai.vercel.app](https://double-color-ball-ai.vercel.app)
+> 在线示例（原项目 UI）：https://double-color-ball-ai.vercel.app
 
-<img src="images/image1.jpg" width="70%">
+这是一个静态前端项目，保留原演示站 UI 风格，并在同一套框架内支持：
+- 双色球（6红+1蓝）
+- 福彩3D（百十个三位数）
 
-一个现代化的双色球数据展示系统，支持历史开奖数据查看和多模型 AI 预测展示。
+## 主要功能
 
-## ✨ 主要特性
+- 保留原有三大页面：`最新预测` / `图表分析` / `历史回溯`
+- 新增彩种切换：`双色球` 与 `福彩3D`
+- 不同彩种使用不同规则、统计口径与图表
+- 多模型 AI 预测对比（GPT-5 / Claude 4.5 / Gemini 2.5 / DeepSeek R1）
+- 历史命中回溯（双色球：红蓝；福彩3D：定位+组选）
+- 纯静态部署，可直接部署到 Vercel
 
-- 🎨 现代化 UI 设计，支持亮色/暗色主题切换
-- 📊 历史开奖数据展示
-- 🤖 多 AI 模型预测结果对比
-- 🎯 自动计算预测命中情况
-- 📱 完全响应式设计，支持移动端
-- ⚡ 优雅的动画效果和交互体验
+---
 
-<details>
-<summary><h2>🚀 快速开始</h2></summary>
+## 项目结构
 
-### 方法一：使用启动脚本（推荐）
-
-#### macOS/Linux:
-```bash
-# 进入项目目录
-cd Double-Color-Ball-AI
-
-# 运行启动脚本
-./start_server.sh
-```
-
-#### Windows:
-```cmd
-# 双击运行 start_server.bat
-# 或在命令行中运行
-start_server.bat
-```
-
-然后在浏览器中打开：http://localhost:8000
-
-### 方法二：手动启动服务器
-
-```bash
-# 使用 Python 启动 HTTP 服务器
-python3 -m http.server 8000
-
-# 或使用 Python 2
-python -m SimpleHTTPServer 8000
-```
-
-然后在浏览器中打开：http://localhost:8000
-
-
-</details>
-
-## 🔮 AI 预测策略
-
-每个 AI 模型会生成 5 组预测，分别采用不同策略：
-
-| 策略 | 说明 |
-|------|------|
-| 热号追随者 | 选择最近 30 期高频号码，追踪热门趋势 |
-| 冷号逆向者 | 选择最近 30 期低频号码，期待均值回归 |
-| 平衡策略师 | 综合奇偶比、大小比、和值、连号等多维度平衡 |
-| 周期理论家 | 选择短期频率上穿长期频率的号码 |
-| 综合决策者 | 融合以上所有策略的综合方案 |
-
-## 📁 项目结构
-
-```
-Double-Color-Ball-AI/
-├── index.html                     # 主页面
+```text
+.
+├── index.html
 ├── css/
-│   └── style.css                  # 样式文件
+│   └── style.css
 ├── js/
-│   ├── app.js                     # 主应用逻辑
-│   ├── data-loader.js             # 数据加载模块
-│   └── components.js              # UI 组件
+│   ├── app.js
+│   ├── components.js
+│   └── data-loader.js
 ├── data/
-│   ├── lottery_history.json       # 历史开奖数据
-│   └── ai_predictions.json        # AI 预测数据
-├── fetch_history/
-│   ├── fetch_lottery_history.py   # 数据爬取脚本
-│   └── lottery_data.json          # 原始爬取数据
-├── doc/
-│   └── prompt.md                  # AI 预测 Prompt 模板
-├── generate_ai_prediction.py      # 🆕 AI 预测自动生成脚本
-├── add_gpt5_prediction.py         # 辅助脚本：添加历史预测
-├── start_server.sh                # 启动脚本 (macOS/Linux)
-├── start_server.bat               # 启动脚本 (Windows)
-├── AI_PREDICTION_GUIDE.md         # 🆕 AI 预测自动化指南
-└── README.md                      # 项目说明
+│   ├── lottery_history.json               # 双色球历史开奖
+│   ├── ai_predictions.json                # 双色球当前预测
+│   ├── predictions_history.json           # 双色球历史命中
+│   ├── fc3d_history.json                  # 福彩3D历史开奖
+│   ├── fc3d_ai_predictions.json           # 福彩3D当前预测
+│   └── fc3d_predictions_history.json      # 福彩3D历史命中
+├── vercel.json
+└── DEPLOYMENT.md
 ```
 
-## 🔄 更新数据
+---
 
-### 更新历史开奖数据
+## 环境变量配置 (GitHub Secrets)
+
+本项目支持多模型 AI 预测，需配置以下 Secret (Settings -> Secrets and variables -> Actions)：
+
+| 模型 | API Key 变量名 | Base URL 变量名 (可选) |
+|------|---------------|-----------------------|
+| **GPT-5** | `OPENAI_API_KEY` | `OPENAI_BASE_URL` |
+| **Claude 4.5** | `ANTHROPIC_API_KEY` | `ANTHROPIC_BASE_URL` |
+| **Gemini 2.5** | `GEMINI_API_KEY` | `GEMINI_BASE_URL` |
+| **DeepSeek R1** | `DEEPSEEK_API_KEY` | `DEEPSEEK_BASE_URL` |
+| **Custom Model** | `CUSTOM_API_KEY` | `CUSTOM_BASE_URL`<br>`CUSTOM_MODEL_ID`<br>`CUSTOM_MODEL_NAME` |
+
+> 以前的 `AI_API_KEY` 和 `AI_BASE_URL` 全局配置已废弃。
+
+---
+
+## 本地运行（macOS）
+
+### 1) 打开项目
+
+- 用 **GitHub Desktop** Clone/Fork 仓库到本地
+- 用 **VSCode** 打开项目目录
+
+### 2) 启动本地服务（必须）
+
+不能直接双击 `index.html`，要走 HTTP 服务：
 
 ```bash
-cd fetch_history
-python3 fetch_lottery_history.py
+python3 -m http.server 8000
 ```
 
-脚本会：
-- 自动从 500 彩票网爬取最新数据
-- 与现有数据合并（去重）
-- 创建带时间戳的备份文件
-- **自动同步到 `data/lottery_history.json`**
-- **自动计算下期开奖信息**
+浏览器访问：
 
-### 自动生成 AI 预测数据（新功能！）
-
-**一键生成多模型预测**：
-
-```bash
-python3 generate_ai_prediction.py
+```text
+http://localhost:8000
 ```
 
-脚本功能：
-- 🤖 自动调用 4 个 AI 模型（GPT-5, Claude 4.5, Gemini 2.5, DeepSeek R1）
-- 📊 基于历史数据生成 5 种策略预测
-- ✅ 自动验证预测数据格式
-- 💾 自动备份现有预测
-- 🎯 自动获取下期期号和日期
+---
 
-**首次使用需配置 API**：
+## 数据说明
 
-1. 安装依赖：
-```bash
-pip install openai
-```
-
-2. 设置环境变量：
-```bash
-export AI_API_KEY="your-api-key"
-export AI_BASE_URL="https://your-api-endpoint.com/v1"  # 可选，有默认值
-```
-
-或创建 `.env` 文件（参考 `.env.example`）。
-
-3. 如使用 GitHub Actions 自动运行，需在仓库 Settings > Secrets and variables > Actions 中添加：
-   - `AI_API_KEY` — 你的 API Key
-   - `AI_BASE_URL` — API 端点地址（可选）
-
-详细说明：[AI_PREDICTION_GUIDE.md](./AI_PREDICTION_GUIDE.md)
-
-### 手动更新 AI 预测数据
-
-如果需要手动编辑，可以直接修改 `data/ai_predictions.json` 文件，格式如下：
+### 双色球数据格式（示例）
 
 ```json
 {
-  "prediction_date": "2025-10-21",
-  "target_period": "25121",
-  "models": [
-    {
-      "model_id": "model-id",
-      "model_name": "模型名称",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "策略名称",
-          "red_balls": ["01", "02", "03", "04", "05", "06"],
-          "blue_ball": "07",
-          "description": "策略描述"
-        }
-      ]
-    }
-  ]
+  "period": "26019",
+  "red_balls": ["07", "08", "16", "17", "18", "30"],
+  "blue_ball": "01",
+  "date": "2026-02-12"
 }
 ```
 
-## 🎨 主题切换
+### 福彩3D数据格式（示例）
 
-点击右上角的主题切换按钮（太阳/月亮图标）可以在亮色和暗色主题之间切换。主题偏好会自动保存到浏览器本地存储。
-
-## 📝 数据格式说明
-
-### lottery_history.json
 ```json
 {
-  "last_updated": "2025-10-21T10:00:00Z",
-  "data": [
-    {
-      "period": "25120",
-      "date": "2025-10-19",
-      "red_balls": ["01", "02", "04", "07", "13", "32"],
-      "blue_ball": "07"
-    }
-  ]
+  "period": "2026049",
+  "digits": ["5", "7", "6"],
+  "number": "576",
+  "sum": 18,
+  "span": 2,
+  "type": "组六",
+  "date": "2026-02-18"
 }
 ```
 
-### ai_predictions.json
-```json
-{
-  "prediction_date": "2025-10-21",
-  "target_period": "25121",
-  "models": [...]
-}
-```
+---
 
-## ⚠️ 重要提示
+## 用 GitHub Desktop 提交代码（你最常用流程）
 
-**浏览器安全限制**:
-- ❌ 不能直接双击 `index.html` 打开（会遇到 CORS 错误）
-- ✅ 必须通过 HTTP 服务器访问
+1. 打开 **GitHub Desktop**，选择这个仓库
+2. 左侧会看到改动文件（Changes）
+3. 在 Summary 输入提交说明，例如：
+   - `feat: add welfare 3d support`
+4. 点击 **Commit to main**
+5. 点击右上角 **Push origin**
 
-这是因为浏览器的同源策略限制，使用 `file://` 协议无法加载本地 JSON 文件。
+> 完成后，GitHub 仓库会同步最新代码。
 
-## 🛠️ 技术栈
+---
 
-- **前端**: 纯 JavaScript (ES6+)
-- **样式**: 现代 CSS (CSS Variables, Flexbox, Grid)
-- **数据爬取**: Python 3 + BeautifulSoup
-- **设计风格**: shadcn/ui inspired
+## 部署到 Vercel（推荐：GitHub 自动部署）
 
-## 📄 免责声明
+详细见：[`DEPLOYMENT.md`](./DEPLOYMENT.md)
 
-本网站展示的 AI 预测数据仅供参考和研究使用，不构成任何购彩建议。彩票开奖结果具有随机性，任何预测都无法保证中奖。请理性购彩，量力而行。
+最简单流程：
 
-## 🌐 部署到 Vercel
+1. 先把代码 `Push origin` 到 GitHub
+2. 打开 https://vercel.com 并用 GitHub 登录
+3. `Add New -> Project`
+4. 选择这个 GitHub 仓库并点击 Deploy
+5. 等待 1~2 分钟，拿到 `https://xxx.vercel.app`
 
-本项目已配置好 Vercel 部署，详细步骤请查看 [DEPLOYMENT.md](./DEPLOYMENT.md)
+以后只要你在 GitHub Desktop 里继续提交并 Push，Vercel 会自动重新部署。
 
-### 快速部署
+---
 
-1. 安装 Vercel CLI: `npm install -g vercel`
-2. 登录: `vercel login`
-3. 部署: `vercel`
+## 免责声明
 
-**不会有跨域问题！** Vercel 提供标准的 HTTP 服务，所有资源都从同一域名加载。
-
-### 特性
-
-- ✅ 免费部署
-- ✅ 自动 HTTPS
-- ✅ 全球 CDN 加速
-- ✅ 自动部署（连接 GitHub）
-- ✅ 支持自定义域名
-
-详细说明: [DEPLOYMENT.md](./DEPLOYMENT.md)
-
-## 📧 反馈与支持
-
-如有问题或建议，欢迎提交 Issue 或 Pull Request。
+AI 预测仅用于数据研究与娱乐，不构成任何购彩建议。彩票有随机性，请理性购彩。

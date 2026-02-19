@@ -1,89 +1,100 @@
 /**
  * 数据加载模块
- * 负责从 JSON 文件加载历史开奖数据和 AI 预测数据
+ * 负责按彩种加载历史开奖、AI预测和历史命中数据
  */
 
-const DataLoader = {
-    /**
-     * 加载历史开奖数据
-     * @returns {Promise<Object>} 历史数据对象
-     */
-    async loadLotteryHistory() {
-        try {
-            const response = await fetch('./data/lottery_history.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log('历史开奖数据加载成功', data);
-            return data;
-        } catch (error) {
-            console.error('加载历史开奖数据失败:', error);
-            throw error;
-        }
+const GAME_FILES = {
+    ssq: {
+        history: './data/lottery_history.json',
+        predictions: './data/ai_predictions.json',
+        historyPredictions: './data/predictions_history.json'
     },
-
-    /**
-     * 加载 AI 预测数据
-     * @returns {Promise<Object>} AI 预测数据对象
-     */
-    async loadPredictions() {
-        try {
-            const response = await fetch('./data/ai_predictions.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log('AI 预测数据加载成功', data);
-            return data;
-        } catch (error) {
-            console.error('加载 AI 预测数据失败:', error);
-            throw error;
-        }
-    },
-
-    /**
-     * 加载历史预测对比数据
-     * @returns {Promise<Object>} 历史预测对比数据对象
-     */
-    async loadPredictionsHistory() {
-        try {
-            const response = await fetch('./data/predictions_history.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log('历史预测对比数据加载成功', data);
-            return data;
-        } catch (error) {
-            console.error('加载历史预测对比数据失败:', error);
-            throw error;
-        }
-    },
-
-    /**
-     * 加载所有数据
-     * @returns {Promise<Object>} 包含历史数据和预测数据的对象
-     */
-    async loadAllData() {
-        try {
-            const [lotteryData, predictionData, predictionsHistoryData] = await Promise.all([
-                this.loadLotteryHistory(),
-                this.loadPredictions(),
-                this.loadPredictionsHistory()
-            ]);
-
-            return {
-                lottery: lotteryData,
-                predictions: predictionData,
-                predictionsHistory: predictionsHistoryData
-            };
-        } catch (error) {
-            console.error('加载数据失败:', error);
-            throw error;
-        }
+    fc3d: {
+        history: './data/fc3d_history.json',
+        predictions: './data/fc3d_ai_predictions.json',
+        historyPredictions: './data/fc3d_predictions_history.json'
     }
 };
 
-// 导出到全局作用域
+const DataLoader = {
+    normalizeGameType(gameType = 'ssq') {
+        return GAME_FILES[gameType] ? gameType : 'ssq';
+    },
+
+    async fetchJson(filePath) {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}, file: ${filePath}`);
+        }
+        return response.json();
+    },
+
+    async loadLotteryHistory(gameType = 'ssq') {
+        const game = this.normalizeGameType(gameType);
+        try {
+            const data = await this.fetchJson(GAME_FILES[game].history);
+            console.log(`[${game}] 历史开奖数据加载成功`, data);
+            return data;
+        } catch (error) {
+            console.error(`[${game}] 加载历史开奖数据失败:`, error);
+            throw error;
+        }
+    },
+
+    async loadPredictions(gameType = 'ssq') {
+        const game = this.normalizeGameType(gameType);
+        try {
+            const data = await this.fetchJson(GAME_FILES[game].predictions);
+            console.log(`[${game}] AI 预测数据加载成功`, data);
+            return data;
+        } catch (error) {
+            console.error(`[${game}] 加载 AI 预测数据失败:`, error);
+            throw error;
+        }
+    },
+
+    async loadPredictionsHistory(gameType = 'ssq') {
+        const game = this.normalizeGameType(gameType);
+        try {
+            const data = await this.fetchJson(GAME_FILES[game].historyPredictions);
+            console.log(`[${game}] 历史预测对比数据加载成功`, data);
+            return data;
+        } catch (error) {
+            console.error(`[${game}] 加载历史预测对比数据失败:`, error);
+            throw error;
+        }
+    },
+
+    async loadAllData(gameType = 'ssq') {
+        const game = this.normalizeGameType(gameType);
+        try {
+            const [lotteryHistory, aiPredictions, predictionsHistory] = await Promise.all([
+                this.loadLotteryHistory(game),
+                this.loadPredictions(game),
+                this.loadPredictionsHistory(game)
+            ]);
+
+            return {
+                lotteryHistory,
+                aiPredictions,
+                predictionsHistory
+            };
+        } catch (error) {
+            console.error(`[${game}] 加载数据失败:`, error);
+            throw error;
+        }
+    },
+
+    async loadAllGamesData() {
+        const gameTypes = Object.keys(GAME_FILES);
+        const result = {};
+
+        await Promise.all(gameTypes.map(async gameType => {
+            result[gameType] = await this.loadAllData(gameType);
+        }));
+
+        return result;
+    }
+};
+
 window.DataLoader = DataLoader;

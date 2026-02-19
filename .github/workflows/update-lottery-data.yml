@@ -32,6 +32,7 @@ jobs:
         run: |
           cd fetch_history
           python3 fetch_lottery_history.py
+          python3 fetch_fc3d_history.py
 
       - name: Check for changes
         id: check_changes
@@ -43,7 +44,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/lottery_history.json fetch_history/lottery_data.json
+          git add data/lottery_history.json data/fc3d_history.json fetch_history/
+
           git commit -m "chore: auto-update lottery data $(date +'%Y-%m-%d %H:%M:%S')"
           git push
 

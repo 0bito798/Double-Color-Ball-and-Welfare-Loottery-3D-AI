@@ -1,0 +1,4476 @@
+{
+  "历史预测记录": "本文件保存已开奖期号的福彩3D AI预测数据，用于对比和统计",
+  "predictions_history": [
+    {
+      "prediction_date": "2026-02-17",
+      "target_period": "2026049",
+      "actual_result": {
+        "period": "2026049",
+        "digits": [
+          "5",
+          "7",
+          "6"
+        ],
+        "number": "576",
+        "sum": 18,
+        "span": 2,
+        "type": "组六",
+        "date": "2026-02-18"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "5",
+                "8",
+                "6"
+              ],
+              "number": "586",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "6",
+                "7",
+                "5"
+              ],
+              "number": "675",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "8",
+                "2",
+                "0"
+              ],
+              "number": "820",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "8",
+                "9",
+                "4"
+              ],
+              "number": "894",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "6",
+                "6"
+              ],
+              "number": "566",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "5",
+                "0",
+                "6"
+              ],
+              "number": "506",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "6",
+                "7",
+                "5"
+              ],
+              "number": "675",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "8",
+                "9",
+                "0"
+              ],
+              "number": "890",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "2",
+                "4"
+              ],
+              "number": "524",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "7",
+                "1"
+              ],
+              "number": "571",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "8",
+                "7",
+                "6"
+              ],
+              "number": "876",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "6",
+                "7",
+                "5"
+              ],
+              "number": "675",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "9",
+                "2",
+                "1"
+              ],
+              "number": "921",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "8",
+                "1",
+                "6"
+              ],
+              "number": "816",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "8",
+                "7",
+                "6"
+              ],
+              "number": "876",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "5",
+                "7",
+                "3"
+              ],
+              "number": "573",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "6",
+                "7",
+                "5"
+              ],
+              "number": "675",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "7",
+                "1",
+                "1"
+              ],
+              "number": "711",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "6",
+                "4"
+              ],
+              "number": "364",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "7",
+                "6"
+              ],
+              "number": "576",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-16",
+      "target_period": "2026048",
+      "actual_result": {
+        "period": "2026048",
+        "digits": [
+          "5",
+          "7",
+          "7"
+        ],
+        "number": "577",
+        "sum": 19,
+        "span": 2,
+        "type": "组三",
+        "date": "2026-02-17"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "5",
+                "7",
+                "9"
+              ],
+              "number": "579",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "7",
+                "5"
+              ],
+              "number": "775",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "0",
+                "1",
+                "2"
+              ],
+              "number": "012",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "跨度"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "1",
+                "1",
+                "2"
+              ],
+              "number": "112",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "7",
+                "7"
+              ],
+              "number": "577",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "3",
+                "7",
+                "7"
+              ],
+              "number": "377",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "7",
+                "5"
+              ],
+              "number": "775",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "0",
+                "2",
+                "1"
+              ],
+              "number": "021",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "跨度"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "6",
+                "6",
+                "0"
+              ],
+              "number": "660",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "7",
+                "7"
+              ],
+              "number": "577",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "5",
+                "1",
+                "7"
+              ],
+              "number": "517",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "7",
+                "5"
+              ],
+              "number": "775",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "7",
+                "9",
+                "1"
+              ],
+              "number": "791",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "0",
+                "0",
+                "7"
+              ],
+              "number": "007",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "1",
+                "7"
+              ],
+              "number": "517",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "6",
+                "7",
+                "7"
+              ],
+              "number": "677",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "7",
+                "5"
+              ],
+              "number": "775",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "7",
+                "0",
+                "1"
+              ],
+              "number": "701",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "6",
+                "8",
+                "4"
+              ],
+              "number": "684",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "5",
+                "7",
+                "7"
+              ],
+              "number": "577",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-15",
+      "target_period": "2026047",
+      "actual_result": {
+        "period": "2026047",
+        "digits": [
+          "0",
+          "7",
+          "0"
+        ],
+        "number": "070",
+        "sum": 7,
+        "span": 7,
+        "type": "组三",
+        "date": "2026-02-16"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "4",
+                "7",
+                "0"
+              ],
+              "number": "470",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "0",
+                "3"
+              ],
+              "number": "503",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "9",
+                "0",
+                "4"
+              ],
+              "number": "904",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "2",
+                "7",
+                "0"
+              ],
+              "number": "270",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "1",
+                "0"
+              ],
+              "number": "010",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "2",
+                "1",
+                "5"
+              ],
+              "number": "215",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "3",
+                "4"
+              ],
+              "number": "334",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "2",
+                "7",
+                "0"
+              ],
+              "number": "270",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "7",
+                "0"
+              ],
+              "number": "170",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "4",
+                "1",
+                "3"
+              ],
+              "number": "413",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "3",
+                "8"
+              ],
+              "number": "538",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "7",
+                "3"
+              ],
+              "number": "073",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "4",
+                "1",
+                "2"
+              ],
+              "number": "412",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "和值"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "2",
+                "7",
+                "7"
+              ],
+              "number": "277",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "7",
+                "0"
+              ],
+              "number": "070",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-14",
+      "target_period": "2026046",
+      "actual_result": {
+        "period": "2026046",
+        "digits": [
+          "0",
+          "4",
+          "1"
+        ],
+        "number": "041",
+        "sum": 5,
+        "span": 4,
+        "type": "组六",
+        "date": "2026-02-15"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "0",
+                "1"
+              ],
+              "number": "001",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "4",
+                "0"
+              ],
+              "number": "140",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "9",
+                "3"
+              ],
+              "number": "593",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "6",
+                "1"
+              ],
+              "number": "561",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "4",
+                "6"
+              ],
+              "number": "046",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "9",
+                "1"
+              ],
+              "number": "091",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "4",
+                "0"
+              ],
+              "number": "140",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "4",
+                "9",
+                "4"
+              ],
+              "number": "494",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "9",
+                "7"
+              ],
+              "number": "397",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "4",
+                "1"
+              ],
+              "number": "041",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "9",
+                "1"
+              ],
+              "number": "091",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "4",
+                "0"
+              ],
+              "number": "140",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "2",
+                "8",
+                "4"
+              ],
+              "number": "284",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "6",
+                "7",
+                "6"
+              ],
+              "number": "676",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "7",
+                "4",
+                "1"
+              ],
+              "number": "741",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "4",
+                "4",
+                "1"
+              ],
+              "number": "441",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "4",
+                "0"
+              ],
+              "number": "140",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "8",
+                "4"
+              ],
+              "number": "584",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "跨度"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "5",
+                "5"
+              ],
+              "number": "555",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "7",
+                "1"
+              ],
+              "number": "071",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-13",
+      "target_period": "2026045",
+      "actual_result": {
+        "period": "2026045",
+        "digits": [
+          "0",
+          "2",
+          "2"
+        ],
+        "number": "022",
+        "sum": 4,
+        "span": 2,
+        "type": "组三",
+        "date": "2026-02-14"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "7",
+                "2"
+              ],
+              "number": "072",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "0"
+              ],
+              "number": "220",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "5",
+                "5"
+              ],
+              "number": "555",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "0",
+                "1",
+                "6"
+              ],
+              "number": "016",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "9",
+                "2"
+              ],
+              "number": "092",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "6",
+                "2"
+              ],
+              "number": "062",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "0"
+              ],
+              "number": "220",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "6",
+                "7"
+              ],
+              "number": "567",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "跨度"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "6",
+                "7",
+                "4"
+              ],
+              "number": "674",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "2",
+                "2"
+              ],
+              "number": "022",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "9",
+                "2"
+              ],
+              "number": "092",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "0"
+              ],
+              "number": "220",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "2",
+                "7",
+                "6"
+              ],
+              "number": "276",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "9",
+                "7"
+              ],
+              "number": "597",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "2",
+                "2"
+              ],
+              "number": "022",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "0",
+                "9",
+                "2"
+              ],
+              "number": "092",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "0"
+              ],
+              "number": "220",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "2",
+                "6",
+                "6"
+              ],
+              "number": "266",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "6",
+                "9",
+                "1"
+              ],
+              "number": "691",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "0",
+                "3",
+                "2"
+              ],
+              "number": "032",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-12",
+      "target_period": "2026044",
+      "actual_result": {
+        "period": "2026044",
+        "digits": [
+          "1",
+          "8",
+          "1"
+        ],
+        "number": "181",
+        "sum": 10,
+        "span": 7,
+        "type": "组三",
+        "date": "2026-02-13"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "0",
+                "1"
+              ],
+              "number": "101",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "3",
+                "3",
+                "3"
+              ],
+              "number": "333",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "7",
+                "8",
+                "1"
+              ],
+              "number": "781",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "8",
+                "5"
+              ],
+              "number": "185",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "4",
+                "3",
+                "4"
+              ],
+              "number": "434",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "6",
+                "7"
+              ],
+              "number": "367",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "8",
+                "2"
+              ],
+              "number": "182",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "3",
+                "2",
+                "6"
+              ],
+              "number": "326",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "9",
+                "3",
+                "0"
+              ],
+              "number": "930",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "5"
+              ],
+              "number": "185",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "8",
+                "6"
+              ],
+              "number": "186",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "6",
+                "2",
+                "3"
+              ],
+              "number": "623",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "4",
+                "7"
+              ],
+              "number": "347",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 2,
+          "best_hit_count": 3
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-11",
+      "target_period": "2026043",
+      "actual_result": {
+        "period": "2026043",
+        "digits": [
+          "1",
+          "8",
+          "7"
+        ],
+        "number": "187",
+        "sum": 16,
+        "span": 7,
+        "type": "组六",
+        "date": "2026-02-12"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "8",
+                "1"
+              ],
+              "number": "181",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "8",
+                "1"
+              ],
+              "number": "781",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "3",
+                "1",
+                "9"
+              ],
+              "number": "319",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "6",
+                "9"
+              ],
+              "number": "569",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "7"
+              ],
+              "number": "187",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "8",
+                "2"
+              ],
+              "number": "182",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "8",
+                "1"
+              ],
+              "number": "781",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "5",
+                "0",
+                "0"
+              ],
+              "number": "500",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "5",
+                "8",
+                "4"
+              ],
+              "number": "584",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "7"
+              ],
+              "number": "187",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "1",
+                "0",
+                "7"
+              ],
+              "number": "107",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "8",
+                "1"
+              ],
+              "number": "781",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "6",
+                "3",
+                "2"
+              ],
+              "number": "632",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "6",
+                "0"
+              ],
+              "number": "360",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "7"
+              ],
+              "number": "187",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "6",
+                "8",
+                "7"
+              ],
+              "number": "687",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "7",
+                "8",
+                "1"
+              ],
+              "number": "781",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选6"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "4",
+                "2",
+                "2"
+              ],
+              "number": "422",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "1",
+                "3",
+                "0"
+              ],
+              "number": "130",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "1",
+                "8",
+                "7"
+              ],
+              "number": "187",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选6",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选6"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        }
+      ]
+    },
+    {
+      "prediction_date": "2026-02-10",
+      "target_period": "2026042",
+      "actual_result": {
+        "period": "2026042",
+        "digits": [
+          "7",
+          "2",
+          "2"
+        ],
+        "number": "722",
+        "sum": 11,
+        "span": 5,
+        "type": "组三",
+        "date": "2026-02-11"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "7",
+                "5",
+                "2"
+              ],
+              "number": "752",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "7"
+              ],
+              "number": "227",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "9",
+                "5",
+                "5"
+              ],
+              "number": "955",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "9",
+                "4",
+                "3"
+              ],
+              "number": "943",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "7",
+                "2",
+                "2"
+              ],
+              "number": "722",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "7",
+                "8",
+                "2"
+              ],
+              "number": "782",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "7"
+              ],
+              "number": "227",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "9",
+                "6",
+                "4"
+              ],
+              "number": "964",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [
+                  "跨度"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "4",
+                "0",
+                "2"
+              ],
+              "number": "402",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "定位1位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "7",
+                "2",
+                "2"
+              ],
+              "number": "722",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "Gemini2.5",
+          "model_name": "Gemini 2.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "7",
+                "9",
+                "2"
+              ],
+              "number": "792",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "7"
+              ],
+              "number": "227",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "0",
+                "5",
+                "7"
+              ],
+              "number": "057",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "4",
+                "5"
+              ],
+              "number": "345",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "7",
+                "2",
+                "2"
+              ],
+              "number": "722",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1,
+                  2
+                ],
+                "position_hit_count": 3,
+                "group_hit_count": 3,
+                "exact_match": true,
+                "total_hits": 3,
+                "win_types": [
+                  "直选",
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位3位"
+                ],
+                "core_win_types": [
+                  "直选",
+                  "组选3"
+                ]
+              }
+            }
+          ],
+          "best_group": 5,
+          "best_hit_count": 3
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "digits": [
+                "7",
+                "3",
+                "2"
+              ],
+              "number": "732",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补策略",
+              "digits": [
+                "2",
+                "2",
+                "7"
+              ],
+              "number": "227",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 3,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [
+                  "组选3",
+                  "和值",
+                  "跨度",
+                  "定位1位"
+                ],
+                "core_win_types": [
+                  "组选3"
+                ]
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值均衡策略",
+              "digits": [
+                "2",
+                "4",
+                "4"
+              ],
+              "number": "244",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度周期策略",
+              "digits": [
+                "3",
+                "3",
+                "3"
+              ],
+              "number": "333",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "组选综合策略",
+              "digits": [
+                "7",
+                "2",
+                "4"
+              ],
+              "number": "724",
+              "description": "基于最近30期特征生成的策略组。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0,
+                  1
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [
+                  "跨度",
+                  "定位2位"
+                ],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 2
+        }
+      ]
+    }
+  ]
+}

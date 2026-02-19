@@ -357,6 +357,58 @@ body::after {
     }
 }
 
+.lottery-switcher {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(132px, 1fr));
+    gap: 0.625rem;
+    background: linear-gradient(180deg, #ffffff, #f8fafc);
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.lottery-switch-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--slate-600);
+    border-radius: 0.8rem;
+    padding: 0.55rem 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.12rem;
+    min-height: 56px;
+}
+
+.lottery-switch-btn:hover {
+    color: var(--slate-800);
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.lottery-switch-btn.active {
+    background: linear-gradient(135deg, #0f172a, #334155);
+    color: white;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.28);
+}
+
+.switch-main {
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.switch-sub {
+    font-size: 0.68rem;
+    opacity: 0.78;
+    font-weight: 600;
+}
+
 /* ==================== Tab System ==================== */
 .tab-content {
     display: none;
@@ -1142,6 +1194,8 @@ body::after {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .model-hit-name {
@@ -1297,6 +1351,63 @@ body::after {
     background: var(--slate-200);
 }
 
+.fc3d-win-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.prediction-group-row.fc3d-prediction-row .prediction-group-balls {
+    overflow-x: visible;
+    flex-wrap: wrap;
+}
+
+.prediction-group-row.fc3d-prediction-row {
+    flex-wrap: wrap;
+}
+
+.prediction-group-row.fc3d-prediction-row .prediction-group-stats {
+    margin-left: auto;
+}
+
+.fc3d-win-chip {
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 0.15rem 0.45rem;
+    border: 1px solid #dbeafe;
+    color: #1d4ed8;
+    background: #eff6ff;
+    line-height: 1.2;
+}
+
+.fc3d-win-chip.hit-core {
+    border-color: #fca5a5;
+    color: #dc2626;
+    background: #fef2f2;
+}
+
+.fc3d-actual-meta {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.fc3d-meta-chip {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    padding: 0.2rem 0.55rem;
+}
+
 /* History Table */
 .history-table-container {
     background: white;
@@ -1363,6 +1474,19 @@ body::after {
     gap: 0.375rem;
     transform: scale(0.9);
     transform-origin: left;
+}
+
+.draw-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.45rem;
+    border-radius: 9999px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 /* ==================== Chart Container ==================== */
@@ -1836,6 +1960,21 @@ body::after {
 
     .prediction-group-stats {
         padding-left: 0;
+    }
+
+    .prediction-group-row.fc3d-prediction-row .prediction-group-balls {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .lottery-switcher {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .lottery-switch-btn {
+        min-height: 52px;
     }
 }
 

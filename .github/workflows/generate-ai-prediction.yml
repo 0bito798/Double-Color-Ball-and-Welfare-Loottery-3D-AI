@@ -2,9 +2,8 @@ name: Generate AI Prediction
 
 on:
   schedule:
-    # 每周一、三、五 UTC 00:00（北京时间 08:00）自动运行
-    # 对应开奖后一天：周日开奖→周一，周二开奖→周三，周四开奖→周五
-    - cron: '0 0 * * 1,3,5'
+    # 每天 UTC 00:00（北京时间 08:00）- 因福彩3D每天开奖
+    - cron: '0 0 * * *'
   workflow_dispatch: # 也支持手动触发
 
 jobs:
@@ -30,7 +29,9 @@ jobs:
           pip install openai
 
       - name: Run AI prediction generator
-        run: python3 generate_ai_prediction.py
+        run: |
+          python3 generate_ai_prediction.py
+          python3 generate_fc3d_prediction.py
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
@@ -45,7 +46,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/ai_predictions.json data/predictions_history.json
+          git add data/ai_predictions.json data/predictions_history.json data/fc3d_ai_predictions.json data/fc3d_predictions_history.json
           git commit -m "chore: generate AI predictions $(date +'%Y-%m-%d %H:%M:%S')"
           git push
 

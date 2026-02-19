@@ -24,10 +24,10 @@
                     <div class="navbar-brand">
                         <div class="navbar-logo">🎟️</div>
                         <div class="navbar-title-wrapper">
-                            <span class="navbar-title">
+                            <span class="navbar-title" id="navbarTitle">
                                 双色球<span class="highlight">AI</span>预测
                             </span>
-                            <span class="navbar-subtitle">Double Color Ball</span>
+                            <span class="navbar-subtitle" id="navbarSubtitle">Double Color Ball</span>
                         </div>
                     </div>
 
@@ -82,6 +82,18 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Lottery Switch -->
+            <div class="lottery-switcher">
+                <button class="lottery-switch-btn active" data-game="ssq">
+                    <span class="switch-main">双色球</span>
+                    <span class="switch-sub">6红+1蓝</span>
+                </button>
+                <button class="lottery-switch-btn" data-game="fc3d">
+                    <span class="switch-main">福彩3D</span>
+                    <span class="switch-sub">直选/组选</span>
+                </button>
+            </div>
+
             <!-- Tab: Prediction Dashboard -->
             <div class="tab-content active" data-tab="prediction">
                 <!-- Hero Banner -->
@@ -131,8 +143,8 @@
                         </svg>
                     </div>
                     <div class="info-card-content">
-                        <h3 class="info-card-title">本期 AI 策略说明</h3>
-                        <p>本期预测汇集了 GPT-5、Claude 4.5 等四大前沿模型的增强型策略。所有模型均基于近 30 期历史数据进行加权分析，重点融合了<span class="highlight-red">热号追随</span>、<span class="highlight-blue">冷号逆向</span>及周期理论，旨在捕捉号码的均值回归与趋势延续。</p>
+                        <h3 class="info-card-title" id="infoCardTitle">本期 AI 策略说明</h3>
+                        <p id="infoCardDesc">本期预测汇集了 GPT-5、Claude 4.5 等四大前沿模型的增强型策略。所有模型均基于近 30 期历史数据进行加权分析，重点融合了热号追随、冷号逆向及周期理论，旨在捕捉号码的均值回归与趋势延续。</p>
                     </div>
                 </div>
 
@@ -144,7 +156,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
                     </svg>
-                    <span>AI 预测结果仅供参考，不代表最终开奖结果</span>
+                    <span id="disclaimerText">AI 预测结果仅供参考，不代表最终开奖结果</span>
                 </div>
             </div>
 
@@ -158,7 +170,7 @@
                     </div>
                     <h2 class="section-title">数据趋势分析</h2>
                 </div>
-                <p style="color: var(--slate-500); font-size: 0.875rem; margin-bottom: 1.5rem;">基于最近历史开奖数据分析</p>
+                <p id="analysisSubtitle" style="color: var(--slate-500); font-size: 0.875rem; margin-bottom: 1.5rem;">基于最近历史开奖数据分析</p>
 
                 <!-- Prize Rules Card -->
                 <div class="prize-rules-card">
@@ -168,46 +180,15 @@
                                 <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
                             </svg>
                         </div>
-                        <h3>双色球中奖规则说明</h3>
+                        <h3 id="prizeRulesTitle">双色球中奖规则说明</h3>
                     </div>
                     <div class="prize-rules-content">
-                        <div class="prize-rules-grid">
-                            <div class="prize-rule-item">
-                                <div class="prize-level">一等奖</div>
-                                <div class="prize-condition">6+1</div>
-                                <div class="prize-desc">6个红球 + 1个蓝球</div>
-                            </div>
-                            <div class="prize-rule-item">
-                                <div class="prize-level">二等奖</div>
-                                <div class="prize-condition">6+0</div>
-                                <div class="prize-desc">6个红球</div>
-                            </div>
-                            <div class="prize-rule-item">
-                                <div class="prize-level">三等奖</div>
-                                <div class="prize-condition">5+1</div>
-                                <div class="prize-desc">5个红球 + 1个蓝球</div>
-                            </div>
-                            <div class="prize-rule-item">
-                                <div class="prize-level">四等奖</div>
-                                <div class="prize-condition">5+0 / 4+1</div>
-                                <div class="prize-desc">5个红球 或 4红+1蓝</div>
-                            </div>
-                            <div class="prize-rule-item">
-                                <div class="prize-level">五等奖</div>
-                                <div class="prize-condition">4+0 / 3+1</div>
-                                <div class="prize-desc">4个红球 或 3红+1蓝</div>
-                            </div>
-                            <div class="prize-rule-item">
-                                <div class="prize-level">六等奖</div>
-                                <div class="prize-condition">2+1 / 1+1 / 0+1</div>
-                                <div class="prize-desc">有蓝球即中奖（5元）</div>
-                            </div>
-                        </div>
+                        <div class="prize-rules-grid" id="prizeRulesGrid"></div>
                         <div class="prize-rules-note">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
                             </svg>
-                            <span>红球从 01-33 中选择 6 个号码，蓝球从 01-16 中选择 1 个号码。每周二、四、日晚 21:15 开奖。</span>
+                            <span id="prizeRulesNote">红球从 01-33 中选择 6 个号码，蓝球从 01-16 中选择 1 个号码。每周二、四、日晚 21:15 开奖。</span>
                         </div>
                     </div>
                 </div>
@@ -221,7 +202,7 @@
                             </svg>
                         </div>
                         <div class="stat-card-content">
-                            <div class="stat-card-label">数据样本</div>
+                            <div class="stat-card-label" id="statLabel1">数据样本</div>
                             <div class="stat-card-value" id="statTotalDraws">-</div>
                         </div>
                     </div>
@@ -232,7 +213,7 @@
                             </svg>
                         </div>
                         <div class="stat-card-content">
-                            <div class="stat-card-label">最热红球</div>
+                            <div class="stat-card-label" id="statLabel2">最热红球</div>
                             <div class="stat-card-value" id="statHottestRed">-</div>
                         </div>
                     </div>
@@ -243,7 +224,7 @@
                             </svg>
                         </div>
                         <div class="stat-card-content">
-                            <div class="stat-card-label">最热蓝球</div>
+                            <div class="stat-card-label" id="statLabel3">最热蓝球</div>
                             <div class="stat-card-value" id="statHottestBlue">-</div>
                         </div>
                     </div>
@@ -254,7 +235,7 @@
                             </svg>
                         </div>
                         <div class="stat-card-content">
-                            <div class="stat-card-label">平均和值</div>
+                            <div class="stat-card-label" id="statLabel4">平均和值</div>
                             <div class="stat-card-value" id="statAvgSum">-</div>
                         </div>
                     </div>
@@ -271,8 +252,8 @@
                                 </svg>
                             </div>
                             <div class="chart-title-wrapper">
-                                <h3>红球热度分布</h3>
-                                <p class="chart-description">各号码出现频次统计</p>
+                                <h3 id="chartFrequencyTitle">红球热度分布</h3>
+                                <p class="chart-description" id="chartFrequencyDesc">各号码出现频次统计</p>
                             </div>
                         </div>
                         <div class="chart-canvas">
@@ -289,8 +270,8 @@
                                 </svg>
                             </div>
                             <div class="chart-title-wrapper">
-                                <h3>蓝球出现频率</h3>
-                                <p class="chart-description">蓝球号码分布情况</p>
+                                <h3 id="chartSecondaryTitle">蓝球出现频率</h3>
+                                <p class="chart-description" id="chartSecondaryDesc">蓝球号码分布情况</p>
                             </div>
                         </div>
                         <div class="chart-canvas">
@@ -307,8 +288,8 @@
                                 </svg>
                             </div>
                             <div class="chart-title-wrapper">
-                                <h3>奇偶比例分布</h3>
-                                <p class="chart-description">红球奇偶比统计</p>
+                                <h3 id="chartOddEvenTitle">奇偶比例分布</h3>
+                                <p class="chart-description" id="chartOddEvenDesc">红球奇偶比统计</p>
                             </div>
                         </div>
                         <div class="chart-canvas">
@@ -325,8 +306,8 @@
                                 </svg>
                             </div>
                             <div class="chart-title-wrapper">
-                                <h3>红球和值走势</h3>
-                                <p class="chart-description">近期红球总和变化趋势</p>
+                                <h3 id="chartSumTrendTitle">红球和值走势</h3>
+                                <p class="chart-description" id="chartSumTrendDesc">近期红球总和变化趋势</p>
                             </div>
                         </div>
                         <div class="chart-canvas">
@@ -343,8 +324,8 @@
                                 </svg>
                             </div>
                             <div class="chart-title-wrapper">
-                                <h3>区间分布统计</h3>
-                                <p class="chart-description">红球号码按区间（01-11、12-22、23-33）分布情况</p>
+                                <h3 id="chartZoneTitle">区间分布统计</h3>
+                                <p class="chart-description" id="chartZoneDesc">红球号码按区间（01-11、12-22、23-33）分布情况</p>
                             </div>
                         </div>
                         <div class="chart-canvas">
@@ -375,7 +356,7 @@
                         </div>
                         <div class="chart-title-wrapper">
                             <h3>AI 模型命中表现趋势</h3>
-                            <p class="chart-description">各模型当期最佳预测组合的总命中数（红+蓝）</p>
+                            <p class="chart-description" id="historyTrendDescription">各模型当期最佳预测组合的总命中数（红+蓝）</p>
                         </div>
                     </div>
                     <div class="chart-canvas">
@@ -396,7 +377,7 @@
 
                 <!-- History Table -->
                 <div class="history-section">
-                    <h3 style="font-weight: 700; color: var(--slate-700); font-size: 1.125rem; margin-bottom: 1rem;">历史开奖号码一览</h3>
+                    <h3 id="historyTableTitle" style="font-weight: 700; color: var(--slate-700); font-size: 1.125rem; margin-bottom: 1rem;">历史开奖号码一览</h3>
                     <div class="history-table-container">
                         <div class="history-table-scroll">
                             <table class="history-table">
@@ -418,7 +399,7 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <p class="footer-copyright">© 2025 Double Color Ball AI. Powered by Advanced LLMs.</p>
+                <p class="footer-copyright" id="footerCopyright">© 2026 Double Color Ball AI. Powered by Advanced LLMs.</p>
                 <p class="footer-disclaimer">仅供娱乐与统计分析，请理性购彩</p>
             </div>
         </footer>
@@ -426,8 +407,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="js/data-loader.js?v=20251124c"></script>
-    <script src="js/components.js?v=20251124c"></script>
-    <script src="js/app.js?v=20251124c"></script>
+    <script src="js/data-loader.js?v=20260219a"></script>
+    <script src="js/components.js?v=20260219a"></script>
+    <script src="js/app.js?v=20260219a"></script>
 </body>
 </html>

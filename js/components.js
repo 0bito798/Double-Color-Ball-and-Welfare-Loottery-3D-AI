@@ -1,17 +1,9 @@
 /**
- * UI 组件模块 - 新UI版本
- * 负责生成和渲染各种 UI 组件
+ * UI 组件模块 - 双彩种版本
+ * 支持双色球(ssq)与福彩3D(fc3d)
  */
 
 const Components = {
-    /**
-     * 创建号码球元素
-     * @param {string} number - 号码
-     * @param {string} color - 颜色 ('red' 或 'blue')
-     * @param {string} size - 大小 ('sm', 'md', 'lg')
-     * @param {boolean} isHit - 是否命中
-     * @returns {HTMLElement} 号码球元素
-     */
     createLotteryBall(number, color, size = 'md', isHit = false) {
         const ball = document.createElement('div');
         ball.className = `lottery-ball ${color} size-${size}${isHit ? ' hit' : ''}`;
@@ -19,21 +11,12 @@ const Components = {
         return ball;
     },
 
-    /**
-     * 创建球分隔符
-     * @returns {HTMLElement} 分隔符元素
-     */
     createBallDivider() {
         const divider = document.createElement('div');
         divider.className = 'ball-divider';
         return divider;
     },
 
-    /**
-     * 获取模型头部样式类名
-     * @param {string} modelName - 模型名称
-     * @returns {string} CSS 类名
-     */
     getModelHeaderClass(modelName) {
         if (modelName.includes('GPT')) return 'model-header-gpt';
         if (modelName.includes('Claude')) return 'model-header-claude';
@@ -42,33 +25,167 @@ const Components = {
         return 'model-header-gpt';
     },
 
-    /**
-     * 创建模型预测卡片
-     * @param {Object} model - 模型数据
-     * @param {Object} actualResult - 实际开奖结果（可选）
-     * @returns {HTMLElement} 模型卡片元素
-     */
-    createModelCard(model, actualResult = null) {
+    getPredictionNumbers(prediction, gameType = 'ssq') {
+        if (gameType === 'fc3d') {
+            if (Array.isArray(prediction.digits) && prediction.digits.length === 3) {
+                return prediction.digits;
+            }
+            if (typeof prediction.number === 'string' && prediction.number.length === 3) {
+                return prediction.number.split('');
+            }
+            return [];
+        }
+        return prediction.red_balls || [];
+    },
+
+    getPredictionSpecial(prediction, gameType = 'ssq') {
+        if (gameType === 'fc3d') return null;
+        return prediction.blue_ball || null;
+    },
+
+    getDrawNumbers(draw, gameType = 'ssq') {
+        if (gameType === 'fc3d') {
+            if (Array.isArray(draw.digits) && draw.digits.length === 3) {
+                return draw.digits;
+            }
+            if (typeof draw.number === 'string' && draw.number.length === 3) {
+                return draw.number.split('');
+            }
+            return [];
+        }
+        return draw.red_balls || [];
+    },
+
+    getDrawSpecial(draw, gameType = 'ssq') {
+        if (gameType === 'fc3d') return null;
+        return draw.blue_ball || null;
+    },
+
+    normalizeHitResult(rawHitResult = {}, gameType = 'ssq') {
+        if (gameType === 'fc3d') {
+            const positionHitCount =
+                rawHitResult.position_hit_count ?? rawHitResult.positionHitCount ?? rawHitResult.red_hit_count ?? rawHitResult.redHitCount ?? 0;
+            const groupHitCount = rawHitResult.group_hit_count ?? rawHitResult.groupHitCount ?? 0;
+            const exactMatch = rawHitResult.exact_match ?? rawHitResult.exactMatch ?? positionHitCount === 3;
+            const positionHitIndices = rawHitResult.position_hit_indices ?? rawHitResult.positionHitIndices ?? [];
+            const winTypes = rawHitResult.win_types ?? rawHitResult.winTypes ?? [];
+            const coreWinTypes = rawHitResult.core_win_types ?? rawHitResult.coreWinTypes ?? [];
+
+            return {
+                positionHitCount,
+                groupHitCount,
+                exactMatch,
+                totalHits: rawHitResult.total_hits ?? rawHitResult.totalHits ?? positionHitCount,
+                positionHitIndices,
+                winTypes,
+                coreWinTypes,
+                redHitCount: positionHitCount,
+                blueHit: !!exactMatch
+            };
+        }
+
+        const redHitCount = rawHitResult.red_hit_count ?? rawHitResult.redHitCount ?? 0;
+        const blueHit = !!(rawHitResult.blue_hit ?? rawHitResult.blueHit);
+
+        return {
+            redHitCount,
+            blueHit,
+            totalHits: rawHitResult.total_hits ?? rawHitResult.totalHits ?? redHitCount + (blueHit ? 1 : 0),
+            redHits: rawHitResult.red_hits ?? rawHitResult.redHits ?? [],
+            positionHitCount: 0,
+            groupHitCount: 0,
+            winTypes: [],
+            coreWinTypes: [],
+            exactMatch: false,
+            positionHitIndices: []
+        };
+    },
+
+    getFc3dForm(digits) {
+        if (!digits || digits.length !== 3) return '未知';
+        const uniqueCount = new Set(digits).size;
+        if (uniqueCount === 1) return '豹子';
+        if (uniqueCount === 2) return '组三';
+        return '组六';
+    },
+
+    getFc3dPlayHitInfo(predictionDigits, actualDigits) {
+        const pred = predictionDigits || [];
+        const act = actualDigits || [];
+        if (pred.length !== 3 || act.length !== 3) {
+            return { winTypes: [], coreWinTypes: [] };
+        }
+
+        const predForm = this.getFc3dForm(pred);
+        const actualForm = this.getFc3dForm(act);
+        const predSorted = [...pred].sort().join('');
+        const actualSorted = [...act].sort().join('');
+        const sameSet = predSorted === actualSorted;
+        const predSum = pred.reduce((acc, n) => acc + parseInt(n, 10), 0);
+        const actualSum = act.reduce((acc, n) => acc + parseInt(n, 10), 0);
+        const predSpan = Math.max(...pred.map(n => parseInt(n, 10))) - Math.min(...pred.map(n => parseInt(n, 10)));
+        const actualSpan = Math.max(...act.map(n => parseInt(n, 10))) - Math.min(...act.map(n => parseInt(n, 10)));
+        const positionHitCount = pred.filter((digit, idx) => digit === act[idx]).length;
+
+        const winTypes = [];
+        const coreWinTypes = [];
+
+        if (positionHitCount === 3) {
+            winTypes.push('直选');
+            coreWinTypes.push('直选');
+        }
+
+        if (sameSet && predForm === '组三' && actualForm === '组三') {
+            winTypes.push('组选3');
+            coreWinTypes.push('组选3');
+        }
+
+        if (sameSet && predForm === '组六' && actualForm === '组六') {
+            winTypes.push('组选6');
+            coreWinTypes.push('组选6');
+        }
+
+        if (sameSet && predForm === '豹子' && actualForm === '豹子') {
+            winTypes.push('豹子');
+            coreWinTypes.push('豹子');
+        }
+
+        if (predSum === actualSum) {
+            winTypes.push('和值');
+        }
+
+        if (predSpan === actualSpan) {
+            winTypes.push('跨度');
+        }
+
+        if (positionHitCount > 0) {
+            winTypes.push(`定位${positionHitCount}位`);
+        }
+
+        return { winTypes, coreWinTypes };
+    },
+
+    createModelCard(model, actualResult = null, gameType = 'ssq') {
         const card = document.createElement('div');
         card.className = 'model-card';
 
         const headerClass = this.getModelHeaderClass(model.model_name);
-
-        // 清理 model_id 以生成有效的 DOM ID（移除特殊字符）
         const safeModelId = model.model_id.replace(/[^a-zA-Z0-9-_]/g, '-');
 
-        // 计算最佳命中（如果已开奖）
         let bestHitCount = 0;
         let bestGroupId = null;
+
         if (actualResult) {
             model.predictions.forEach(prediction => {
-                const hitResult = this.compareNumbers(prediction, actualResult);
+                const hitResult = this.compareNumbers(prediction, actualResult, gameType);
                 if (hitResult && hitResult.totalHits > bestHitCount) {
                     bestHitCount = hitResult.totalHits;
                     bestGroupId = prediction.group_id;
                 }
             });
         }
+
+        const bestHitText = gameType === 'fc3d' ? `最佳 ${bestHitCount} 位` : `最佳 ${bestHitCount} 中`;
 
         card.innerHTML = `
             <div class="model-card-header ${headerClass}">
@@ -91,7 +208,7 @@ const Components = {
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                             </svg>
-                            <span>最佳 ${bestHitCount} 中</span>
+                            <span>${bestHitText}</span>
                         </div>
                     ` : ''}
                     <div class="model-card-ticket-icon">
@@ -106,74 +223,80 @@ const Components = {
             </div>
         `;
 
-        // 添加策略行
         const strategiesContainer = card.querySelector(`#strategies-${safeModelId}`);
         model.predictions.forEach((prediction, index) => {
             const isBest = actualResult && prediction.group_id === bestGroupId;
-            strategiesContainer.appendChild(this.createStrategyRow(prediction, index === model.predictions.length - 1, actualResult, isBest));
+            strategiesContainer.appendChild(
+                this.createStrategyRow(prediction, index === model.predictions.length - 1, actualResult, isBest, gameType)
+            );
         });
 
         return card;
     },
 
-    /**
-     * 创建策略行
-     * @param {Object} prediction - 预测数据
-     * @param {boolean} isLast - 是否是最后一个
-     * @param {Object} actualResult - 实际开奖结果（可选）
-     * @param {boolean} isBest - 是否是最佳预测组
-     * @returns {HTMLElement} 策略行元素
-     */
-    createStrategyRow(prediction, isLast = false, actualResult = null, isBest = false) {
+    createStrategyRow(prediction, isLast = false, actualResult = null, isBest = false, gameType = 'ssq') {
         const row = document.createElement('div');
         row.className = 'strategy-row';
 
-        // 计算命中结果（如果已开奖）
         let hitResult = null;
         if (actualResult) {
-            hitResult = this.compareNumbers(prediction, actualResult);
+            hitResult = this.compareNumbers(prediction, actualResult, gameType);
         }
 
-        // 创建头部
         const header = document.createElement('div');
         header.className = 'strategy-header';
-        header.innerHTML = `
-            <div class="strategy-label-row">
-                <div class="strategy-group-badge${isBest ? ' best' : ''}">${isBest ? '★ ' : ''}G-${prediction.group_id}</div>
-                <span class="strategy-name">${prediction.strategy}</span>
-                ${hitResult ? `
+
+        const hitStatsHtml = hitResult
+            ? (gameType === 'fc3d'
+                ? `
+                    <div class="strategy-hit-stats">
+                        <span class="hit-stat red">${hitResult.positionHitCount}位</span>
+                        <span class="hit-stat ${hitResult.groupHitCount >= 2 ? 'blue' : 'miss'}">组${hitResult.groupHitCount}</span>
+                        <span class="hit-stat ${hitResult.coreWinTypes?.length ? 'blue' : 'miss'}">${hitResult.coreWinTypes?.length || 0}奖</span>
+                    </div>
+                `
+                : `
                     <div class="strategy-hit-stats">
                         <span class="hit-stat red">${hitResult.redHitCount}红</span>
                         <span class="hit-stat ${hitResult.blueHit ? 'blue' : 'miss'}">${hitResult.blueHit ? '1' : '0'}蓝</span>
                     </div>
-                ` : ''}
+                `)
+            : '';
+
+        header.innerHTML = `
+            <div class="strategy-label-row">
+                <div class="strategy-group-badge${isBest ? ' best' : ''}">${isBest ? '★ ' : ''}G-${prediction.group_id}</div>
+                <span class="strategy-name">${prediction.strategy}</span>
+                ${hitStatsHtml}
             </div>
         `;
         row.appendChild(header);
 
-        // 创建球容器
         const ballsContainer = document.createElement('div');
         ballsContainer.className = 'strategy-balls';
 
-        prediction.red_balls.forEach(num => {
-            const isHit = hitResult?.redHits?.includes(num);
-            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'md', isHit));
+        const numbers = this.getPredictionNumbers(prediction, gameType);
+        numbers.forEach((num, index) => {
+            const isHit = gameType === 'fc3d'
+                ? hitResult?.positionHitIndices?.includes(index)
+                : hitResult?.redHits?.includes(num);
+            ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'md', !!isHit));
         });
 
-        ballsContainer.appendChild(this.createBallDivider());
-
-        const blueHit = hitResult?.blueHit || false;
-        ballsContainer.appendChild(this.createLotteryBall(prediction.blue_ball, 'blue', 'md', blueHit));
+        const special = this.getPredictionSpecial(prediction, gameType);
+        if (special) {
+            ballsContainer.appendChild(this.createBallDivider());
+            const specialHit = !!hitResult?.blueHit;
+            ballsContainer.appendChild(this.createLotteryBall(special, 'blue', 'md', specialHit));
+        }
 
         row.appendChild(ballsContainer);
 
-        // 创建描述
         const desc = document.createElement('p');
         desc.className = 'strategy-description';
         desc.textContent = prediction.description;
         row.appendChild(desc);
 
-        // 添加分隔符 (最后一个除外)
         if (!isLast) {
             const separator = document.createElement('div');
             separator.className = 'strategy-separator';
@@ -183,19 +306,13 @@ const Components = {
         return row;
     },
 
-    /**
-     * 创建准确度卡片 (历史预测对比)
-     * @param {Object} record - 历史记录
-     * @returns {HTMLElement} 准确度卡片元素
-     */
-    createAccuracyCard(record) {
+    createAccuracyCard(record, gameType = 'ssq') {
         const card = document.createElement('div');
         card.className = 'accuracy-card';
 
         const result = record.actual_result;
         if (!result) return card;
 
-        // 卡片头部
         const header = document.createElement('div');
         header.className = 'accuracy-card-header';
         header.innerHTML = `
@@ -214,7 +331,6 @@ const Components = {
         `;
         card.appendChild(header);
 
-        // 实际开奖结果
         const actualSection = document.createElement('div');
         actualSection.className = 'actual-result-section';
         actualSection.innerHTML = `
@@ -226,21 +342,45 @@ const Components = {
 
         const actualBalls = document.createElement('div');
         actualBalls.className = 'actual-result-balls';
-        result.red_balls.forEach(num => {
+
+        const numbers = this.getDrawNumbers(result, gameType);
+        numbers.forEach(num => {
             actualBalls.appendChild(this.createLotteryBall(num, 'red', 'md'));
         });
-        actualBalls.appendChild(this.createBallDivider());
-        actualBalls.appendChild(this.createLotteryBall(result.blue_ball, 'blue', 'md'));
+
+        const special = this.getDrawSpecial(result, gameType);
+        if (special) {
+            actualBalls.appendChild(this.createBallDivider());
+            actualBalls.appendChild(this.createLotteryBall(special, 'blue', 'md'));
+        }
+
         actualSection.appendChild(actualBalls);
+
+        if (gameType === 'fc3d') {
+            const digits = this.getDrawNumbers(result, gameType);
+            const sum = digits.reduce((acc, n) => acc + parseInt(n, 10), 0);
+            const span = Math.max(...digits.map(n => parseInt(n, 10))) - Math.min(...digits.map(n => parseInt(n, 10)));
+            const form = result.type || this.getFc3dForm(digits);
+
+            const meta = document.createElement('div');
+            meta.className = 'fc3d-actual-meta';
+            meta.innerHTML = `
+                <span class="fc3d-meta-chip">形态 ${form}</span>
+                <span class="fc3d-meta-chip">和值 ${sum}</span>
+                <span class="fc3d-meta-chip">跨度 ${span}</span>
+            `;
+            actualSection.appendChild(meta);
+        }
 
         card.appendChild(actualSection);
 
-        // 模型命中列表
         const hitsList = document.createElement('div');
         hitsList.className = 'model-hits-list';
 
         record.models.forEach((model, index) => {
-            hitsList.appendChild(this.createModelHitItem(model, index + 1, index === record.models.length - 1));
+            hitsList.appendChild(
+                this.createModelHitItem(model, index + 1, index === record.models.length - 1, gameType, result)
+            );
         });
 
         card.appendChild(hitsList);
@@ -248,22 +388,20 @@ const Components = {
         return card;
     },
 
-    /**
-     * 创建模型命中项
-     * @param {Object} model - 模型数据
-     * @param {number} index - 索引
-     * @param {boolean} isLast - 是否最后一个
-     * @returns {HTMLElement} 模型命中项元素
-     */
-    createModelHitItem(model, index, isLast = false) {
+    createModelHitItem(model, index, isLast = false, gameType = 'ssq', actualResult = null) {
         const item = document.createElement('div');
         item.className = 'model-hit-item';
 
-        // 计算最佳命中数
-        const bestHit = Math.max(...model.predictions.map(p => p.hit_result?.total_hits || 0));
+        const bestHit = Math.max(...model.predictions.map(p => {
+            const hit = (gameType === 'fc3d' && actualResult)
+                ? this.compareNumbers(p, actualResult, gameType)
+                : this.normalizeHitResult(p.hit_result || {}, gameType);
+            return hit.totalHits;
+        }));
 
-        // 清理 model_id 以生成有效的 DOM ID
         const safeModelId = model.model_id.replace(/[^a-zA-Z0-9-_]/g, '-');
+        const showHighHit = gameType === 'fc3d' ? bestHit >= 2 : bestHit >= 4;
+        const highHitText = gameType === 'fc3d' ? `高命中: ${bestHit}位` : `高命中: ${bestHit}`;
 
         item.innerHTML = `
             ${!isLast ? '<div class="model-hit-connector"></div>' : ''}
@@ -272,12 +410,12 @@ const Components = {
                 <div class="model-hit-content">
                     <div class="model-hit-header">
                         <h4 class="model-hit-name">${model.model_name}</h4>
-                        ${bestHit >= 4 ? `
+                        ${showHighHit ? `
                         <span class="high-hit-badge">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                             </svg>
-                            高命中: ${bestHit}
+                            ${highHitText}
                         </span>` : ''}
                     </div>
                     <div class="prediction-groups" id="groups-${safeModelId}"></div>
@@ -285,28 +423,24 @@ const Components = {
             </div>
         `;
 
-        // 添加预测组
         const groupsContainer = item.querySelector(`#groups-${safeModelId}`);
         model.predictions.forEach(prediction => {
-            groupsContainer.appendChild(this.createPredictionGroupRow(prediction));
+            groupsContainer.appendChild(this.createPredictionGroupRow(prediction, gameType, actualResult));
         });
 
         return item;
     },
 
-    /**
-     * 创建预测组行
-     * @param {Object} prediction - 预测数据
-     * @returns {HTMLElement} 预测组行元素
-     */
-    createPredictionGroupRow(prediction) {
+    createPredictionGroupRow(prediction, gameType = 'ssq', actualResult = null) {
         const row = document.createElement('div');
-        const totalHits = prediction.hit_result?.total_hits || 0;
-        const isWinning = totalHits >= 3;
+        const hitResult = (gameType === 'fc3d' && actualResult)
+            ? this.compareNumbers(prediction, actualResult, gameType)
+            : this.normalizeHitResult(prediction.hit_result || {}, gameType);
+        const totalHits = hitResult.totalHits;
+        const isWinning = gameType === 'fc3d' ? totalHits >= 2 : totalHits >= 3;
 
-        row.className = `prediction-group-row${isWinning ? ' winning' : ''}`;
+        row.className = `prediction-group-row${isWinning ? ' winning' : ''}${gameType === 'fc3d' ? ' fc3d-prediction-row' : ''}`;
 
-        // 球容器
         const ballsContainer = document.createElement('div');
         ballsContainer.className = 'prediction-group-balls';
         ballsContainer.innerHTML = `
@@ -316,79 +450,119 @@ const Components = {
         const ballsList = document.createElement('div');
         ballsList.className = 'prediction-group-balls-list';
 
-        prediction.red_balls.forEach(num => {
-            const isHit = prediction.hit_result?.red_hits?.includes(num);
+        const numbers = this.getPredictionNumbers(prediction, gameType);
+        numbers.forEach((num, index) => {
+            const isHit = gameType === 'fc3d'
+                ? hitResult.positionHitIndices.includes(index)
+                : (prediction.hit_result?.red_hits || []).includes(num);
             const miniBall = document.createElement('div');
             miniBall.className = `mini-ball${isHit ? ' hit' : ''}`;
             miniBall.textContent = num;
             ballsList.appendChild(miniBall);
         });
 
-        const blueBall = document.createElement('div');
-        blueBall.className = `mini-ball blue${prediction.hit_result?.blue_hit ? ' hit' : ''}`;
-        blueBall.textContent = prediction.blue_ball;
-        ballsList.appendChild(blueBall);
+        const special = this.getPredictionSpecial(prediction, gameType);
+        if (special) {
+            const blueBall = document.createElement('div');
+            blueBall.className = `mini-ball blue${hitResult.blueHit ? ' hit' : ''}`;
+            blueBall.textContent = special;
+            ballsList.appendChild(blueBall);
+        }
 
         ballsContainer.appendChild(ballsList);
         row.appendChild(ballsContainer);
 
-        // 统计信息
         const stats = document.createElement('div');
         stats.className = 'prediction-group-stats';
 
-        const redHitCount = prediction.hit_result?.red_hit_count || 0;
-        const blueHit = prediction.hit_result?.blue_hit || false;
+        if (gameType === 'fc3d') {
+            stats.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-value ${hitResult.positionHitCount > 0 ? 'has-hit' : 'no-hit'}">${hitResult.positionHitCount}</span>
+                    <span class="stat-label">位</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value ${hitResult.groupHitCount >= 2 ? 'blue-hit' : 'no-hit'}">${hitResult.groupHitCount}</span>
+                    <span class="stat-label">组</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value ${hitResult.coreWinTypes?.length ? 'has-hit' : 'no-hit'}">${hitResult.coreWinTypes?.length || 0}</span>
+                    <span class="stat-label">奖</span>
+                </div>
+            `;
+        } else {
+            const redHitCount = hitResult.redHitCount;
+            const blueHit = hitResult.blueHit;
+            stats.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-value ${redHitCount > 0 ? 'has-hit' : 'no-hit'}">${redHitCount}</span>
+                    <span class="stat-label">红</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-value ${blueHit ? 'blue-hit' : 'no-hit'}">${blueHit ? 1 : 0}</span>
+                    <span class="stat-label">蓝</span>
+                </div>
+            `;
+        }
 
-        stats.innerHTML = `
-            <div class="stat-item">
-                <span class="stat-value ${redHitCount > 0 ? 'has-hit' : 'no-hit'}">${redHitCount}</span>
-                <span class="stat-label">红</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <span class="stat-value ${blueHit ? 'blue-hit' : 'no-hit'}">${blueHit ? 1 : 0}</span>
-                <span class="stat-label">蓝</span>
-            </div>
-        `;
         row.appendChild(stats);
+
+        if (gameType === 'fc3d' && hitResult.winTypes?.length) {
+            const typesContainer = document.createElement('div');
+            typesContainer.className = 'fc3d-win-types';
+
+            hitResult.winTypes.forEach(typeName => {
+                const chip = document.createElement('span');
+                chip.className = `fc3d-win-chip${hitResult.coreWinTypes?.includes(typeName) ? ' hit-core' : ''}`;
+                chip.textContent = typeName;
+                typesContainer.appendChild(chip);
+            });
+
+            row.appendChild(typesContainer);
+        }
 
         return row;
     },
 
-    /**
-     * 创建历史表格行
-     * @param {Object} draw - 开奖数据
-     * @returns {HTMLElement} 表格行元素
-     */
-    createHistoryTableRow(draw) {
+    createHistoryTableRow(draw, gameType = 'ssq') {
         const row = document.createElement('tr');
 
-        // 期号
         const periodCell = document.createElement('td');
         periodCell.className = 'period-cell';
         periodCell.textContent = draw.period;
         row.appendChild(periodCell);
 
-        // 日期
         const dateCell = document.createElement('td');
         dateCell.className = 'date-cell';
         dateCell.textContent = draw.date;
         row.appendChild(dateCell);
 
-        // 开奖号码
         const ballsCell = document.createElement('td');
         const ballsContainer = document.createElement('div');
         ballsContainer.className = 'balls-cell';
 
-        draw.red_balls.forEach(num => {
+        const numbers = this.getDrawNumbers(draw, gameType);
+        numbers.forEach(num => {
             ballsContainer.appendChild(this.createLotteryBall(num, 'red', 'sm'));
         });
 
-        const divider = document.createElement('div');
-        divider.style.width = '8px';
-        ballsContainer.appendChild(divider);
+        const special = this.getDrawSpecial(draw, gameType);
+        if (special) {
+            const divider = document.createElement('div');
+            divider.style.width = '8px';
+            ballsContainer.appendChild(divider);
+            ballsContainer.appendChild(this.createLotteryBall(special, 'blue', 'sm'));
+        }
 
-        ballsContainer.appendChild(this.createLotteryBall(draw.blue_ball, 'blue', 'sm'));
+        if (gameType === 'fc3d' && draw.type) {
+            const typeBadge = document.createElement('span');
+            typeBadge.className = 'draw-type-badge';
+            typeBadge.textContent = draw.type;
+            ballsContainer.appendChild(typeBadge);
+        }
 
         ballsCell.appendChild(ballsContainer);
         row.appendChild(ballsCell);
@@ -396,28 +570,74 @@ const Components = {
         return row;
     },
 
-    /**
-     * 比较预测号码与实际开奖结果
-     * @param {Object} prediction - 预测数据
-     * @param {Object} actualResult - 实际开奖结果
-     * @returns {Object} 命中信息
-     */
-    compareNumbers(prediction, actualResult) {
+    compareNumbers(prediction, actualResult, gameType = 'ssq') {
         if (!actualResult) {
             return null;
         }
 
-        const redHits = prediction.red_balls.filter(ball =>
-            actualResult.red_balls.includes(ball)
-        );
+        if (gameType === 'fc3d') {
+            const predictionDigits = this.getPredictionNumbers(prediction, 'fc3d');
+            const actualDigits = this.getDrawNumbers(actualResult, 'fc3d');
 
-        const blueHit = prediction.blue_ball === actualResult.blue_ball;
+            const positionHitIndices = [];
+            predictionDigits.forEach((digit, idx) => {
+                if (digit === actualDigits[idx]) {
+                    positionHitIndices.push(idx);
+                }
+            });
+
+            const freq = {};
+            actualDigits.forEach(d => {
+                freq[d] = (freq[d] || 0) + 1;
+            });
+
+            const groupHitDigits = [];
+            predictionDigits.forEach(d => {
+                if (freq[d] > 0) {
+                    groupHitDigits.push(d);
+                    freq[d] -= 1;
+                }
+            });
+
+            const positionHitCount = positionHitIndices.length;
+            const groupHitCount = groupHitDigits.length;
+            const exactMatch = positionHitCount === 3;
+            const playHitInfo = this.getFc3dPlayHitInfo(predictionDigits, actualDigits);
+
+            return {
+                positionHitIndices,
+                positionHitCount,
+                groupHitDigits,
+                groupHitCount,
+                exactMatch,
+                totalHits: positionHitCount,
+                winTypes: playHitInfo.winTypes,
+                coreWinTypes: playHitInfo.coreWinTypes,
+                redHits: positionHitIndices.map(i => predictionDigits[i]),
+                redHitCount: positionHitCount,
+                blueHit: exactMatch
+            };
+        }
+
+        const predictionReds = this.getPredictionNumbers(prediction, 'ssq');
+        const actualReds = this.getDrawNumbers(actualResult, 'ssq');
+        const predictionBlue = this.getPredictionSpecial(prediction, 'ssq');
+        const actualBlue = this.getDrawSpecial(actualResult, 'ssq');
+
+        const redHits = predictionReds.filter(ball => actualReds.includes(ball));
+        const blueHit = predictionBlue === actualBlue;
 
         return {
-            redHits: redHits,
+            redHits,
             redHitCount: redHits.length,
-            blueHit: blueHit,
-            totalHits: redHits.length + (blueHit ? 1 : 0)
+            blueHit,
+            totalHits: redHits.length + (blueHit ? 1 : 0),
+            positionHitCount: 0,
+            groupHitCount: 0,
+            exactMatch: false,
+            positionHitIndices: []
         };
     }
 };
+
+window.Components = Components;
