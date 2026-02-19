@@ -41,9 +41,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -66,15 +64,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -139,9 +130,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组三"
@@ -173,9 +162,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -198,15 +185,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -249,9 +229,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -275,9 +253,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -309,10 +285,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -335,15 +308,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -386,9 +352,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -412,10 +376,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -447,9 +408,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -472,15 +431,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -547,14 +499,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -606,9 +553,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -631,15 +576,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -659,9 +597,7 @@
                 "group_hit_count": 0,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "跨度"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -708,14 +644,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -748,9 +679,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -773,15 +702,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -801,9 +723,7 @@
                 "group_hit_count": 0,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "跨度"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -850,14 +770,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -890,9 +805,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -915,15 +828,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -966,9 +872,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组三"
@@ -992,9 +896,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1026,9 +928,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1051,15 +951,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -1126,14 +1019,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -1185,10 +1073,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1214,15 +1099,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -1288,10 +1168,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1323,9 +1200,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1351,15 +1226,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -1425,10 +1295,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1460,10 +1327,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1489,15 +1353,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -1565,14 +1424,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -1605,10 +1459,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1634,15 +1485,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -1663,9 +1509,7 @@
                 "group_hit_count": 0,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "和值"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1688,9 +1532,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组三"
@@ -1716,14 +1558,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -1775,9 +1612,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1800,15 +1635,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -1851,9 +1679,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1877,9 +1703,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -1911,9 +1735,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -1936,15 +1758,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2011,14 +1826,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -2051,9 +1861,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2076,15 +1884,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2149,9 +1950,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2183,9 +1982,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2208,15 +2005,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2236,9 +2026,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "跨度"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2283,9 +2071,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2336,9 +2122,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2361,15 +2145,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2412,9 +2189,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2438,9 +2213,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2472,9 +2245,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2497,15 +2268,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2525,9 +2289,7 @@
                 "group_hit_count": 0,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "跨度"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2574,14 +2336,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -2614,9 +2371,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2639,15 +2394,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2714,14 +2462,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -2754,9 +2497,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2779,15 +2520,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -2852,9 +2586,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -2905,9 +2637,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -2933,15 +2663,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -2986,10 +2711,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -3015,14 +2737,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -3055,10 +2772,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3084,15 +2798,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -3160,14 +2869,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -3200,10 +2904,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3229,15 +2930,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -3303,10 +2999,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -3338,10 +3031,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3367,15 +3057,10 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "直选"
                 ],
                 "core_win_types": [
-                  "直选",
-                  "组选3"
+                  "直选"
                 ]
               },
               "play_type": "直选"
@@ -3443,14 +3128,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -3502,10 +3182,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3528,15 +3205,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -3603,14 +3273,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -3643,10 +3308,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3669,15 +3331,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -3720,9 +3375,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -3748,14 +3401,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -3788,10 +3436,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3814,15 +3459,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -3889,14 +3527,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -3929,9 +3562,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -3954,15 +3585,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选6"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -4005,9 +3629,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -4033,14 +3655,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选6",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选6"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选6"
                 ]
               },
@@ -4092,10 +3709,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -4118,15 +3732,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -4193,14 +3800,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -4233,9 +3835,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -4258,15 +3858,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -4286,9 +3879,7 @@
                 "group_hit_count": 0,
                 "exact_match": false,
                 "total_hits": 0,
-                "win_types": [
-                  "跨度"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -4311,9 +3902,7 @@
                 "group_hit_count": 1,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "定位1位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"
@@ -4339,14 +3928,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -4379,9 +3963,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -4404,15 +3986,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -4479,14 +4054,9 @@
                 "exact_match": true,
                 "total_hits": 3,
                 "win_types": [
-                  "直选",
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位3位"
+                  "组选3"
                 ],
                 "core_win_types": [
-                  "直选",
                   "组选3"
                 ]
               },
@@ -4519,10 +4089,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "直选"
@@ -4545,15 +4112,8 @@
                 "group_hit_count": 3,
                 "exact_match": false,
                 "total_hits": 1,
-                "win_types": [
-                  "组选3",
-                  "和值",
-                  "跨度",
-                  "定位1位"
-                ],
-                "core_win_types": [
-                  "组选3"
-                ]
+                "win_types": [],
+                "core_win_types": []
               },
               "play_type": "直选"
             },
@@ -4618,10 +4178,7 @@
                 "group_hit_count": 2,
                 "exact_match": false,
                 "total_hits": 2,
-                "win_types": [
-                  "跨度",
-                  "定位2位"
-                ],
+                "win_types": [],
                 "core_win_types": []
               },
               "play_type": "组六"

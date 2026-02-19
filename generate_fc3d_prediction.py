@@ -287,9 +287,10 @@ def generate_predictions() -> Dict[str, Any]:
     return result
 
 def calculate_hit_result(prediction_group: Dict[str, Any], actual_result: Dict[str, Any]) -> Dict[str, Any]:
-    """计算 FC3D 命中结果"""
+    """计算 FC3D 命中结果（根据 play_type 只显示对应的中奖类型）"""
     pred_digits = prediction_group["digits"]
     actual_digits = actual_result["digits"]
+    play_type = prediction_group.get("play_type", "")
     
     # 1. 定位命中（百/十/个 完全一致）
     position_hit_indices = []
@@ -303,57 +304,46 @@ def calculate_hit_result(prediction_group: Dict[str, Any], actual_result: Dict[s
     is_group_hit = (pred_sorted == actual_sorted)
     
     # 统计有多少个数字命中（不考虑位置）
-    # 使用 Counter 处理重复数字，例如预测 552，开奖 525 -> 命中 3 个
     from collections import Counter
     pred_count = Counter(pred_digits)
     actual_count = Counter(actual_digits)
     group_hit_count = sum((pred_count & actual_count).values())
 
-    # 3. 其他特征命中
-    pred_sum = sum(int(d) for d in pred_digits)
-    actual_sum = actual_result["sum"]
-    is_sum_hit = (pred_sum == actual_sum)
+    # 开奖号码形态
+    actual_unique = len(set(actual_digits))
     
-    pred_span = max(int(d) for d in pred_digits) - min(int(d) for d in pred_digits)
-    actual_span = actual_result["span"]
-    is_span_hit = (pred_span == actual_span)
-    
+    # 根据 play_type 只判断对应的中奖类型
     win_types = []
-    core_win_types = []
     
-    # 判断奖项
-    if len(position_hit_indices) == 3:
-        win_types.append("直选")
-        core_win_types.append("直选")
-    elif is_group_hit:
-        # 判断是组三还是组六
-        if len(set(actual_digits)) == 2:
+    if play_type == "直选":
+        if len(position_hit_indices) == 3:
+            win_types.append("直选")
+    elif play_type == "组三":
+        if is_group_hit and actual_unique == 2:
             win_types.append("组选3")
-            core_win_types.append("组选3")
-        elif len(set(actual_digits)) == 3:
+    elif play_type == "组六":
+        if is_group_hit and actual_unique == 3:
             win_types.append("组选6")
-            core_win_types.append("组选6")
-        else: # 豹子
-            win_types.append("豹子")
-            core_win_types.append("豹子")
-            
-    if is_sum_hit:
-        win_types.append("和值")
-    
-    if is_span_hit:
-        win_types.append("跨度")
-        
-    if len(position_hit_indices) > 0 and len(position_hit_indices) < 3:
-        win_types.append(f"定位{len(position_hit_indices)}位")
+    else:
+        # 没有 play_type 时显示所有可能（向后兼容）
+        if len(position_hit_indices) == 3:
+            win_types.append("直选")
+        if is_group_hit:
+            if actual_unique == 2:
+                win_types.append("组选3")
+            elif actual_unique == 3:
+                win_types.append("组选6")
+            elif actual_unique == 1:
+                win_types.append("豹子")
 
     return {
         "position_hit_indices": position_hit_indices,
         "position_hit_count": len(position_hit_indices),
         "group_hit_count": group_hit_count,
         "exact_match": len(position_hit_indices) == 3,
-        "total_hits": group_hit_count,  # FC3D 里总命中数通常指数字命中的个数
+        "total_hits": group_hit_count,
         "win_types": win_types,
-        "core_win_types": core_win_types
+        "core_win_types": win_types
     }
 
 def archive_old_prediction(lottery_data: Dict[str, Any]):

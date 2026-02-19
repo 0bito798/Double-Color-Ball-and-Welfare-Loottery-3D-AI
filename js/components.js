@@ -109,7 +109,35 @@ const Components = {
         return '组六';
     },
 
-    getFc3dPlayHitInfo(predictionDigits, actualDigits) {
+    /**
+     * 判断预测的 play_type 是否真正中奖
+     * @returns {null|boolean} null=没有开奖结果, true=中奖, false=未中
+     */
+    checkPlayTypeWin(prediction, actualResult, gameType) {
+        if (gameType !== 'fc3d' || !actualResult || !prediction.play_type) return null;
+
+        const predDigits = prediction.digits || [];
+        const actDigits = actualResult.digits || [];
+        if (predDigits.length !== 3 || actDigits.length !== 3) return null;
+
+        const playType = prediction.play_type;
+        const predSorted = [...predDigits].sort().join('');
+        const actSorted = [...actDigits].sort().join('');
+        const sameSet = predSorted === actSorted;
+        const positionHitCount = predDigits.filter((d, i) => d === actDigits[i]).length;
+        const actualForm = this.getFc3dForm(actDigits);
+
+        if (playType === '直选') {
+            return positionHitCount === 3;
+        } else if (playType === '组三') {
+            return sameSet && actualForm === '组三';
+        } else if (playType === '组六') {
+            return sameSet && actualForm === '组六';
+        }
+        return null;
+    },
+
+    getFc3dPlayHitInfo(predictionDigits, actualDigits, playType = '') {
         const pred = predictionDigits || [];
         const act = actualDigits || [];
         if (pred.length !== 3 || act.length !== 3) {
@@ -121,45 +149,48 @@ const Components = {
         const predSorted = [...pred].sort().join('');
         const actualSorted = [...act].sort().join('');
         const sameSet = predSorted === actualSorted;
-        const predSum = pred.reduce((acc, n) => acc + parseInt(n, 10), 0);
-        const actualSum = act.reduce((acc, n) => acc + parseInt(n, 10), 0);
-        const predSpan = Math.max(...pred.map(n => parseInt(n, 10))) - Math.min(...pred.map(n => parseInt(n, 10)));
-        const actualSpan = Math.max(...act.map(n => parseInt(n, 10))) - Math.min(...act.map(n => parseInt(n, 10)));
         const positionHitCount = pred.filter((digit, idx) => digit === act[idx]).length;
 
         const winTypes = [];
         const coreWinTypes = [];
 
-        if (positionHitCount === 3) {
-            winTypes.push('直选');
-            coreWinTypes.push('直选');
-        }
-
-        if (sameSet && predForm === '组三' && actualForm === '组三') {
-            winTypes.push('组选3');
-            coreWinTypes.push('组选3');
-        }
-
-        if (sameSet && predForm === '组六' && actualForm === '组六') {
-            winTypes.push('组选6');
-            coreWinTypes.push('组选6');
-        }
-
-        if (sameSet && predForm === '豹子' && actualForm === '豹子') {
-            winTypes.push('豹子');
-            coreWinTypes.push('豹子');
-        }
-
-        if (predSum === actualSum) {
-            winTypes.push('和值');
-        }
-
-        if (predSpan === actualSpan) {
-            winTypes.push('跨度');
-        }
-
-        if (positionHitCount > 0) {
-            winTypes.push(`定位${positionHitCount}位`);
+        // 根据 play_type 判断是否中奖（只显示与购买方式匹配的中奖结果）
+        if (playType === '直选') {
+            // 直选：三位完全一致才算中
+            if (positionHitCount === 3) {
+                winTypes.push('直选');
+                coreWinTypes.push('直选');
+            }
+        } else if (playType === '组三') {
+            // 组三：号码相同且开奖形态也是组三
+            if (sameSet && actualForm === '组三') {
+                winTypes.push('组选3');
+                coreWinTypes.push('组选3');
+            }
+        } else if (playType === '组六') {
+            // 组六：号码相同且开奖形态也是组六
+            if (sameSet && actualForm === '组六') {
+                winTypes.push('组选6');
+                coreWinTypes.push('组选6');
+            }
+        } else {
+            // 没有 play_type 时显示所有可能的中奖（向后兼容）
+            if (positionHitCount === 3) {
+                winTypes.push('直选');
+                coreWinTypes.push('直选');
+            }
+            if (sameSet && actualForm === '组三') {
+                winTypes.push('组选3');
+                coreWinTypes.push('组选3');
+            }
+            if (sameSet && actualForm === '组六') {
+                winTypes.push('组选6');
+                coreWinTypes.push('组选6');
+            }
+            if (sameSet && actualForm === '豹子') {
+                winTypes.push('豹子');
+                coreWinTypes.push('豹子');
+            }
         }
 
         return { winTypes, coreWinTypes };
@@ -250,9 +281,10 @@ const Components = {
             ? (gameType === 'fc3d'
                 ? `
                     <div class="strategy-hit-stats">
-                        <span class="hit-stat red">${hitResult.positionHitCount}位</span>
-                        <span class="hit-stat ${hitResult.groupHitCount >= 2 ? 'blue' : 'miss'}">组${hitResult.groupHitCount}</span>
-                        <span class="hit-stat ${hitResult.coreWinTypes?.length ? 'blue' : 'miss'}">${hitResult.coreWinTypes?.length || 0}奖</span>
+                        ${hitResult.winTypes?.length
+                    ? hitResult.winTypes.map(t => `<span class="hit-stat red">${t}</span>`).join('')
+                    : `<span class="hit-stat miss">未中奖</span>`
+                }
                     </div>
                 `
                 : `
@@ -489,22 +521,13 @@ const Components = {
         stats.className = 'prediction-group-stats';
 
         if (gameType === 'fc3d') {
-            stats.innerHTML = `
-                <div class="stat-item">
-                    <span class="stat-value ${hitResult.positionHitCount > 0 ? 'has-hit' : 'no-hit'}">${hitResult.positionHitCount}</span>
-                    <span class="stat-label">位</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value ${hitResult.groupHitCount >= 2 ? 'blue-hit' : 'no-hit'}">${hitResult.groupHitCount}</span>
-                    <span class="stat-label">组</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-value ${hitResult.coreWinTypes?.length ? 'has-hit' : 'no-hit'}">${hitResult.coreWinTypes?.length || 0}</span>
-                    <span class="stat-label">奖</span>
-                </div>
-            `;
+            if (hitResult.winTypes?.length) {
+                stats.innerHTML = hitResult.winTypes.map(t =>
+                    `<span class="fc3d-win-chip hit-core">${t}</span>`
+                ).join('');
+            } else {
+                stats.innerHTML = `<span class="stat-value no-hit" style="font-size:11px;">未中奖</span>`;
+            }
         } else {
             const redHitCount = hitResult.redHitCount;
             const blueHit = hitResult.blueHit;
@@ -522,20 +545,6 @@ const Components = {
         }
 
         row.appendChild(stats);
-
-        if (gameType === 'fc3d' && hitResult.winTypes?.length) {
-            const typesContainer = document.createElement('div');
-            typesContainer.className = 'fc3d-win-types';
-
-            hitResult.winTypes.forEach(typeName => {
-                const chip = document.createElement('span');
-                chip.className = `fc3d-win-chip${hitResult.coreWinTypes?.includes(typeName) ? ' hit-core' : ''}`;
-                chip.textContent = typeName;
-                typesContainer.appendChild(chip);
-            });
-
-            row.appendChild(typesContainer);
-        }
 
         return row;
     },
@@ -615,7 +624,7 @@ const Components = {
             const positionHitCount = positionHitIndices.length;
             const groupHitCount = groupHitDigits.length;
             const exactMatch = positionHitCount === 3;
-            const playHitInfo = this.getFc3dPlayHitInfo(predictionDigits, actualDigits);
+            const playHitInfo = this.getFc3dPlayHitInfo(predictionDigits, actualDigits, prediction.play_type || '');
 
             return {
                 positionHitIndices,

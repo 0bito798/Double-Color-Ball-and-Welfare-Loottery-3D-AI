@@ -56,7 +56,7 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-                 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+        'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
     background: var(--slate-50);
     color: var(--foreground);
     line-height: 1.6;
@@ -135,7 +135,9 @@ body::after {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .loading-text {
@@ -420,8 +422,15 @@ body::after {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==================== Hero Banner (Ticket Style) ==================== */
@@ -474,8 +483,15 @@ body::after {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.7; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
 }
 
 .hero-banner-content {
@@ -1519,6 +1535,34 @@ body::after {
     border: 1px solid #6ee7b7;
 }
 
+.play-type-win {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #4ade80;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+    animation: pulse-win 2s ease-in-out infinite;
+}
+
+@keyframes pulse-win {
+
+    0%,
+    100% {
+        box-shadow: 0 0 6px rgba(74, 222, 128, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+    }
+}
+
+.play-type-miss {
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
 /* ==================== Chart Container ==================== */
 .chart-container {
     background: white;
@@ -1625,7 +1669,8 @@ body::after {
     align-items: center;
     gap: 1rem;
     margin-bottom: 2rem;
-    grid-column: 1 / -1; /* 跨越所有列 */
+    grid-column: 1 / -1;
+    /* 跨越所有列 */
     animation: slideIn 0.5s ease;
 }
 
@@ -1634,6 +1679,7 @@ body::after {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1722,9 +1768,12 @@ body::after {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
     }
+
     50% {
         box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
     }
