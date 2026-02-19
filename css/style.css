@@ -1489,6 +1489,36 @@ body::after {
     letter-spacing: 0.02em;
 }
 
+/* FC3D play type badges */
+.play-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+}
+
+.play-type-zhixuan {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fbbf24;
+}
+
+.play-type-zu3 {
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
+}
+
+.play-type-zu6 {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
 /* ==================== Chart Container ==================== */
 .chart-container {
     background: white;

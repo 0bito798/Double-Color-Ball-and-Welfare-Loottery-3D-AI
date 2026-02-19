@@ -144,8 +144,10 @@ def call_ai_model(model_config: Dict[str, Any], prompt: str) -> Dict[str, Any]:
         print(f"  ❌ {model_config['name']} 调用失败: {str(e)}")
         raise
 
+VALID_PLAY_TYPES = {"直选", "组三", "组六"}
+
 def validate_prediction(prediction: Dict[str, Any]) -> bool:
-    """验证 FC3D 预测数据格式"""
+    """验证 FC3D 预测数据格式（包含 play_type 校验）"""
     try:
         required_fields = ["prediction_date", "target_period", "model_id", "model_name", "predictions"]
         for field in required_fields:
@@ -162,7 +164,7 @@ def validate_prediction(prediction: Dict[str, Any]) -> bool:
             if len(group["digits"]) != 3:
                 print(f"    ⚠️  digits 数量不正确: {len(group['digits'])}")
                 return False
-            
+
             # 检查是否为数字字符
             if not all(d.isdigit() and 0 <= int(d) <= 9 for d in group["digits"]):
                 print(f"    ⚠️  digits 包含非法字符: {group['digits']}")
@@ -172,6 +174,30 @@ def validate_prediction(prediction: Dict[str, Any]) -> bool:
             if group["number"] != "".join(group["digits"]):
                 print(f"    ⚠️  number 与 digits 不一致: {group['number']} vs {group['digits']}")
                 return False
+
+            # 检查并修正 play_type
+            play_type = group.get("play_type", "")
+            if play_type not in VALID_PLAY_TYPES:
+                # 宽松处理：根据 digits 自动推断
+                unique_count = len(set(group["digits"]))
+                if unique_count == 1:
+                    group["play_type"] = "豹子"
+                elif unique_count == 2:
+                    group["play_type"] = "组三"
+                else:
+                    group["play_type"] = "组六"
+                print(f"    ℹ️  play_type 缺失或非法，已自动推断为: {group['play_type']}")
+
+            # 检查 play_type 与 digits 形态是否一致（组三/组六）
+            actual_unique = len(set(group["digits"]))
+            pt = group.get("play_type", "")
+            if pt == "组三" and actual_unique != 2:
+                print(f"    ⚠️  G-{group.get('group_id')}: play_type=组三 但 digits={group['digits']} 不是两位相同")
+                # 自动修正 play_type 而不拒绝整条预测
+                group["play_type"] = "组六" if actual_unique == 3 else "豹子"
+            elif pt == "组六" and actual_unique != 3:
+                print(f"    ⚠️  G-{group.get('group_id')}: play_type=组六 但 digits={group['digits']} 不是三位各不同")
+                group["play_type"] = "组三" if actual_unique == 2 else "豹子"
 
         return True
 

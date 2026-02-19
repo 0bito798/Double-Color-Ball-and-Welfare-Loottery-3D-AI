@@ -263,14 +263,22 @@ const Components = {
                 `)
             : '';
 
+        const playType = prediction.play_type || '';
+        const playTypeBadgeClass = playType === '直选' ? 'play-type-zhixuan' : playType === '组三' ? 'play-type-zu3' : playType === '组六' ? 'play-type-zu6' : '';
+        const playTypeBadgeHtml = (gameType === 'fc3d' && playType)
+            ? `<span class="play-type-badge ${playTypeBadgeClass}">${playType}</span>`
+            : '';
+
         header.innerHTML = `
             <div class="strategy-label-row">
                 <div class="strategy-group-badge${isBest ? ' best' : ''}">${isBest ? '★ ' : ''}G-${prediction.group_id}</div>
                 <span class="strategy-name">${prediction.strategy}</span>
+                ${playTypeBadgeHtml}
                 ${hitStatsHtml}
             </div>
         `;
         row.appendChild(header);
+
 
         const ballsContainer = document.createElement('div');
         ballsContainer.className = 'strategy-balls';
@@ -443,8 +451,13 @@ const Components = {
 
         const ballsContainer = document.createElement('div');
         ballsContainer.className = 'prediction-group-balls';
+        const pt = prediction.play_type || '';
+        const ptClass = pt === '直选' ? 'play-type-zhixuan' : pt === '组三' ? 'play-type-zu3' : pt === '组六' ? 'play-type-zu6' : '';
+        const ptHtml = (gameType === 'fc3d' && pt)
+            ? `<span class="play-type-badge ${ptClass}" style="font-size:10px;padding:1px 5px;">${pt}</span>`
+            : '';
         ballsContainer.innerHTML = `
-            <span class="prediction-group-strategy">${prediction.strategy.substring(0, 8)}${prediction.strategy.length > 8 ? '..' : ''}</span>
+            <span class="prediction-group-strategy">${prediction.strategy.substring(0, 6)}${prediction.strategy.length > 6 ? '..' : ''}</span>${ptHtml}
         `;
 
         const ballsList = document.createElement('div');
