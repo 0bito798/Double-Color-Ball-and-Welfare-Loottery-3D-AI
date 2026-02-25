@@ -1,79 +1,11 @@
 {
-  "prediction_date": "2026-02-24",
+  "prediction_date": "2026-02-25",
   "target_period": "2026050",
   "models": [
     {
       "prediction_date": "2026-02-19",
       "target_period": "2026050",
-      "model_id": "team_alpha_arena_v1",
-      "model_name": "Claude 4.5",
-      "predictions": [
-        {
-          "group_id": 1,
-          "strategy": "直选热码追随",
-          "play_type": "直选",
-          "digits": [
-            "0",
-            "7",
-            "2"
-          ],
-          "number": "072",
-          "description": "百位0(7次)-十位7(5次)-个位2(6次)，各位热码直选组合。"
-        },
-        {
-          "group_id": 2,
-          "strategy": "冷码回补直选",
-          "play_type": "直选",
-          "digits": [
-            "3",
-            "1",
-            "8"
-          ],
-          "number": "318",
-          "description": "百位3遗漏29期，十位1遗漏6期，个位8遗漏8期，冷码回补。"
-        },
-        {
-          "group_id": 3,
-          "strategy": "和值组选策略",
-          "play_type": "组六",
-          "digits": [
-            "3",
-            "5",
-            "8"
-          ],
-          "number": "358",
-          "description": "预测和值16，近期和值集中10-19区间，组六形态。"
-        },
-        {
-          "group_id": 4,
-          "strategy": "跨度组选策略",
-          "play_type": "组三",
-          "digits": [
-            "4",
-            "4",
-            "8"
-          ],
-          "number": "448",
-          "description": "预测跨度4，近期跨度2-5高频，组三防守两同号。"
-        },
-        {
-          "group_id": 5,
-          "strategy": "综合组选策略",
-          "play_type": "组六",
-          "digits": [
-            "1",
-            "6",
-            "9"
-          ],
-          "number": "169",
-          "description": "组六占比73%，奇偶2:1结构，大小均衡配置。"
-        }
-      ]
-    },
-    {
-      "prediction_date": "2026-02-19",
-      "target_period": "2026050",
-      "model_id": "FC3D-AI-Pro",
+      "model_id": "FC3D-AI-Analysis",
       "model_name": "DeepSeek-V3-Lotto",
       "predictions": [
         {
@@ -81,65 +13,65 @@
           "strategy": "直选热码追随",
           "play_type": "直选",
           "digits": [
-            "4",
+            "5",
             "7",
-            "2"
+            "1"
           ],
-          "number": "472",
-          "description": "百位4近期高频，十位7连续热出，个位2常态回补，锁定直选。"
+          "number": "571",
+          "description": "百位5近期高频，十位7三连出极热，个位1回补，定胆直选。"
         },
         {
           "group_id": 2,
           "strategy": "冷码回补直选",
           "play_type": "直选",
           "digits": [
-            "3",
+            "2",
             "9",
-            "8"
+            "4"
           ],
-          "number": "398",
-          "description": "百位3遗漏超10期，十位9与个位8均为冷态，博冷号回补。"
+          "number": "294",
+          "description": "百位2遗漏多期，十位9冷号防守，个位4温号搭配，博冷门回补。"
         },
         {
           "group_id": 3,
           "strategy": "和值组选策略",
           "play_type": "组六",
           "digits": [
-            "3",
+            "2",
             "5",
-            "6"
+            "7"
           ],
-          "number": "356",
-          "description": "预测和值14，向中值回归，号码各不相同，防守组六。"
+          "number": "257",
+          "description": "近期和值高位震荡，预测回落至14点左右，组六形态。"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
-          "play_type": "组六",
+          "play_type": "组三",
           "digits": [
-            "1",
-            "4",
-            "7"
+            "3",
+            "8",
+            "3"
           ],
-          "number": "147",
-          "description": "近期小跨度频繁，看好跨度扩大至6，1-4-7等差组合。"
+          "number": "383",
+          "description": "预测跨度5，近期组三形态频出（5期3出），防守对子号热势延续。"
         },
         {
           "group_id": 5,
           "strategy": "综合组选策略",
-          "play_type": "组三",
+          "play_type": "组六",
           "digits": [
-            "5",
-            "5",
-            "8"
+            "0",
+            "6",
+            "9"
           ],
-          "number": "558",
-          "description": "近期组三形态活跃（10期3次），热码5号重防对子结构。"
+          "number": "069",
+          "description": "组六常态回补，0路号码活跃，关注0/6/9大数组合。"
         }
       ]
     },
     {
-      "prediction_date": "2026-02-18",
+      "prediction_date": "2026-02-19",
       "target_period": "2026050",
       "model_id": "DeepseekR1",
       "model_name": "DeepSeek R1",
@@ -151,10 +83,10 @@
           "digits": [
             "0",
             "7",
-            "2"
+            "9"
           ],
-          "number": "072",
-          "description": "百位0(7次)-十位7(6次)-个位2(5次)，全热直选。"
+          "number": "079",
+          "description": "百位0(6次)-十位7(6次)-个位9(5次)，全热直选。"
         },
         {
           "group_id": 2,
@@ -162,23 +94,23 @@
           "play_type": "直选",
           "digits": [
             "6",
-            "4",
-            "1"
+            "5",
+            "8"
           ],
-          "number": "641",
-          "description": "百位6遗漏27期，十位4遗漏3期，个位1遗漏3期，冷温结合直选。"
+          "number": "658",
+          "description": "百位6遗漏27期，十位5遗漏7期，个位8遗漏27期，直选回补。"
         },
         {
           "group_id": 3,
           "strategy": "和值组选策略",
           "play_type": "组六",
           "digits": [
+            "2",
             "4",
-            "5",
-            "6"
+            "5"
           ],
-          "number": "456",
-          "description": "预测和值15，组六形态，组三遗漏1期。"
+          "number": "245",
+          "description": "预测和值11，组六遗漏低，优先组六。"
         },
         {
           "group_id": 4,
@@ -187,10 +119,10 @@
           "digits": [
             "1",
             "2",
-            "3"
+            "5"
           ],
-          "number": "123",
-          "description": "预测跨度2，组六形态，近期常见。"
+          "number": "125",
+          "description": "预测跨度4，三位各不同，组六覆盖。"
         },
         {
           "group_id": 5,
@@ -198,11 +130,11 @@
           "play_type": "组六",
           "digits": [
             "1",
-            "8",
-            "3"
+            "4",
+            "7"
           ],
-          "number": "183",
-          "description": "组六形态，奇偶2:1结构，综合判断。"
+          "number": "147",
+          "description": "组六形态，奇偶2:1结构，综合回补。"
         }
       ]
     }
