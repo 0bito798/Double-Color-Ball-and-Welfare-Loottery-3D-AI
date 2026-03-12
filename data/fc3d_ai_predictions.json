@@ -1,10 +1,10 @@
 {
-  "prediction_date": "2026-03-11",
-  "target_period": "2026060",
+  "prediction_date": "2026-03-12",
+  "target_period": "2026061",
   "models": [
     {
-      "prediction_date": "2026-03-11",
-      "target_period": "2026060",
+      "prediction_date": "2026-03-12",
+      "target_period": "2026061",
       "model_id": "SSB-Team-001",
       "model_name": "GPT-5",
       "predictions": [
@@ -13,68 +13,68 @@
           "strategy": "直选热码追随",
           "play_type": "直选",
           "digits": [
+            "4",
             "7",
-            "9",
-            "4"
+            "5"
           ],
-          "number": "794",
-          "description": "百位7(8次)-十位9(7次)-个位4(9次)，全热直选。"
+          "number": "475",
+          "description": "百位4(6次)-十位7(5次)-个位5(5次)，热码直选"
         },
         {
           "group_id": 2,
           "strategy": "冷码回补直选",
           "play_type": "直选",
           "digits": [
-            "1",
             "0",
-            "2"
+            "3",
+            "8"
           ],
-          "number": "102",
-          "description": "百位1遗漏15期，十位0遗漏12期，直选回补。"
+          "number": "038",
+          "description": "百位0遗漏15期，十位3遗漏12期，个8回补"
         },
         {
           "group_id": 3,
           "strategy": "和值组选策略",
           "play_type": "组六",
           "digits": [
-            "6",
             "2",
-            "8"
+            "6",
+            "7"
           ],
-          "number": "628",
-          "description": "预测和值16，三位各不同，组六覆盖6注。"
+          "number": "267",
+          "description": "预测和值15，三位各不同，组六覆盖6注"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
-          "play_type": "组三",
+          "play_type": "组六",
           "digits": [
-            "5",
-            "5",
+            "1",
+            "4",
             "9"
           ],
-          "number": "559",
-          "description": "跨度4，组三遗漏6期重点防守，奇数占优。"
+          "number": "149",
+          "description": "跨度8，跨度回补，三位各异"
         },
         {
           "group_id": 5,
           "strategy": "综合组选策略",
-          "play_type": "组六",
+          "play_type": "组三",
           "digits": [
-            "3",
-            "7",
-            "1"
+            "5",
+            "5",
+            "8"
           ],
-          "number": "371",
-          "description": "组六遗漏偏高，综合奇偶3:0结构。"
+          "number": "558",
+          "description": "组三遗漏6期，奇偶2:1，防守组选"
         }
       ]
     },
     {
-      "prediction_date": "2026-03-11",
-      "target_period": "2026060",
-      "model_id": "LotteryAnalyst-v4.0",
-      "model_name": "深度概率量化模型",
+      "prediction_date": "2026-03-12",
+      "target_period": "2026061",
+      "model_id": "Gemini2.5",
+      "model_name": "Gemini 2.5",
       "predictions": [
         {
           "group_id": 1,
@@ -86,19 +86,19 @@
             "2"
           ],
           "number": "452",
-          "description": "百位4(6次)-十位5(5次)-个位2(6次)，各位置热度最高组合。"
+          "description": "百位4(7次)-十位5(5次)-个位2(6次)，全热号位组合。"
         },
         {
           "group_id": 2,
           "strategy": "冷码回补直选",
           "play_type": "直选",
           "digits": [
+            "0",
             "3",
-            "2",
             "8"
           ],
-          "number": "328",
-          "description": "百位3遗漏22期，十位2遗漏8期，个位8遗漏25期，防守冷回补。"
+          "number": "038",
+          "description": "百位0遗漏27期，个位8极冷，遗漏超过30期，看好回补。"
         },
         {
           "group_id": 3,
@@ -110,37 +110,37 @@
             "8"
           ],
           "number": "158",
-          "description": "目标和值14，近期和值呈回归中值趋势，组六形态遗漏2期。"
+          "description": "预测和值14，处于高频均值区间，形态选择组六分散风险。"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
           "play_type": "组三",
           "digits": [
-            "1",
-            "7",
-            "1"
+            "6",
+            "2",
+            "6"
           ],
-          "number": "171",
-          "description": "预测跨度6，组三近期活跃，防守对子1回补。"
+          "number": "626",
+          "description": "跨度4为近期热点，组三遗漏4期，防守双偶结构。"
         },
         {
           "group_id": 5,
           "strategy": "综合组选策略",
           "play_type": "组六",
           "digits": [
-            "3",
-            "5",
+            "1",
+            "7",
             "8"
           ],
-          "number": "358",
-          "description": "奇偶比2:1，大小比2:1，综合012路均衡选号。"
+          "number": "178",
+          "description": "综合奇偶比2:1，大小比2:1，组六形态符合近期大趋势。"
         }
       ]
     },
     {
-      "prediction_date": "2026-03-11",
-      "target_period": "2026060",
+      "prediction_date": "2026-03-12",
+      "target_period": "2026061",
       "model_id": "DeepseekR1",
       "model_name": "DeepSeek R1",
       "predictions": [
@@ -149,12 +149,12 @@
           "strategy": "直选热码追随",
           "play_type": "直选",
           "digits": [
-            "1",
+            "4",
             "5",
             "2"
           ],
-          "number": "152",
-          "description": "百位1(6次)-十位5(5次)-个位2(6次)，全热直选。"
+          "number": "452",
+          "description": "百位4(6次)-十位5(5次)-个位2(6次)，全热直选。"
         },
         {
           "group_id": 2,
@@ -162,11 +162,11 @@
           "play_type": "直选",
           "digits": [
             "0",
-            "5",
-            "2"
+            "6",
+            "7"
           ],
-          "number": "052",
-          "description": "百位0遗漏25期，十位5遗漏6期，个位2遗漏8期，直选回补。"
+          "number": "067",
+          "description": "百位0遗漏26期，十位6遗漏3期，个位7遗漏4期，冷温结合直选。"
         },
         {
           "group_id": 3,
@@ -175,34 +175,34 @@
           "digits": [
             "4",
             "5",
-            "3"
+            "6"
           ],
-          "number": "453",
-          "description": "预测和值12，组六遗漏3期，三位各不同。"
+          "number": "456",
+          "description": "预测和值15，组三遗漏4期优先组六。"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
           "play_type": "组六",
           "digits": [
-            "4",
-            "6",
-            "2"
+            "0",
+            "1",
+            "5"
           ],
-          "number": "462",
-          "description": "预测跨度4，三位各不同，组六覆盖6注。"
+          "number": "015",
+          "description": "预测跨度5，三位各不同组六。"
         },
         {
           "group_id": 5,
           "strategy": "综合组选策略",
           "play_type": "组六",
           "digits": [
-            "3",
-            "6",
-            "9"
+            "1",
+            "4",
+            "6"
           ],
-          "number": "369",
-          "description": "组六形态，综合奇偶2:1结构。"
+          "number": "146",
+          "description": "组三遗漏4期首选组六，奇偶比1:2回补。"
         }
       ]
     }
