@@ -2,6 +2,497 @@
   "历史预测记录": "本文件保存已开奖期号的福彩3D AI预测数据，用于对比和统计",
   "predictions_history": [
     {
+      "prediction_date": "2026-03-16",
+      "target_period": "2026065",
+      "actual_result": {
+        "period": "2026065",
+        "digits": [
+          "0",
+          "5",
+          "7"
+        ],
+        "number": "057",
+        "sum": 12,
+        "span": 7,
+        "type": "组六",
+        "date": "2026-03-16"
+      },
+      "models": [
+        {
+          "model_id": "SSB-Team-001",
+          "model_name": "GPT-5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "play_type": "直选",
+              "digits": [
+                "4",
+                "2",
+                "7"
+              ],
+              "number": "427",
+              "description": "百位4(6次)-十位2(6次)-个位7(5次)，全热直选",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补直选",
+              "play_type": "直选",
+              "digits": [
+                "9",
+                "0",
+                "3"
+              ],
+              "number": "903",
+              "description": "百位9遗漏12期-十位0遗漏10期-个位3遗漏8期",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值组选策略",
+              "play_type": "组六",
+              "digits": [
+                "3",
+                "5",
+                "7"
+              ],
+              "number": "357",
+              "description": "预测和值15，三位各不同，组六覆盖6注",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度组选策略",
+              "play_type": "组三",
+              "digits": [
+                "2",
+                "8",
+                "2"
+              ],
+              "number": "282",
+              "description": "跨度6，组三遗漏7期防守，偶数占优",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "综合组选策略",
+              "play_type": "组六",
+              "digits": [
+                "1",
+                "6",
+                "9"
+              ],
+              "number": "169",
+              "description": "组六遗漏偏高，奇偶结构1:2均衡",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 3,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "team_alpha_arena_v1",
+          "model_name": "Claude 4.5",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "play_type": "直选",
+              "digits": [
+                "4",
+                "7",
+                "7"
+              ],
+              "number": "477",
+              "description": "百位4(5次)-十位7(7次)-个位7(5次)，直选热码组合。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补直选",
+              "play_type": "直选",
+              "digits": [
+                "0",
+                "3",
+                "1"
+              ],
+              "number": "031",
+              "description": "百位0遗漏9期，十位3遗漏4期，个位1温号回补。",
+              "hit_result": {
+                "position_hit_indices": [
+                  0
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值组选策略",
+              "play_type": "组六",
+              "digits": [
+                "3",
+                "6",
+                "7"
+              ],
+              "number": "367",
+              "description": "预测和值16，组六形态，和值覆盖6注。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度组选策略",
+              "play_type": "组六",
+              "digits": [
+                "2",
+                "7",
+                "9"
+              ],
+              "number": "279",
+              "description": "跨度7，跨度高位，组六形态优选。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "综合组选策略",
+              "play_type": "组三",
+              "digits": [
+                "7",
+                "7",
+                "4"
+              ],
+              "number": "774",
+              "description": "组三遗漏7期，奇偶均衡，防守组三。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 1
+        },
+        {
+          "model_id": "FC3D-AI-Pro",
+          "model_name": "FC3D AI Predictor",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "play_type": "直选",
+              "digits": [
+                "4",
+                "1",
+                "7"
+              ],
+              "number": "417",
+              "description": "百位4、十位1、个位7均为近期高频热码，固定位置直选。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补直选",
+              "play_type": "直选",
+              "digits": [
+                "8",
+                "4",
+                "1"
+              ],
+              "number": "841",
+              "description": "百位8遗漏22期，个位1遗漏18期，搭配十位温码4防守回补。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值组选策略",
+              "play_type": "组三",
+              "digits": [
+                "4",
+                "4",
+                "6"
+              ],
+              "number": "446",
+              "description": "组三已遗漏8期，预测和值14，选446组合重点防守组三形态。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度组选策略",
+              "play_type": "组六",
+              "digits": [
+                "2",
+                "5",
+                "7"
+              ],
+              "number": "257",
+              "description": "预测跨度5回补，三位数字各不相同，符合组六形态覆盖。",
+              "hit_result": {
+                "position_hit_indices": [
+                  1,
+                  2
+                ],
+                "position_hit_count": 2,
+                "group_hit_count": 2,
+                "exact_match": false,
+                "total_hits": 2,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "综合组选策略",
+              "play_type": "组三",
+              "digits": [
+                "8",
+                "3",
+                "8"
+              ],
+              "number": "838",
+              "description": "组三形态遗漏偏高，综合奇偶比1:2与大中小结构选号。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 4,
+          "best_hit_count": 2
+        },
+        {
+          "model_id": "DeepseekR1",
+          "model_name": "DeepSeek R1",
+          "predictions": [
+            {
+              "group_id": 1,
+              "strategy": "直选热码追随",
+              "play_type": "直选",
+              "digits": [
+                "2",
+                "1",
+                "7"
+              ],
+              "number": "217",
+              "description": "百位2(6次)-十位1(5次)-个位7(6次)，全热直选。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 2,
+              "strategy": "冷码回补直选",
+              "play_type": "直选",
+              "digits": [
+                "8",
+                "6",
+                "3"
+              ],
+              "number": "863",
+              "description": "百位8遗漏22期，十位6遗漏7期(温)，个位3遗漏4期(温)，直选回补。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 3,
+              "strategy": "和值组选策略",
+              "play_type": "组三",
+              "digits": [
+                "4",
+                "4",
+                "5"
+              ],
+              "number": "445",
+              "description": "预测和值13，组三遗漏10期重点防守。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 4,
+              "strategy": "跨度组选策略",
+              "play_type": "组六",
+              "digits": [
+                "1",
+                "4",
+                "7"
+              ],
+              "number": "147",
+              "description": "预测跨度6，三位各不同，组六覆盖6注。",
+              "hit_result": {
+                "position_hit_indices": [
+                  2
+                ],
+                "position_hit_count": 1,
+                "group_hit_count": 1,
+                "exact_match": false,
+                "total_hits": 1,
+                "win_types": [],
+                "core_win_types": []
+              }
+            },
+            {
+              "group_id": 5,
+              "strategy": "综合组选策略",
+              "play_type": "组三",
+              "digits": [
+                "3",
+                "3",
+                "8"
+              ],
+              "number": "338",
+              "description": "组三遗漏10期重点防守，综合奇偶2奇1偶。",
+              "hit_result": {
+                "position_hit_indices": [],
+                "position_hit_count": 0,
+                "group_hit_count": 0,
+                "exact_match": false,
+                "total_hits": 0,
+                "win_types": [],
+                "core_win_types": []
+              }
+            }
+          ],
+          "best_group": 1,
+          "best_hit_count": 1
+        }
+      ]
+    },
+    {
       "prediction_date": "2026-03-15",
       "target_period": "2026064",
       "actual_result": {
