@@ -1,10 +1,10 @@
 {
-  "prediction_date": "2026-03-17",
-  "target_period": "2026066",
+  "prediction_date": "2026-03-18",
+  "target_period": "2026067",
   "models": [
     {
-      "prediction_date": "2026-03-17",
-      "target_period": "2026066",
+      "prediction_date": "2026-03-18",
+      "target_period": "2026067",
       "model_id": "team_alpha_arena_v1",
       "model_name": "Claude 4.5",
       "predictions": [
@@ -13,24 +13,24 @@
           "strategy": "直选热码追随",
           "play_type": "直选",
           "digits": [
+            "9",
             "4",
-            "7",
             "7"
           ],
-          "number": "477",
-          "description": "百位4(7次)-十位7(8次)-个位7(7次)，热码直选。"
+          "number": "947",
+          "description": "百位9(5次)-十位4(7次)-个位7(6次)热码直选。"
         },
         {
           "group_id": 2,
           "strategy": "冷码回补直选",
           "play_type": "直选",
           "digits": [
-            "0",
             "1",
-            "9"
+            "0",
+            "3"
           ],
-          "number": "019",
-          "description": "百位0遗漏15期，十位1遗漏7期，个位9遗漏3期回补。"
+          "number": "103",
+          "description": "百位1遗漏14期-十位0遗漏12期-个位3遗漏10期回补。"
         },
         {
           "group_id": 3,
@@ -42,7 +42,7 @@
             "7"
           ],
           "number": "357",
-          "description": "预测和值15优先组六，组三无大遗漏。"
+          "description": "预测和值15，组六号码三位各不相同。"
         },
         {
           "group_id": 4,
@@ -54,7 +54,7 @@
             "9"
           ],
           "number": "189",
-          "description": "跨度8预测三不同组六，跨度近频发。"
+          "description": "预测跨度8，跨度≥1且组六形态优先。"
         },
         {
           "group_id": 5,
@@ -63,18 +63,18 @@
           "digits": [
             "7",
             "7",
-            "5"
+            "2"
           ],
-          "number": "775",
-          "description": "组三遗漏6期，奇偶均衡防守组三形态。"
+          "number": "772",
+          "description": "组三遗漏6期，综合奇偶均衡防守。"
         }
       ]
     },
     {
-      "prediction_date": "2026-03-17",
-      "target_period": "2026066",
-      "model_id": "GPT-4o-FC3D",
-      "model_name": "GPT-4o Welfare 3D Analyzer",
+      "prediction_date": "2026-03-18",
+      "target_period": "2026067",
+      "model_id": "Gemini2.5",
+      "model_name": "Gemini 2.5",
       "predictions": [
         {
           "group_id": 1,
@@ -82,65 +82,65 @@
           "play_type": "直选",
           "digits": [
             "4",
-            "9",
+            "5",
             "7"
           ],
-          "number": "497",
-          "description": "百位4(近期2次)-十位9(2次)-个位7(3次)，热号组合。"
+          "number": "457",
+          "description": "百位4(6次)-十位5(4次)-个位7(7次)，全热直选组合。"
         },
         {
           "group_id": 2,
           "strategy": "冷码回补直选",
           "play_type": "直选",
           "digits": [
-            "8",
+            "0",
             "3",
-            "5"
+            "2"
           ],
-          "number": "835",
-          "description": "百位8、十位3长期遗漏，个位5温号，关注冷码回补。"
+          "number": "032",
+          "description": "百位0极冷未出，十位3遗漏19期，搭配个位温码2回补。"
         },
         {
           "group_id": 3,
           "strategy": "和值组选策略",
           "play_type": "组三",
           "digits": [
-            "5",
             "4",
-            "5"
+            "4",
+            "6"
           ],
-          "number": "545",
-          "description": "预测和值14，组三遗漏9期，防守组三形态回补。"
+          "number": "446",
+          "description": "组三遗漏达10期极需防守，预测和值14，选定组三形态。"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
           "play_type": "组六",
           "digits": [
-            "2",
-            "4",
-            "7"
+            "3",
+            "5",
+            "8"
           ],
-          "number": "247",
-          "description": "跨度走势指向5，选取2-7跨度，形态为高频组六。"
+          "number": "358",
+          "description": "近期跨度高频在6-7，看好跨度5回落，选各不相同组六。"
         },
         {
           "group_id": 5,
           "strategy": "综合组选策略",
-          "play_type": "组六",
+          "play_type": "组三",
           "digits": [
-            "1",
-            "3",
-            "6"
+            "2",
+            "2",
+            "5"
           ],
-          "number": "136",
-          "description": "综合奇偶比2:1，和值10，012路均衡分布。"
+          "number": "225",
+          "description": "组三遗漏高达10期，防守偶偶奇结构，综合看好225组合。"
         }
       ]
     },
     {
-      "prediction_date": "2026-03-17",
-      "target_period": "2026066",
+      "prediction_date": "2026-03-18",
+      "target_period": "2026067",
       "model_id": "DeepseekR1",
       "model_name": "DeepSeek R1",
       "predictions": [
@@ -163,34 +163,34 @@
           "digits": [
             "8",
             "4",
-            "7"
+            "3"
           ],
-          "number": "847",
-          "description": "百位8遗漏24期，十位4遗漏9期，个位7热码，直选回补。"
+          "number": "843",
+          "description": "百位8遗漏24期，十位4遗漏8期，个位3遗漏8期，直选回补。"
         },
         {
           "group_id": 3,
           "strategy": "和值组选策略",
           "play_type": "组三",
           "digits": [
-            "3",
-            "3",
-            "6"
+            "6",
+            "6",
+            "3"
           ],
-          "number": "336",
-          "description": "预测和值12，组三遗漏11期重点防守。"
+          "number": "663",
+          "description": "预测和值15，组三遗漏10期重点防守，组三覆盖。"
         },
         {
           "group_id": 4,
           "strategy": "跨度组选策略",
-          "play_type": "组三",
+          "play_type": "组六",
           "digits": [
-            "2",
-            "2",
-            "7"
+            "1",
+            "6",
+            "2"
           ],
-          "number": "227",
-          "description": "预测跨度5，组三遗漏11期重点防守。"
+          "number": "162",
+          "description": "预测跨度5，三位各不同，组六覆盖。"
         },
         {
           "group_id": 5,
@@ -199,10 +199,10 @@
           "digits": [
             "1",
             "1",
-            "6"
+            "8"
           ],
-          "number": "116",
-          "description": "组三遗漏11期，综合奇偶均衡。"
+          "number": "118",
+          "description": "组三遗漏10期重点防守，奇偶2:1结构。"
         }
       ]
     }
