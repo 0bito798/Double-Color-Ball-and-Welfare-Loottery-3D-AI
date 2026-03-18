@@ -1,7 +1,20 @@
 {
   "lottery_type": "fc3d",
-  "last_updated": "2026-03-17T15:01:35Z",
+  "last_updated": "2026-03-18T15:08:09Z",
   "data": [
+    {
+      "period": "2026067",
+      "digits": [
+        "6",
+        "9",
+        "5"
+      ],
+      "number": "695",
+      "sum": 20,
+      "span": 4,
+      "type": "组六",
+      "date": "2026-03-18"
+    },
     {
       "period": "2026066",
       "digits": [
@@ -2890,10 +2903,10 @@
     }
   ],
   "next_draw": {
-    "next_period": "2026067",
-    "next_date": "2026-03-18",
-    "next_date_display": "2026年03月18日",
-    "weekday": "周三",
+    "next_period": "2026068",
+    "next_date": "2026-03-19",
+    "next_date_display": "2026年03月19日",
+    "weekday": "周四",
     "draw_time": "21:15"
   }
 }
